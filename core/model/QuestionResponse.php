@@ -64,6 +64,7 @@ class QuestionResponse {
     }
 
     public static function getResponseByNo($details) {
+        // die(var_dump($details['questionSessionId']));
         $query = "
             SELECT a.response
             FROM questionresponse AS a

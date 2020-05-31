@@ -8,7 +8,7 @@ class QuestionSession {
 
     public static function create($details) {
         $query = "
-            INSERT INTO questionSession (FK_questionMstr, FK_employee)
+            INSERT INTO questionsession (FK_questionMstr, FK_employee)
             VALUES ('{$details['questionMstrId']}', '{$details['employeeId']}')
         ";
 
@@ -42,7 +42,7 @@ class QuestionSession {
             SELECT a.PK_questionSession
             FROM questionsession AS a
             WHERE a.FK_questionMstr = '{$details['questionMstrId']}'
-                AND a.FK_employee = '{$details['employeeId']}}'
+                AND a.FK_employee = '{$details['employeeId']}'
                 AND a.sessionDate BETWEEN '{$details['sessionDate']} 00:00:00' AND '{$details['sessionDate']} 23:59:59'
             LIMIT 1
         ";

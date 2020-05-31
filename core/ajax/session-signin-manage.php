@@ -92,6 +92,7 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
 
             if (count($surveyQuestions) > 0) {
                 foreach ($surveyQuestions AS $surveyQuestion) {
+                    // die(var_dump($surveyQuestion));
                     $responseInsert = QuestionResponse::create(array(
                         "questionMstrId" => $parameters['questionMstrId'],
                         "questionSessionId" => $parameters['questionSessionId'],
