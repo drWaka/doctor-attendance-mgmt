@@ -24,7 +24,7 @@ class QuestionGrp {
 
     public static function getMaxGroupNo($questionMstrId) {
         $query = "
-            SELECT a.sorting FROM questionGrp AS a
+            SELECT a.sorting FROM questiongrp AS a
             WHERE a.FK_questionMstr = '{$questionMstrId}'
             ORDER BY a.sorting DESC LIMIT 1
         ";

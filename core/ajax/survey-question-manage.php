@@ -80,23 +80,23 @@ if (
         }
         // End ToDo : Include in a Loop
 
-        if ($proceedQuestion) {
-            // Get Current Question Detail ID
-            $questionIdFlag = QuestionDtl::getQuestionDetailId(array(
-                "questionMstrId" => $questionMstrId -> value,
-                "groupNo" => $groupNo -> value,
-                "pageNo" => $pageNo -> value
-            ));
-            // Update Response
-            $responseUpdate = QuestionResponse::updateResponse(array(
-                "response" => $responseVal -> value,
-                "questionMsrtId" => $questionMstrId -> value,
-                "questionSessionId" => $sessionId -> value,
-                "questionDtl" => $questionIdFlag,
-                "employeeId" => $employeeId -> value
-            ));
+        // Get Current Question Detail ID
+        $questionIdFlag = QuestionDtl::getQuestionDetailId(array(
+            "questionMstrId" => $questionMstrId -> value,
+            "groupNo" => $groupNo -> value,
+            "pageNo" => $pageNo -> value
+        ));
+        // Update Response
+        $responseUpdate = QuestionResponse::updateResponse(array(
+            "response" => $responseVal -> value,
+            "questionMsrtId" => $questionMstrId -> value,
+            "questionSessionId" => $sessionId -> value,
+            "questionDtl" => $questionIdFlag,
+            "employeeId" => $employeeId -> value
+        ));
 
-            if ($responseUpdate['error'] == 0) {
+        if ($responseUpdate['error'] == 0) {
+            if ($proceedQuestion) {
                 // Get Next Survey Question
                 $questionDetails = QuestionDtl::getByPage(array(
                     "questionMstrId" => $questionMstrId -> value,
@@ -124,34 +124,37 @@ if (
                     )
                 ));
             } else {
-                $response['success'] = 'failed';
-                $response['contentType'] = 'modal';
-                $response['content']['modal'] = modalize(
-                    "<div class='row text-center'>
-                        <h2 class='header capitalize col-12'>System Error Encountered</h2>
-                        <p class='para-text col-12'>Error Details: {$responseUpdate['errorMessage']}</p>
-                    </div>", 
-                    array(
-                        "trasnType" => 'error',
-                        "btnLbl" => 'Dismiss'
-                    )
-                );
+                // Update Survey Session isDone Flag
+
+                // Proceed to Finish Survey
+                $response['contentType'] = 'dynamic-content';
+                $response['content']['form'] = "
+                <div class='text-center'>
+                    You have successfully finished the survey. Do you want to submit another response? Click the button below
+                </div>
+                <div class=''>
+                <div class='col-4 offset-4 text-center'>
+                    <a href='index.php?surveyId={$questionMstrId -> value}'>
+                        <button type='button' class='btn btn-info w-100 form-submit-button'>Submit Another</button>
+                    </a>
+                </div>
+
+                </div>
+                ";
             }
         } else {
-            $response['contentType'] = 'dynamic-content';
-            $response['content']['form'] = "
-            <div class='text-center'>
-                You have successfully finished the survey. Do you want to submit another response? Click the button below
-            </div>
-            <div class=''>
-            <div class='col-4 offset-4 text-center'>
-                <a href='index.php?surveyId={$questionMstrId -> value}'>
-                    <button type='button' class='btn btn-info w-100 form-submit-button'>Submit Another</button>
-                </a>
-            </div>
-
-            </div>
-            ";
+            $response['success'] = 'failed';
+            $response['contentType'] = 'modal';
+            $response['content']['modal'] = modalize(
+                "<div class='row text-center'>
+                    <h2 class='header capitalize col-12'>System Error Encountered</h2>
+                    <p class='para-text col-12'>Error Details: {$responseUpdate['errorMessage']}</p>
+                </div>", 
+                array(
+                    "trasnType" => 'error',
+                    "btnLbl" => 'Dismiss'
+                )
+            );
         }
 
     } else {

@@ -7,18 +7,11 @@
     }
 
     // Survey Details
-    $surveyMstrQry = "SELECT * FROM questionMstr WHERE PK_questionMstr = '{$surveyId}'";
-    $surveyMstrRes = $connection -> query($surveyMstrQry);
+    $survey = QuestionMstr::show($surveyId);
 
-    $surveyMstrRec = '';
-    if ($surveyMstrRes -> num_rows > 0) {
-        $surveyMstrRec = $surveyMstrRes -> fetch_object();
-    } else {
-        // Redirect to Error Page
-        // Error Message : Survey Not Found
+    if (is_null($survey)) {
+        header("Location: error.php");
     }
-
-    // die(var_dump($surveyMstrRec));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,17 +32,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-10 offset-md-2 offset-1 main-content margin-top-sm">
-                <h1 class="text-center"><?= $surveyMstrRec -> title ?></h1>
+                <h1 class="text-center"><?= $survey['title'] ?></h1>
                 <div class="dynamic-content">
                     <div class="text-justify">
-                    <?= $surveyMstrRec -> description ?>
+                    <?= $survey['description'] ?>
                     </div>
                     <div class="row">
                         <div class="col-6 offset-3 text-center">
                         <button class="btn btn-info w-100 transaction-button"
                             tran-type="async-form"
                             tran-link="core/ajax/session-signin-select.php"
-                            tran-data="{&quot;questionMstrId&quot; : &quot;<?= $surveyId ?>&quot;}"
+                            tran-data="{&quot;questionMstrId&quot; : &quot;<?= $survey['PK_questionMstr'] ?>&quot;}"
                             tran-container="dynamic-content"
                         >Start Survey</button>
                         </div>

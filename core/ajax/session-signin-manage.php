@@ -32,10 +32,8 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
 
     if ($questionMstrId -> valid == 1 && $employeeId -> valid == 1 && $birthDate -> valid == 1) {
         // Verify if the Question Master ID is valid
-        $questionMstrQry = "SELECT PK_questionMstr FROM questionMstr WHERE PK_questionMstr = '{$questionMstrId -> value}'";
-        $questionMstrRes = $connection -> query($questionMstrQry);
-
-        if (!($questionMstrRes -> num_rows > 0)) {
+        $survey = QuestionMstr::show($questionMstrId -> value);
+        if (is_null($survey)) {
             $questionMstrId -> valid = 0;
             $questionMstrId -> err_msg = "Question Master ID not found. <br> Please refresh this page.";
         }
@@ -43,54 +41,44 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
 
     if ($questionMstrId -> valid == 1 && $employeeId -> valid == 1 && $birthDate -> valid == 1) {
         // Check if the Employee ID & Birthdate are valid
-        $employeeQry = "SELECT * FROM employees WHERE employeeNo = '{$employeeId -> value}' AND birthdate = '{$birthDate -> value}'";
-        $employeeRes = $connection -> query($employeeQry);
-        
-        if (!($employeeRes -> num_rows > 0)) {
+        $employee = Employee::getByEmployeeNo($employeeId -> value);
+        if (!(count($employee) > 0)) {
             // Use Question Master ID to Trigger modal instead of Form errors
             $employeeId -> valid = 0;
             $employeeId -> err_msg = 'flag';
             $birthDate -> valid = 0;
             $birthDate -> err_msg = 'Employee record not found';
         } else {
-            $employeeRec = $employeeRes -> fetch_object();
-            $parameters['employeeId'] = $employeeRec -> PK_employee;
+            $parameters['employeeId'] = $employee[0]['PK_employee'];
         }
     }
 
     if ($questionMstrId -> valid == 1 && $employeeId -> valid == 1 && $birthDate -> valid == 1) {
         // Check if the employe has already an existing survey session dated today
-        $startDate = date('Y-m-d') . " 00:00:00";
-        $endDate = date('Y-m-d') . " 23:59:59";
-        $questionResponseQry = "
-            SELECT * FROM questionSession
-            WHERE sessionDate BETWEEN '{$startDate}' AND '{$endDate}' 
-                AND FK_employee = '{$employeeId -> value}'
-            LIMIT 1
-        ";
-        $questionResponseRes = $connection -> query($questionResponseQry);
+        $employeeSession = QuestionSession::hasSession(array(
+            "employeeId" => $parameters['employeeId'],
+            "sessionDate" => date('Y-m-d')
+        ));
 
-        if ($questionResponseRes -> num_rows > 0) {
-            $questionResponseRec = $questionResponseRes -> fetch_assoc();
-
-            $parameters['questionSessionId'] = $questionResponseRec['PK_questionSession'];
-            $parameters['isDone'] = $questionResponseRec['isDone'];
+        if (count($employeeSession) > 0) {
+            $parameters['questionSessionId'] = $employeeSession[0]['PK_questionSession'];
+            $parameters['isDone'] = $employeeSession[0]['isDone'];
         } else {
             // Create new Session
-            $insertQuestionSession = "
-                INSERT INTO questionSession (FK_questionMstr, FK_employee)
-                VALUES ('{$parameters['questionMstrId']}', '{$parameters['employeeId']}')
-            ";
-            if (!($connection -> query($insertQuestionSession))) {
+            $sessionCreate = QuestionSession::create(array(
+                "questionMstrId" => $parameters['questionMstrId'],
+                "employeeId" => $parameters['employeeId']
+            ));
+            if ($sessionCreate['hasError'] == 1) {
                 $flags['hasError'] = 1;
 
                 $response['success'] = 'failed';
                 $response['contentType'] = 'modal';
                 $response['content']['modal'] = modalize(
-                    '<div class="row text-center">
-                        <h2 class="header capitalize col-12">System Error Encoutered</h2>
-                        <p class="para-text col-12">Error Details: Unable to initialize Survey Session. <br> Please contact your system administrator.</p>
-                    </div>', 
+                    "<div class='row text-center'>
+                        <h2 class='header capitalize col-12'>System Error Encoutered</h2>
+                        <p class='para-text col-12'>Error Details: {$sessionCreate['errorMessage']}</p>
+                    </div>", 
                     array(
                         "trasnType" => 'error',
                         "btnLbl" => 'Dismiss'
@@ -99,40 +87,30 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
             }
             $parameters['questionSessionId'] = $connection -> insert_id;
 
-            // Insert Reponse Records
-            $questionsQry = "
-                SELECT a.* 
-                FROM questionDtl AS a
-                INNER JOIN questionGrp AS b ON a.FK_questionGrp = b.PK_questionGrp
-                WHERE a.FK_questionMstr = '{$parameters['questionMstrId']}'
-                    AND a.isDeleted = 0
-                ORDER BY b.sorting, a.sorting
-            ";
-            $questionsRes = $connection -> query($questionsQry);
+            $surveyQuestions = QuestionDtl::getByQuestionMstr($parameters['questionMstrId']);
+            // die(var_dump($surveyQuestions));
 
-            if ($questionsRes -> num_rows > 0) {
-                while ($questionsRec = $questionsRes -> fetch_assoc()) {
-                    $insertQuestionResponse = "
-                        INSERT INTO questionResponse (
-                            FK_questionMstr, FK_questionSession, 
-                            FK_questionDtl, FK_employee
-                        ) VALUES (
-                            '{$parameters['questionMstrId']}', '{$parameters['questionSessionId']}', 
-                            '{$questionsRec['PK_questiondtl']}', '{$parameters['employeeId']}'
-                        )
-                    ";
+            if (count($surveyQuestions) > 0) {
+                foreach ($surveyQuestions AS $surveyQuestion) {
+                    $responseInsert = QuestionResponse::create(array(
+                        "questionMstrId" => $parameters['questionMstrId'],
+                        "questionSessionId" => $parameters['questionSessionId'],
+                        "PK_questiondtl" => $surveyQuestion['PK_questiondtl'],
+                        "employeeId" => $parameters['employeeId']
+                    ));
+                    
                     
                     // die($insertQuestionResponse);
-                    if (!($connection -> query($insertQuestionResponse))) {
+                    if ($responseInsert['hasError'] == 1) {
                         $flags['hasError'] = 1;
 
                         $response['success'] = 'failed';
                         $response['contentType'] = 'modal';
                         $response['content']['modal'] = modalize(
-                            '<div class="row text-center">
-                                <h2 class="header capitalize col-12">System Error Encoutered</h2>
-                                <p class="para-text col-12">Error Details: Unable to generate survey questions. <br> Please contact your system administrator.</p>
-                            </div>', 
+                            "<div class='row text-center'>
+                                <h2 class='header capitalize col-12'>System Error Encoutered</h2>
+                                <p class='para-text col-12'>Error Details: {$responseInsert['errorMessage']}</p>
+                            </div>", 
                             array(
                                 "trasnType" => 'error',
                                 "btnLbl" => 'Dismiss'

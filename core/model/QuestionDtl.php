@@ -3,7 +3,7 @@
 class QuestionDtl {
 
     public static function index() {
-
+        
     }
 
     public static function create() {
@@ -22,11 +22,31 @@ class QuestionDtl {
 
     }
 
+    public static function getByQuestionMstr($questionMstrId) {
+        // Insert Reponse Records
+        $query = "
+            SELECT a.* 
+            FROM questiondtl AS a
+            INNER JOIN questiongrp AS b ON a.FK_questionGrp = b.PK_questionGrp
+            WHERE a.FK_questionMstr = '{$questionMstrId}'
+                AND a.isDeleted = 0
+            ORDER BY b.sorting, a.sorting
+        ";
+        $result = $GLOBALS['connection'] -> query($query);
+
+        if ($result -> num_rows > 0) {
+            return $result -> fetch_all(MYSQLI_ASSOC);
+        }
+
+        return [];
+
+    }
+
     public static function getByPage($details) {
         $query = "
             SELECT a.* 
-            FROM questionDtl AS a
-            INNER JOIN questionGrp AS b ON a.FK_questionGrp = b.PK_questionGrp
+            FROM questiondtl AS a
+            INNER JOIN questiongrp AS b ON a.FK_questionGrp = b.PK_questionGrp
             WHERE a.FK_questionMstr = '{$details['questionMstrId']}'
                 AND b.sorting = '{$details['groupNo']}'
                 AND a.sorting = '{$details['pageNo']}'
@@ -43,8 +63,8 @@ class QuestionDtl {
     public static function getQuestionDetailId($details) {
         $query = "
             SELECT a.PK_questionDtl 
-            FROM questionDtl AS a
-            INNER JOIN questionGrp AS b ON a.FK_questionGrp = b.PK_questionGrp 
+            FROM questiondtl AS a
+            INNER JOIN questiongrp AS b ON a.FK_questionGrp = b.PK_questionGrp 
             WHERE a.FK_questionMstr = '{$details['questionMstrId']}'
                 AND b.sorting = '{$details['groupNo']}'
                 AND a.sorting = '{$details['pageNo']}'
@@ -62,8 +82,9 @@ class QuestionDtl {
 
     public static function getMaxPageNo($details) {
         $query = "
-            SELECT a.sorting FROM questionDtl AS a
-            INNER JOIN questionGrp AS b ON a.FK_questionGrp = b.PK_questionGrp 
+            SELECT a.sorting 
+            FROM questiondtl AS a
+            INNER JOIN questiongrp AS b ON a.FK_questionGrp = b.PK_questionGrp 
             WHERE a.FK_questionMstr = '{$details['questionMstrId']}'
                 AND b.sorting = '{$details['groupNo']}'
                 AND a.isDeleted = 0 
@@ -81,8 +102,8 @@ class QuestionDtl {
     public static function getQuestionType($details) {
         $query = "
             SELECT a.FK_questionType 
-            FROM questionDtl AS a
-            INNER JOIN questionGrp AS b ON a.FK_questionGrp = b.PK_questionGrp 
+            FROM questiondtl AS a
+            INNER JOIN questiongrp AS b ON a.FK_questionGrp = b.PK_questionGrp 
             WHERE a.FK_questionMstr = '{$details['questionMstrId']}'
                 AND b.sorting = '{$details['groupNo']}'
                 AND a.sorting = '{$details['pageNo']}'
@@ -117,7 +138,6 @@ class QuestionDtl {
             "questionDtlId" => $questionDtlId, 
             "questionSessionId" => $sessionId
         ));
-        
         // Error Handling
         $error = array(
             "class" => '',

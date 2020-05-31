@@ -18,10 +18,8 @@ if (isset($_POST['questionMstrId'])) {
 
     if ($questionMstrId -> valid == 1) {
         // Verify if the Question Master ID is valid
-        $questionMstrQry = "SELECT PK_questionMstr FROM questionMstr WHERE PK_questionMstr = '{$questionMstrId -> value}'";
-        $questionMstrRes = $connection -> query($questionMstrQry);
-
-        if (!($questionMstrRes -> num_rows > 0)) {
+        $survey = QuestionMstr::show($questionMstrId -> value);
+        if (is_null($survey)) {
             $questionMstrId -> valid = 0;
             $questionMstrId -> err_msg = "Question Master ID not found. <br> Please refresh this page.";
         }
