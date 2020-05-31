@@ -65,6 +65,7 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
         $questionResponseQry = "
             SELECT * FROM questionSession
             WHERE sessionDate BETWEEN '{$startDate}' AND '{$endDate}' 
+                AND FK_employee = '{$employeeId -> value}'
             LIMIT 1
         ";
         $questionResponseRes = $connection -> query($questionResponseQry);

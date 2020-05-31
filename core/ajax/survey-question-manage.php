@@ -58,35 +58,41 @@ if (
 
         // Start ToDo : Include in a Loop
         // Get Question Detail ID
-        $questionDetailId = QuestionDtl::getQuestionDetailId(array(
+        $questionIdFlag = QuestionDtl::getQuestionDetailId(array(
             "questionMstrId" => $questionMstrId -> value,
             "groupNo" => $next['groupNo'],
             "pageNo" => $next['pageNo']
         ));
         
-        if ($questionDetailId == 0) {
+        if ($questionIdFlag == 0) {
             $next['groupNo'] = (intval($next['groupNo']) + 1);
             $next['pageNo'] = 1;
             // Get Question Detail ID
-            $questionDetailId = QuestionDtl::getQuestionDetailId(array(
+            $questionIdFlag = QuestionDtl::getQuestionDetailId(array(
                 "questionMstrId" => $questionMstrId -> value,
                 "groupNo" => $next['groupNo'],
                 "pageNo" => $next['pageNo']
             ));
 
-            if ($questionDetailId == 0) {
+            if ($questionIdFlag == 0) {
                 $proceedQuestion = false;
             }
         }
         // End ToDo : Include in a Loop
 
         if ($proceedQuestion) {
+            // Get Current Question Detail ID
+            $questionIdFlag = QuestionDtl::getQuestionDetailId(array(
+                "questionMstrId" => $questionMstrId -> value,
+                "groupNo" => $groupNo -> value,
+                "pageNo" => $pageNo -> value
+            ));
             // Update Response
             $responseUpdate = QuestionResponse::updateResponse(array(
                 "response" => $responseVal -> value,
                 "questionMsrtId" => $questionMstrId -> value,
                 "questionSessionId" => $sessionId -> value,
-                "questionDtl" => $questionDetailId,
+                "questionDtl" => $questionIdFlag,
                 "employeeId" => $employeeId -> value
             ));
 

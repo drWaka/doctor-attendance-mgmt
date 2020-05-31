@@ -200,8 +200,26 @@ class QuestionDtl {
             "questionMstrId" => $formDetails['questionMstrId'],
             "groupNo" => $max["group"]
         ));
-        
 
+        // Previous Question Details
+        $prev = array(
+            "groupNo" => $formDetails['groupNo'],
+            "pageNo" => (intval($formDetails['pageNo']) - 1)
+        );
+
+        if ($prev['pageNo'] == 0) {
+            if ($prev['groupNo'] !== 1) {
+                $prev['groupNo'] = (intval($prev['groupNo']) - 1);
+                $prev['pageNo'] = self::getMaxPageNo(array(
+                    "questionMstrId" => $formDetails['questionMstrId'],
+                    "groupNo" => $prev['groupNo']
+                ));
+            } else {
+                $prev['groupNo'] = 1;
+                $prev['pageNo'] = 1;
+            }
+        }
+        
         $navigation = "";
         if ($formDetails['pageNo'] == 1 && $formDetails['groupNo'] == 1) {
             $navigation = "
@@ -215,7 +233,18 @@ class QuestionDtl {
             $navigation = "
                 <div class='form-row'>
                     <div class='col-4 offset-2 text-center'>
-                        <button type='button' class='btn btn-info w-100'>Back</button>
+                        <button type='button' class='btn btn-info w-100 transaction-button'
+                            tran-type='async-form'
+                            tran-link='core/ajax/survey-question-back.php'
+                            tran-data='{
+                                &quot;questionMstrId&quot; : &quot;{$formDetails['questionMstrId']}&quot;,
+                                &quot;sessionId&quot; : &quot;{$formDetails['questionSessionId']}&quot;,
+                                &quot;employeeId&quot; : &quot;{$formDetails['employeeId']}&quot;,
+                                &quot;pageNo&quot; : &quot;{$prev['pageNo']}&quot;,
+                                &quot;groupNo&quot; : &quot;{$prev['groupNo']}&quot;
+                            }'
+                            tran-container='dynamic-content'
+                        >Back</button>
                     </div>
                     <div class='col-4 text-center'>
                         <button type='button' class='btn btn-info w-100 form-submit-button'>Finish</button>
@@ -226,7 +255,18 @@ class QuestionDtl {
             $navigation = "
                 <div class='form-row'>
                     <div class='col-4 offset-2 text-center'>
-                        <button type='button' class='btn btn-info w-100'>Back</button>
+                        <button type='button' class='btn btn-info w-100 transaction-button'
+                            tran-type='async-form'
+                            tran-link='core/ajax/survey-question-back.php'
+                            tran-data='{
+                                &quot;questionMstrId&quot; : &quot;{$formDetails['questionMstrId']}&quot;,
+                                &quot;sessionId&quot; : &quot;{$formDetails['questionSessionId']}&quot;,
+                                &quot;employeeId&quot; : &quot;{$formDetails['employeeId']}&quot;,
+                                &quot;pageNo&quot; : &quot;{$prev['pageNo']}&quot;,
+                                &quot;groupNo&quot; : &quot;{$prev['groupNo']}&quot;
+                            }'
+                            tran-container='dynamic-content'
+                        >Back</button>
                     </div>
                     <div class='col-4 text-center'>
                         <button type='button' class='btn btn-info w-100 form-submit-button'>Next</button>
