@@ -34,7 +34,7 @@ if (
 
         $response['contentType'] = 'dynamic-content';
         $response['content']['form'] = "
-            <div class='col-10 offset-1 margin-top-md margin-bottom-xs' style='font-weight: 600'>
+            <div class='col-12 margin-top-md margin-bottom-xs' style='font-weight: 600'>
                 Question :
             </div>
             {$questionDetails[0]['question']}

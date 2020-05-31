@@ -47,6 +47,18 @@ if (
         $questionMstrId -> valid == 1 && $sessionId -> valid == 1 && $employeeId -> valid == 1 && 
         $pageNo -> valid == 1 && $groupNo -> valid == 1 && $responseVal -> valid == 1
     ) {
+        // Get Current Question Detail ID
+        $activeQuestionId = QuestionDtl::getQuestionDetailId(array(
+            "questionMstrId" => $questionMstrId -> value,
+            "groupNo" => $groupNo -> value,
+            "pageNo" => $pageNo -> value
+        ));
+        // Check if the question response has custom redirection
+        $customPage = QuestionDtlOption::checkRedirection(array(
+            "questionDtlId" => $activeQuestionId,
+            "responseVal" => $responseVal -> value,
+        ));
+
         // Proceed to next question flag
         $proceedQuestion = true;
 
@@ -55,6 +67,15 @@ if (
             "groupNo" => $groupNo -> value,
             "pageNo" => (intval($pageNo -> value) + 1)
         );
+
+        // validate if response has custom redirection
+        if ($customPage['hasRedirection'] == 1) {
+            // Override Normal Pagination
+            $next = array(
+                "groupNo" => $customPage['groupNo'],
+                "pageNo" => $customPage['pageNo']
+            );
+        }
 
         // Start ToDo : Include in a Loop
         // Get Question Detail ID
@@ -80,18 +101,12 @@ if (
         }
         // End ToDo : Include in a Loop
 
-        // Get Current Question Detail ID
-        $questionIdFlag = QuestionDtl::getQuestionDetailId(array(
-            "questionMstrId" => $questionMstrId -> value,
-            "groupNo" => $groupNo -> value,
-            "pageNo" => $pageNo -> value
-        ));
         // Update Response
         $responseUpdate = QuestionResponse::updateResponse(array(
             "response" => $responseVal -> value,
             "questionMsrtId" => $questionMstrId -> value,
             "questionSessionId" => $sessionId -> value,
-            "questionDtl" => $questionIdFlag,
+            "questionDtl" => $activeQuestionId,
             "employeeId" => $employeeId -> value
         ));
 
@@ -106,7 +121,7 @@ if (
 
                 $response['contentType'] = 'dynamic-content';
                 $response['content']['form'] = "
-                    <div class='col-10 offset-1 margin-top-md margin-bottom-xs' style='font-weight: 600'>
+                    <div class='col-12 margin-top-md margin-bottom-xs' style='font-weight: 600'>
                         Question :
                     </div>
                     {$questionDetails[0]['question']}
@@ -129,11 +144,11 @@ if (
                 // Proceed to Finish Survey
                 $response['contentType'] = 'dynamic-content';
                 $response['content']['form'] = "
-                <div class='text-center'>
+                <div class='text-center margin-top-lg'>
                     You have successfully finished the survey. Do you want to submit another response? Click the button below
                 </div>
-                <div class=''>
-                <div class='col-4 offset-4 text-center'>
+                <div class='margin-top-md'>
+                <div class='col-6 offset-3 text-center'>
                     <a href='index.php?surveyId={$questionMstrId -> value}'>
                         <button type='button' class='btn btn-info w-100 form-submit-button'>Submit Another</button>
                     </a>

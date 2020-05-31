@@ -135,7 +135,7 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
 
                 $response['contentType'] = 'dynamic-content';
                 $response['content']['form'] = "
-                    <div class='col-10 offset-1 margin-top-md margin-bottom-xs' style='font-weight: 600'>
+                    <div class='col-12 margin-top-md margin-bottom-xs' style='font-weight: 600'>
                         Question :
                     </div>
                     {$questionDetails[0]['question']}
@@ -219,7 +219,7 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
                         {$birthDateErr -> error_text}
                     </div>
                 </div>
-                <div class='col-6 offset-3 text-center'>
+                <div class='col-6 offset-3 text-center margin-top-sm'>
                     <button type='button' class='btn btn-info w-100 form-submit-button'>Proceed</button>
                 </div>
             </form>

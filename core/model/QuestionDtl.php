@@ -162,14 +162,13 @@ class QuestionDtl {
                 </label>
             ";
         } else if ($fieldType == 'DRP_DWN') {
-            $selected = array(
-                "yes" => '',
-                "no" => ''
-            );
-            if (strtolower($questionResponse) == 'yes') {
-                $selected['yes'] = 'selected';
-            } else if (strtolower($questionResponse) == 'no') {
-                $selected['no'] = 'selected';
+            $options = QuestionDtlOption::getByQuestionId($questionDtlId);
+            $optionField = "<option value='' selected>Select Response</option>";
+            foreach ($options as $option) {
+                $selected = (strtolower($questionResponse) == strtolower($option['value'])) 
+                    ? 'selected' 
+                    : '';
+                $optionField .= "<option value='{$option['value']}' {$selected}>{$option['description']}</option>";
             }
 
             $field = "
@@ -179,9 +178,7 @@ class QuestionDtl {
 
                 <div class='col-10 offset-1'>
                     <select name='response' class='form-control {$error['class']}' id='' field-desc='Response' field-type='text' field-required='1'>
-                        <option value='' selected>Select Response</option>
-                        <option value='yes' {$selected['yes']}>Yes, I did</option>
-                        <option value='no' {$selected['no']}>No, I didn't</option>
+                        {$optionField}
                     </select>
                     {$error['icon']}
                     {$error['text']}
@@ -243,7 +240,7 @@ class QuestionDtl {
         $navigation = "";
         if ($formDetails['pageNo'] == 1 && $formDetails['groupNo'] == 1) {
             $navigation = "
-                <div class='form-row'>
+                <div class='form-row margin-top-sm'>
                     <div class='col-4 offset-4 text-center'>
                         <button type='button' class='btn btn-info w-100 form-submit-button'>Next</button>
                     </div>
@@ -251,7 +248,7 @@ class QuestionDtl {
             ";
         } else if ($formDetails['pageNo'] == $max['page'] &&  $formDetails['groupNo'] == $max['group']) {
             $navigation = "
-                <div class='form-row'>
+                <div class='form-row margin-top-sm'>
                     <div class='col-4 offset-2 text-center'>
                         <button type='button' class='btn btn-info w-100 transaction-button'
                             tran-type='async-form'
@@ -273,7 +270,7 @@ class QuestionDtl {
             ";
         } else {
             $navigation = "
-                <div class='form-row'>
+                <div class='form-row margin-top-sm'>
                     <div class='col-4 offset-2 text-center'>
                         <button type='button' class='btn btn-info w-100 transaction-button'
                             tran-type='async-form'
@@ -318,7 +315,7 @@ class QuestionDtl {
             <input type='text' name='pageNo' hidden='hidden' value='{$formDetails['pageNo']}'/>
             <input type='text' name='groupNo' hidden='hidden' value='{$formDetails['groupNo']}'/>
 
-            <div class='col-10 offset-1 margin-top-md margin-bottom-xs' style='font-weight: 600'>
+            <div class='col-12 margin-top-md margin-bottom-xs' style='font-weight: 600'>
                 Response :
             </div>
             <div class='form-row'>

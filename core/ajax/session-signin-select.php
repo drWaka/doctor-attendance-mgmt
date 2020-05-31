@@ -54,7 +54,7 @@ if (isset($_POST['questionMstrId'])) {
                         <input type='date' name='birthDate' id='birthDate' class='form-control' />
                     </div>
                 </div>
-                <div class='col-6 offset-3 text-center'>
+                <div class='col-6 offset-3 text-center margin-top-sm'>
                     <button type='button' class='btn btn-info w-100 form-submit-button'>Proceed</button>
                 </div>
             </form>

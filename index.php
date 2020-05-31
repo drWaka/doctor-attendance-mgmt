@@ -25,20 +25,36 @@
     .main-content {
         background-color: #FFF;
         padding: 10px 20px;
+        min-height: 100vh
+    }
+
+    h1 {
+        font-size: 30px;
+        line-height: 1;
+    }
+    h1 small {
+        font-size: 50%;
+    }
+    h1 .header-logo {
+        width: 60px;
     }
 </style>
 </head>
 <body>    
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-10 offset-md-2 offset-1 main-content margin-top-sm">
-                <h1 class="text-center"><?= $survey['title'] ?></h1>
+            <div class="col-12 main-content">
+                <h1 class="text-center">
+                    <img src="core/img/ollh-logo.gif" class='header-logo' alt="OLLH Logo"> <br>
+                    <small>Our Lady of Lourdes Hospital</small> <br>
+                    <?= $survey['title'] ?>
+                </h1>
                 <div class="dynamic-content">
-                    <div class="text-justify">
+                    <div class="text-justify margin-top-sm">
                     <?= $survey['description'] ?>
                     </div>
                     <div class="row">
-                        <div class="col-6 offset-3 text-center">
+                        <div class="col-6 offset-3 text-center margin-top-xs">
                         <button class="btn btn-info w-100 transaction-button"
                             tran-type="async-form"
                             tran-link="core/ajax/session-signin-select.php"
