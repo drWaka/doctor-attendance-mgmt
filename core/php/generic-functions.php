@@ -11,7 +11,7 @@
     if ($footerButton['trasnType'] == 'error') {
       $footerContent = '
         <div class="col-sm-12 text-center btn-container">
-          <button type="button" class="btn btn-default modal-close cancel" data-dismiss="modal">' . $footerButton['btnLbl'] . '</button>
+          <button type="button" class="btn btn-danger modal-close cancel" data-dismiss="modal">' . $footerButton['btnLbl'] . '</button>
         </div>
       ';
     } else if ($footerButton['trasnType'] == 'success') {
@@ -70,7 +70,6 @@
       <div class="modal fade" id="transaction-modal">
         <div class="modal-dialog ' . $modalSize . '">
           <div class="modal-content">
-            <button class="close" data-dismiss="modal" type="button"><span class="fas fa-times"></span></button>
             <div class="modal-body">
               ' . $bodyContent . '
 

@@ -60,4 +60,21 @@ class QuestionDtlOption {
 
         return $response;
     }
+
+    public static function getRate($details) {
+        $query = "
+            SELECT *
+            FROM questiondtloption AS a
+            WHERE a.FK_questionDtl = '{$details['questionDtlId']}'
+                AND a.value = '{$details['value']}'
+            LIMIT 1
+        ";
+        $result = $GLOBALS['connection'] -> query($query);
+        if ($result -> num_rows > 0) {
+            $record = $result -> fetch_assoc();
+            return $record['rate'];
+        }
+
+        return '';
+    }
 }

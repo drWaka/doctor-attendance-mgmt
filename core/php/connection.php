@@ -8,10 +8,10 @@ $username = [
     "survey" => 'root'
 ];
 $password = [
-    "survey" => ''
+    "survey" => 'root'
 ];
 $database = [
-    "survey" => 'ollh_etriage'
+    "survey" => 'u826053127_ollh_esurvey'
 ];
 $port = [
     "survey" => '3306'

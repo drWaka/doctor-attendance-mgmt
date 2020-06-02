@@ -43,9 +43,19 @@ class QuestionResponse {
     }
 
     public static function updateResponse($details) {
+        $responseRate = QuestionDtlOption::getRate(array(
+            "questionDtlId" => $details['questionDtl'],
+            "value" => $details['response']
+        ));
+
+        if (empty($responseRate) || $responseRate == '') {
+            $responseRate = 0;
+        }
+
         $query = "
             UPDATE questionresponse
-            SET response = '{$details['response']}'
+            SET response = '{$details['response']}',
+                rate = '{$responseRate}'
             WHERE FK_questionMstr = '{$details['questionMsrtId']}' 
                 AND FK_questionSession = '{$details['questionSessionId']}' 
                 AND FK_questionDtl = '{$details['questionDtl']}' 
@@ -82,6 +92,22 @@ class QuestionResponse {
         }
 
         return '';
+    }
+
+    public static function getTotalRate($sessionId) {
+        $query = "
+            SELECT SUM(a.rate) AS totalRate
+            FROM questionresponse AS a
+            WHERE a.FK_questionSession = '{$sessionId}'
+        ";
+
+        $result = $GLOBALS['connection'] -> query($query);
+        if ($result -> num_rows > 0) {
+            $record =  $result -> fetch_all(MYSQLI_ASSOC);
+            return $record[0]['totalRate'];
+        }
+
+        return 0;
     }
 
 }

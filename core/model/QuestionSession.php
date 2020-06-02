@@ -61,6 +61,7 @@ class QuestionSession {
             SELECT * FROM questionsession
             WHERE sessionDate BETWEEN '{$details['sessionDate']} 00:00:00' AND '{$details['sessionDate']} 23:59:59' 
                 AND FK_employee = '{$details['employeeId']}'
+                AND FK_questionMstr = '{$details['questionMsrtId']}'
             LIMIT 1
         ";
         // die($query);
@@ -71,6 +72,27 @@ class QuestionSession {
         }
 
         return [];
+    }
+
+    public static function finalizeSession($details) {
+        $response = array(
+            "isSuccess" => 1,
+            "errorMessage" => ''
+        );
+        $query = "
+            UPDATE questionsession
+            SET isDone = 1,
+                totalRate = '{$details['totalRate']}',
+                remarks = '{$details['remarks']}'
+            WHERE PK_questionSession = '{$details['questionSessionId']}'
+        ";
+        // die($query);
+        if (!$GLOBALS['connection'] -> query($query)) {
+            $response['isSuccess'] = 0;
+            $response['errorMessage'] = 'Unable to finalize Survey Session. <br> Please contact your system administrator';
+        }
+
+        return $response;
     }
 
 }

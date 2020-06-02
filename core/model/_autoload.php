@@ -6,6 +6,7 @@
     require_once 'QuestionGrp.php';
     require_once 'QuestionResponse.php';
     require_once 'QuestionSession.php';
+    require_once 'QuestionRating.php';
 
     require_once 'Employee.php';
 

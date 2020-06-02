@@ -140,22 +140,48 @@ if (
                 ));
             } else {
                 // Update Survey Session isDone Flag
+                $totalRate = QuestionResponse::getTotalRate($sessionId -> value);
+                $surveyRemarks = QuestionRating::getRemarksByRate(array(
+                    "rate" => $totalRate,
+                    "questionMstrId" => $questionMstrId -> value
+                ));
+                $finalization = QuestionSession::finalizeSession(array(
+                    "totalRate" => $totalRate,
+                    "remarks" => $surveyRemarks,
+                    "questionSessionId" => $sessionId -> value
+                ));
 
-                // Proceed to Finish Survey
-                $response['contentType'] = 'dynamic-content';
-                $response['content']['form'] = "
-                <div class='text-center margin-top-lg'>
-                    You have successfully finished the survey. Do you want to submit another response? Click the button below
-                </div>
-                <div class='margin-top-md'>
-                <div class='col-6 offset-3 text-center'>
-                    <a href='index.php?surveyId={$questionMstrId -> value}'>
-                        <button type='button' class='btn btn-info w-100 form-submit-button'>Submit Another</button>
-                    </a>
-                </div>
+                // die(var_dump(isset($finalization['isSuccess'])));
+                if ($finalization['isSuccess'] == 1) {
+                    // Proceed to Finish Survey
+                    $response['contentType'] = 'dynamic-content';
+                    $response['content']['form'] = "
+                    <div class='text-center margin-top-lg'>
+                        You have successfully finished the survey. Click the button below to return to homepage.
+                    </div>
+                    <div class='margin-top-md'>
+                    <div class='col-6 offset-3 text-center'>
+                        <a href='index.php?surveyId={$questionMstrId -> value}'>
+                            <button type='button' class='btn btn-info w-100 form-submit-button'>Finish Survey</button>
+                        </a>
+                    </div>
 
-                </div>
-                ";
+                    </div>
+                    ";
+                } else {
+                    $response['success'] = 'failed';
+                    $response['contentType'] = 'modal';
+                    $response['content']['modal'] = modalize(
+                        "<div class='row text-center'>
+                            <h2 class='header capitalize col-12'>System Error Encountered</h2>
+                            <p class='para-text col-12'>Error Details: {$finalization['errorMessage']}</p>
+                        </div>", 
+                        array(
+                            "trasnType" => 'error',
+                            "btnLbl" => 'Dismiss'
+                        )
+                    );
+                }   
             }
         } else {
             $response['success'] = 'failed';

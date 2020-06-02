@@ -5,7 +5,6 @@
     if (isset($_GET['surveyId']) && !empty($_GET['surveyId'])) {
         $surveyId = $_GET['surveyId'];
     }
-
     // Survey Details
     $survey = QuestionMstr::show($surveyId);
 

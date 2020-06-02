@@ -57,12 +57,13 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
         // Check if the employe has already an existing survey session dated today
         $employeeSession = QuestionSession::hasSession(array(
             "employeeId" => $parameters['employeeId'],
-            "sessionDate" => date('Y-m-d')
+            "sessionDate" => date('Y-m-d'),
+            "questionMsrtId" => $questionMstrId -> value
         ));
 
         if (count($employeeSession) > 0) {
             $parameters['questionSessionId'] = $employeeSession[0]['PK_questionSession'];
-            $parameters['isDone'] = $employeeSession[0]['isDone'];
+            $flags['isDone'] = $employeeSession[0]['isDone'];
         } else {
             // Create new Session
             $sessionCreate = QuestionSession::create(array(
