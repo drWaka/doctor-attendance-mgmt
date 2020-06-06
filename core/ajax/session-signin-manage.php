@@ -43,13 +43,19 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
         // Check if the Employee ID & Birthdate are valid
         $employee = Employee::getByEmployeeNo($employeeId -> value);
         if (!(count($employee) > 0)) {
-            // Use Question Master ID to Trigger modal instead of Form errors
             $employeeId -> valid = 0;
-            $employeeId -> err_msg = 'flag';
-            $birthDate -> valid = 0;
-            $birthDate -> err_msg = 'Employee record not found';
+            $employeeId -> err_msg = 'Employee Id is Invalid';
         } else {
-            $parameters['employeeId'] = $employee[0]['PK_employee'];
+            $employeeBirthdate = Employee::getByBirthdate(array(
+                "employeeId" => $employee[0]['PK_employee'],
+                "birthdate" => $birthDate -> value
+            ));
+            if (!(count($employeeBirthdate) > 0)) {
+                $birthDate -> valid = 0;
+                $birthDate -> err_msg = 'Birthdate is Incorrect';
+            } else {
+                $parameters['employeeId'] = $employee[0]['PK_employee'];
+            }
         }
     }
 

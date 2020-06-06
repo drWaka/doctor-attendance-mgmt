@@ -122,7 +122,7 @@ class QuestionDtl {
     public static function getResponseField($details) {
         // ToDo :  Make the Field Values Dynamic
         $fieldType = self::getQuestionType($details);
-        $sessionId = QuestionSession::getSessionByEmpDate(array(
+        $questionSession = QuestionSession::getSessionByEmpDate(array(
             "questionMstrId" => $details['questionMstrId'],
             "employeeId" => $details['employeeId'],
             "sessionDate" => date('Y-m-d')
@@ -136,7 +136,7 @@ class QuestionDtl {
             "questionMstrId" => $details['questionMstrId'], 
             "emplyeeId" => $details['employeeId'], 
             "questionDtlId" => $questionDtlId, 
-            "questionSessionId" => $sessionId
+            "questionSessionId" => $questionSession['PK_questionSession']
         ));
         // Error Handling
         $error = array(
@@ -163,7 +163,7 @@ class QuestionDtl {
             ";
         } else if ($fieldType == 'DRP_DWN') {
             $options = QuestionDtlOption::getByQuestionId($questionDtlId);
-            $optionField = "<option value='' selected>Select Response</option>";
+            $optionField = "<option value='' selected style='display:none;'>Choose Response</option>";
             foreach ($options as $option) {
                 $selected = (strtolower($questionResponse) == strtolower($option['value'])) 
                     ? 'selected' 

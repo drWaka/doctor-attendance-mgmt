@@ -37,9 +37,55 @@
     h1 .header-logo {
         width: 60px;
     }
+
+    .loading-cover {
+        background-color: #0009;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        z-index: 10;
+        display: none;
+        text-align: center;
+        color: #FFF;
+        padding-top: 30vh;
+    }
+
+    .loading-cover .loading-icon {
+        -webkit-animation: rotation 1s infinite linear;
+        font-size: 140px;
+    }
+    .loading-cover .loading-text {
+        font-size: 40px;
+    }
+    .show {
+        display: block !important;
+    }
+
+    @-webkit-keyframes rotation {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            40% {
+                -webkit-transform: rotate(90deg);
+            }
+
+            60% {
+                -webkit-transform: rotate(270deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(359deg);
+            }
+    }
 </style>
 </head>
-<body>    
+<body>
+    <div class="loading-cover">
+    <i class="fas fa-circle-notch loading-icon"></i> 
+    <br>
+    <div class="loading-text">Processing ...</div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-12 main-content">

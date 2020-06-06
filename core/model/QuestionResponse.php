@@ -110,4 +110,14 @@ class QuestionResponse {
         return 0;
     }
 
+    // Temporarily Unused
+    // public static function getResponseByQuestionId($details) {
+    //     $query = "
+    //         SELECT * FROM questionresponse AS a 
+    //         INNER JOIN questionsession AS b ON a.PK_question
+    //         WHERE FK_questionMstr = '{$details['questionMstrId']}'
+    //             AND 
+    //     "
+    // }
+
 }

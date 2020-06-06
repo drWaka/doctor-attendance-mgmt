@@ -37,6 +37,9 @@ function initialize_form_validation (formContainer) {
         : false;
     }
     add_input_event(dataField[0], description, dataType, isRequired, form);
+  } else if (formName == 'admin-login') {
+    add_input_event(dataField[0], 'User ID', 'text-int', true, form);
+    add_input_event(dataField[1], 'Password', 'text-int', true, form);
   }
 }
 
@@ -59,7 +62,10 @@ function validate_form(form) {
       dataType = inputField[0].getAttribute('field-type')
     }
     formValidity = final_data_check(inputField[0], description, dataType, true, formValidity);
-  }
+  } else if (formName == 'admin-login') {
+    formValidity = final_data_check(inputField[0], 'User ID', 'text-int', true, formValidity);
+    formValidity = final_data_check(inputField[1], 'Password', 'text-int', true, formValidity);
+  } 
 
   if (formValidity == true) {
     let submitType = form.getAttribute('submit-type');

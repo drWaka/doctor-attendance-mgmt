@@ -39,7 +39,7 @@ class QuestionSession {
 
     public static function getSessionByEmpDate($details) {
         $query = "
-            SELECT a.PK_questionSession
+            SELECT *
             FROM questionsession AS a
             WHERE a.FK_questionMstr = '{$details['questionMstrId']}'
                 AND a.FK_employee = '{$details['employeeId']}'
@@ -50,7 +50,7 @@ class QuestionSession {
         $result = $GLOBALS['connection'] -> query($query);
         if ($result -> num_rows > 0) {
             $record =  $result -> fetch_all(MYSQLI_ASSOC);
-            return $record[0]['PK_questionSession'];
+            return $record[0];
         }
 
         return [];
@@ -94,5 +94,4 @@ class QuestionSession {
 
         return $response;
     }
-
 }
