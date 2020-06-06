@@ -7,3 +7,4 @@
 <!-- User Based Dependencies -->
 <script src="../core/js/core-form-management.js"></script>
 <script src="../core/js/core-ajax-request.js"></script>
+<script src="../core/js/core-nav-management.js"></script>

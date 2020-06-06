@@ -21,6 +21,12 @@ function send_request_asycn (url, method, data, container, transName, content_ty
           }
         } else if (transName == 'static-content') {
           $(container).html(result['content']);
+        } else if (transName == 'record-content') {
+          if (typeof pageConfig != undefined) {
+            pageConfig['total'] = result['content']['total'];
+            manageNav();
+          }
+          $(container).html(result['content']['record']);
         }
 
         // Determine if the container contains form
@@ -78,12 +84,13 @@ function initializeModal(element) {
 
 function manageLoading(flag) {
   let loadingCover = document.querySelector('.loading-cover');
-
-  if (flag == 'show') {
-    if (loadingCover.className.indexOf('show') == -1) {
-      loadingCover.classList.add('show');
+  if (loadingCover != null) {
+    if (flag == 'show') {
+      if (loadingCover.className.indexOf('show') == -1) {
+        loadingCover.classList.add('show');
+      }
+    } else {
+      loadingCover.classList.remove('show');
     }
-  } else {
-    loadingCover.classList.remove('show');
   }
 }

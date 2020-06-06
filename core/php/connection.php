@@ -8,7 +8,7 @@ $username = [
     "survey" => 'root'
 ];
 $password = [
-    "survey" => 'root'
+    "survey" => ''
 ];
 $database = [
     "survey" => 'u826053127_ollh_esurvey'

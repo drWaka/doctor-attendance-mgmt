@@ -57,9 +57,21 @@ class QuestionSession {
     }
 
     public static function hasSession($details) {
+        $sessionDateRange = array(
+            "start" => '',
+            "end" => ''
+        );
+        if (is_array($details['sessionDate'])) {
+            $sessionDateRange['start'] = $details['sessionDate']['start'];
+            $sessionDateRange['end'] = $details['sessionDate']['end'];
+        } else {
+            $sessionDateRange['start'] = $details['sessionDate'];
+            $sessionDateRange['end'] = $details['sessionDate'];
+        }
+
         $query = "
             SELECT * FROM questionsession
-            WHERE sessionDate BETWEEN '{$details['sessionDate']} 00:00:00' AND '{$details['sessionDate']} 23:59:59' 
+            WHERE sessionDate BETWEEN '{$sessionDateRange['start']} 00:00:00' AND '{$sessionDateRange['end']} 23:59:59' 
                 AND FK_employee = '{$details['employeeId']}'
                 AND FK_questionMstr = '{$details['questionMsrtId']}'
             LIMIT 1

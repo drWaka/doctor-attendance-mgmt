@@ -10,12 +10,12 @@
     <div class="row">
         
         <div class="col-md-5 offset-md-4">
-            <input type="text" name="employeeName" class="form-control" placeholder="Employee Name" />
+            <input type="text" name="employeeName" class="form-control filter-search" placeholder="Employee Name / ID" />
         </div>
 
         <div class="col-md-3">
         <div class="form-group">
-            <button class="btn btn-info form-control filter-toggle">Toggle Filter</button>
+            <button class="btn btn-info filter-toggle">Toggle Filter</button>
         </div>
         </div>
 
@@ -26,22 +26,22 @@
 
     <div class="col-6">
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
             <label for="useDateRng" class="rangeLbl"> Response Date :</label>
         </div>
-        <div class="col-9">
-            <input type="date" name="sessionDate" class="form-control" value="<?= date('Y-m-d'); ?>">
+        <div class="col-8">
+            <input type="date" name="sessionDate" class="form-control filter" value="<?= date('Y-m-d'); ?>">
         </div>
     </div>
     </div>
     
     <div class="col-6">
     <div class="row">
-        <div class="col-3">
-        <label for="useIdRng" class="rangeLbl"> Questionairre : </label>
+        <div class="col-4">
+        <label for="useIdRng" class="rangeLbl"> Questionnaire : </label>
         </div>
-        <div class="col-9 row">
-            <select name="questionMstrId" class="form-control" id="">
+        <div class="col-8 row">
+            <select name="questionMstrId" class="form-control filter" id="">
                 <?php
                     $questions = QuestionMstr::index();
 
@@ -73,25 +73,34 @@
         </tbody>
     </table>
     </div>
-    <div class="col-4 offset-8">
-    <div class="row text-center pagination-container">
-        <div class="col-3 offset-6 text-right">
-        <button class="btn nav-btn btn-light prev-btn" data-container="record-container"><span class="fas fa-chevron-left"></span></button>
-        </div>
-        <div class="col-3 text-left">
-        <button class="btn nav-btn btn-light next-btn" data-container="record-container"><span class="fas fa-chevron-right"></span></button>
-        </div>
+    <div class="col-3">
+        <form action="../core/requests/report-question-response.php" method="post" target="_blank">
+            <input type="text" name="csvEmployeeName" hidden>
+            <input type="text" name="csvQuestionMstrId" hidden>
+            <input type="date" name="csvSessionDate" hidden>
+            <button class="btn btn-success w-100">Generate CSV File</button>
+        </form>
     </div>
+    <div class="col-4 offset-5">
+        <div class="row text-center pagination-container">
+            <div class="col-3 offset-6 text-right">
+            <button class="btn nav-btn btn-light prev-btn" data-container="record-container"><span class="fas fa-chevron-left"></span></button>
+            </div>
+            <div class="col-3 text-left">
+            <button class="btn nav-btn btn-light next-btn" data-container="record-container"><span class="fas fa-chevron-right"></span></button>
+            </div>
+        </div>
     </div>
 </div>
 
 </div>
 
 <script>
+
     function loadRecord() {
-        let employeeName = document.querySelector('[name="employeeName"]');
-        let sessionDate = document.querySelector('[name="sessionDate"]');
-        let questionMstrId = document.querySelector('[name="questionMstrId"]');
+        let employeeName = document.querySelector('[name="employeeName"]').value;
+        let sessionDate = document.querySelector('[name="sessionDate"]').value;
+        let questionMstrId = document.querySelector('[name="questionMstrId"]').value;
 
         send_request_asycn (
           '../core/ajax/report-question-response.php', 
@@ -99,10 +108,26 @@
           {
             employeeName : employeeName,
             sessionDate : sessionDate,
-            questionMstrId : questionMstrId
+            questionMstrId : questionMstrId,
+            pageLimit : pageConfig.limit,
+            currentPage : pageConfig.page
           }, 
           '.record-container', 
-          'static-content'
+          'record-content'
         );
+    }
+
+    function loadReportForm() {
+        let employeeName = document.querySelector('[name="employeeName"]');
+        let csvEmployeeName = document.querySelector('[name="csvEmployeeName"]');
+        csvEmployeeName.value = employeeName.value;
+
+        let sessionDate = document.querySelector('[name="sessionDate"]');
+        let csvSessionDate = document.querySelector('[name="csvSessionDate"]');
+        csvSessionDate.value = sessionDate.value;
+
+        let questionMstrId = document.querySelector('[name="questionMstrId"]');
+        let csvQuestionMstrId = document.querySelector('[name="csvQuestionMstrId"]');
+        csvQuestionMstrId.value = questionMstrId.value;
     }
 </script>

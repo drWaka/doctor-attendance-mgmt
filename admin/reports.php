@@ -44,8 +44,18 @@
     <?php require_once 'include/page-part/js-script.inc.php'; ?>
 
     <script>
+      var pageConfig = {
+        limit : 5,
+        total : 1,
+        page : 1
+      };
+
       $(document).ready(function() {
         loadRecord();
+        // Load Report Form
+        if (typeof loadReportForm != undefined) {
+          loadReportForm();
+        }
 
         $(document).on('click', '.filter-toggle', function() {
           let advanceFilter = document.querySelector('.advance-filter');
@@ -57,6 +67,25 @@
           }
         });
 
+        $(document).on('change', '.form-control.filter', function() {
+          pageConfig['page'] = 1;
+          loadRecord();
+          // Load Report Form
+          if (typeof loadReportForm != undefined) {
+            loadReportForm();
+          }
+        });
+
+        $(document).on('keyup', '.form-control.filter-search', function() {
+          pageConfig['page'] = 1;
+          loadRecord();
+          // Load Report Form
+          if (typeof loadReportForm != undefined) {
+            loadReportForm();
+          }
+        });
+
+        $(document)
       });
     </script>
   </body>

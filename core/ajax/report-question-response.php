@@ -8,11 +8,19 @@ $response = array(
     "success" => 'success',
     "content" => array(
         "modal" => '',
-        "record" => [],
+        "record" => '',
         "total" => 0
     ),
     "contentType" => ''
 );
+
+// echo var_dump(isset($_POST['employeeName']));
+// echo var_dump(isset($_POST['sessionDate']));
+// echo var_dump(isset($_POST['questionMstrId']));
+// echo var_dump(isset($_POST['pageLimit']));
+// echo var_dump(isset($_POST['currentPage']));
+
+// die();
 
 if (
     isset($_POST['employeeName']) && 
@@ -22,7 +30,7 @@ if (
     isset($_POST['currentPage'])
 ) {
     $questionMstrId = new form_validation($_POST['questionMstrId'], 'int', 'Question Master ID', true);
-    $employeeName = new form_validation($_POST['employeeName'], 'text', 'Employee Name', true);
+    $employeeName = new form_validation($_POST['employeeName'], 'str-int', 'Employee Name', false);
     $sessionDate = new form_validation($_POST['sessionDate'], 'date', 'Session Date', true);
 
     $pageLimit = new form_validation($_POST['pageLimit'], 'int', 'Page Limit', true);
@@ -56,6 +64,7 @@ if (
                 OR CONCAT(lastName, ', ', firstName, ' ', middleName) LIKE '%{$employeeName -> value}%'
                 OR CONCAT(lastName, ', ', firstName) LIKE '%{$employeeName -> value}%'
                 OR CONCAT(lastName, ', ', firstName, ' ', SUBSTR(middleName, 1, 1)) LIKE '%{$employeeName -> value}%'
+                OR employeeNo LIKE '%{$employeeName -> value}%'
         ";
         $employeeResult = $connection -> query($employeeQuery);
         $response['content']['total'] = $employeeResult -> num_rows;
@@ -63,15 +72,15 @@ if (
         $offset = ((intval($currentPage -> value) - 1) * $pageLimit -> value);
         $employeeQuery .= "LIMIT {$pageLimit -> value} OFFSET {$offset}";
         $employeeResult = $connection -> query($employeeQuery);
-        $employeeRecords = $employeeResult -> fetch_assoc(MYSQLI_ASSOC);
+        $employeeRecords = $employeeResult -> fetch_all(MYSQLI_ASSOC);
 
         $response['content']['record'] = '';
         if (count($employeeRecords) > 0) {
             foreach ($employeeRecords as $employeeRecord) {
                 $middleInitial = !empty($employeeRecord['middleName'])
-                    ? substr($employeeRecord['middleName'], 1, 1)
+                    ? substr($employeeRecord['middleName'], 0, 1)
                     : '';
-                $employeeName = ucfirst("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}");
+                $employeeName = strtoupper(("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}."));
 
                 $response['content']['record'] .= "<tr>";
                 $response['content']['record'] .= "
@@ -103,7 +112,7 @@ if (
         } else {
             // No Employee Record Found
             $response['content']['total'] = 1;
-            $response['content']['record'][0] = '<tr><td class="text-center" colspan="5">No Record Found</td></tr>';
+            $response['content']['record'] = '<tr><td class="text-center" colspan="5">No Record Found</td></tr>';
         }
     } else {
         $errorMessage = '';
@@ -124,7 +133,7 @@ if (
         $response['content']['modal'] = modalize(
             "<div class='row text-center'>
                 <h2 class='header capitalize col-12'>System Error Encountered</h2>
-                <p class='para-text col-12'>Error Details: {$errorMessage}<br/> Please contact your System Administrator</p>
+                <p class='para-text col-12'>Error Details: {$errorMessage}</p>
             </div>", 
             array(
                 "trasnType" => 'error',
