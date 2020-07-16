@@ -63,7 +63,7 @@
             <select name="divisionId" class="form-control" id="">
                 <option value="all">All Division</option>
                 <?php
-                    $divisionQry = "SELECT * FROM mscDivision";
+                    $divisionQry = "SELECT * FROM mscdivision";
                     $divisionRes = $connection -> query($divisionQry);
 
                     if ($divisionRes -> num_rows > 0) {
