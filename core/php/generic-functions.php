@@ -58,7 +58,7 @@
     } else {
       $footerContent = '
         <div class="col-sm-12 col-md-6 text-right btn-container">
-          <button type="button" class="btn btn-default submit-btn">' . $footerButton['btnLbl'] . '</button>
+          <button type="button" class="btn btn-default form-submit-button">' . $footerButton['btnLbl'] . '</button>
         </div>
         <div class="col-sm-12 col-md-6 text-left btn-container">
           <button class="btn btn-default modal-close cancel" type="button" data-dismiss="modal">Cancel</button>

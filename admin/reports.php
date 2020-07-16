@@ -85,7 +85,30 @@
           }
         });
 
-        $(document)
+
+        // Exceptions/Custom JS Scripts
+        // Custom Event Listenter for Division Element
+        $(document).on('change', '[name="divisionId"]', function() {
+            let divisionId = $(this).val();
+            send_request_asycn (
+                '../core/ajax/report-question-filter-division-department.php', 
+                'POST', 
+                {
+                    divisionId : divisionId
+                }, 
+                '[name="departmentId"]', 
+                'async-form'
+            );
+            setTimeout(() => {
+              pageConfig['page'] = 1;
+              loadRecord();
+              // Load Report Form
+              if (typeof loadReportForm != undefined) {
+                loadReportForm();
+              }
+            }, 500);
+        });
+
       });
     </script>
   </body>

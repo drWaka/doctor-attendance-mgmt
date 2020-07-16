@@ -1,0 +1,85 @@
+/* Modal Body a */
+#datepicker-modal.modal .modal-body {
+  padding: 0;
+}
+
+/* Modal Header */
+#datepicker-modal.modal .modal-body .content-header {
+  line-height: 1.5;
+  padding: 10px 0 15px 0;
+  background-color: #0984E3;
+  color: #FFF;
+}
+
+#datepicker-modal.modal .modal-body .content-header .year {
+  font-size: 20px;
+}
+#datepicker-modal.modal .modal-body .content-header .date {
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+/* Modal Navigation */
+#datepicker-modal.modal .modal-body .content-nav {
+  padding: 1rem;
+}
+#datepicker-modal.modal .modal-body .content-nav label {
+  font-size: 12px;
+  font-weight: 600;
+}
+#datepicker-modal.modal .modal-body .content-nav .btn-nav {
+  height: 100%;
+  color: #FFF;
+  background-color: #0984E3;
+  border: 1px solid #0984E3;
+}
+#datepicker-modal.modal .modal-body .content-nav .btn-nav:hover {
+  color: #0984E3;
+  background-color: #FFF;
+}
+
+/* Modal Body */
+#datepicker-modal .calendar-header, #datepicker-modal .calendar-body {
+  width: 100%;
+  padding: .5rem 1rem;
+  border-bottom: 1px solid #D0D0D0;
+  border-top: 1px solid #D0D0D0;
+  margin-bottom: 10px;
+  text-align: text-center;
+}
+#datepicker-modal.modal .modal-body .content-body .col-calendar {
+  width: 14.2857%;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+#datepicker-modal.modal .modal-body .content-body .calendar-header .col-calendar {
+  width: 13.2857%;
+}
+@media screen and (max-width: 425px) {
+  #datepicker-modal.modal .modal-body .content-body .calendar-header .col-calendar {
+    width: 12.75%;
+  }
+}
+
+#datepicker-modal.modal .modal-body .content-body .date-node {
+  padding: 10px;
+  border: 1px solid #FFF;
+  border-radius: 300px;
+}
+#datepicker-modal.modal .modal-body .content-body .date-node:hover, #datepicker-modal.modal .modal-body .content-body .date-node.active {
+  background-color: #0984E3;
+  color: #FFF;
+}
+
+
+/* Modal Footer */
+#datepicker-modal.modal .modal-body .content-footer {
+  padding: 0 1rem;
+}
+#datepicker-modal.modal .modal-body .content-footer .btn {
+  width: 100%;
+}
+

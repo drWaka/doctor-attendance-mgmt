@@ -1,0 +1,83 @@
+/* CSS Helper Classes */
+
+/* Margin Properties */
+.margin-top-xs {
+margin-top: 10px;
+}
+
+.margin-top-sm {
+margin-top: 20px;
+}
+
+.margin-top, .margin-top-md {
+margin-top: 30px;
+}
+
+.margin-top-lg{
+margin-top: 40px;
+}
+
+.margin-bottom-xs {
+margin-bottom: 10px;
+}
+
+.margin-bottom-sm {
+margin-bottom: 20px;
+}
+
+.margin-bottom, .margin-bottom-md {
+margin-bottom: 30px;
+}
+
+.margin-bottom-lg{
+margin-bottom: 40px;
+}
+
+/* Generic Text Transform Properties */
+.lowercase {
+text-transform: lowercase !important;
+}
+.uppercase {
+text-transform: uppercase !important;
+}
+.capitalize {
+text-transform: capitalize !important;
+}
+
+/* Text-Align Properties */
+.align-text-right   {text-align : right !important;}
+.align-text-left    {text-align : left !important;}
+.align-text-center  {text-align : center !important;}
+.align-text-justify {text-align : justify !important;}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+.align-text-sm-right   {text-align : right !important;}
+.align-text-sm-left    {text-align : left !important;}
+.align-text-sm-center  {text-align : center !important;}
+.align-text-sm-justify {text-align : justify !important;}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+.align-text-md-right   {text-align : right !important;}
+.align-text-md-left    {text-align : left !important;}
+.align-text-md-center  {text-align : center !important;}
+.align-text-md-justify {text-align : justify !important;}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+.align-text-lg-right   {text-align : right !important;}
+.align-text-lg-left    {text-align : left !important;}
+.align-text-lg-center  {text-align : center !important;}
+.align-text-lg-justify {text-align : justify !important;}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+.align-text-xl-right   {text-align : right;}
+.align-text-xl-left    {text-align : left;}
+.align-text-xl-center  {text-align : center;}
+.align-text-xl-justify {text-align : justify;}
+}

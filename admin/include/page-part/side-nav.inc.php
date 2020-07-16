@@ -21,6 +21,12 @@
     </li>
 
     <li class="sidebar-nav">
+        <a href="respondents.php?pageName=respondents" class="sidebar-nav-link">
+            <i class="fa fa-user"></i> Respondent Management
+        </a>
+    </li>
+    
+    <li class="sidebar-nav">
         <a href="#" class="sidebar-nav-link">
             <i class="fa fa-user"></i> User Management
         </a>

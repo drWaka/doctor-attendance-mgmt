@@ -1,0 +1,10 @@
+.invalid-icon {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    color: #dc3545;
+}
+.form-row {
+    position: relative;
+    margin-bottom: 10px;
+}
