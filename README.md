@@ -1,2 +1,2 @@
 # OLLH eTriage Survey
-Our Lady of Lourdes Hospital Tool Kit for Emailing Patient Results
+Our Lady of Lourdes Hospital Tool for Employee Electronic Survey
