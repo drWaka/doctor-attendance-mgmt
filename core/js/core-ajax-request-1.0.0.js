@@ -30,6 +30,7 @@ function send_request_asycn (url, method, data, container, transName, content_ty
         }
 
         // Determine if the container contains form
+        console.log(container);
         let containerNode = document.querySelector(container);
         let formNode = containerNode.querySelector('form');
 
@@ -76,13 +77,13 @@ function initializeModal(element) {
   }
 
   let modalBackdrop = document.querySelectorAll('.modal-backdrop');
-  console.log(modalBackdrop);
   if (modalBackdrop != null) {
     for (var i = 0 ; i < modalBackdrop.length ; i++) {
       modalBackdrop[i].remove();
     }
   }
 
+  console.log(element);
   $('.modal-container').html(element);
   $('#transaction-modal').attr("data-backdrop", "static");
   $('#transaction-modal').attr("data-keyboard", "false");

@@ -88,9 +88,17 @@ if (
                     }'
                 ><i class='fas fa-pencil-alt'></i></button>
                 <button class='btn btn-danger transaction-btn' title='Delete Respondent'
-                    data-content='
-                        &quot;&quot; : &quot;&quot;
-                    '
+                    trans-name='async-form'
+                    data-target='.modal-container'
+                    data-link='../core/ajax/generic-warning-modal.php'
+                    data-content='{
+                        &quot;transType&quot;   : &quot;delete&quot;,
+                        &quot;link&quot;        : &quot;../core/ajax/respondent-delete.php&quot;,
+                        &quot;dataContent&quot; : {
+                            &quot;recordId&quot;  : &quot;{$employeeRecord['PK_employee']}&quot;
+                        },
+                        &quot;headerTitle&quot; : &quot;Respondent&quot;
+                    }'
                 ><i class='fa fa-trash'></i></button>
                 ";
 

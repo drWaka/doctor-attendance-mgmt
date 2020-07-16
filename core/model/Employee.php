@@ -69,8 +69,13 @@ class Employee {
         return false;
     }
 
-    public static function delete () {
+    public static function delete ($id) {
+        $query = "DELETE FROM employees WHERE PK_employee = '{$id}'";
+        if ($GLOBALS['connection'] -> query($query)) {
+            return true;
+        }
 
+        return false;
     }
 
     public static function getByEmployeeNo($employeeNo) {
