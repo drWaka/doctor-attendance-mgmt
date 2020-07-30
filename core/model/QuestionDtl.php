@@ -49,7 +49,7 @@ class QuestionDtl {
 
     public static function getByTransctionDate($questionMstrId, $transactionDate) {
         $query = "
-            SELECT DISTINCT a.*
+            SELECT DISTINCT a.*, d.sorting AS `groupSort`
             FROM questiondtl AS a 
             INNER JOIN questionresponse AS b ON a.PK_questionDtl = b.FK_questionDtl
             INNER JOIN questionsession AS c ON b.FK_questionSession = c.PK_questionSession
