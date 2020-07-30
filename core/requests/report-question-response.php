@@ -56,7 +56,11 @@ if (
         );
 
         $questionQuery = "";
-        $questions = QuestionDtl::getByQuestionMstr($questionMstrId -> value);
+        $questions = QuestionDtl::getByTransctionDate($questionMstrId -> value, $sessionDate-> value);
+        if (!(count($questions) > 0)) {
+            $questions = QuestionDtl::getByQuestionMstr($questionMstrId -> value);
+        }
+
         // die(var_dump($questions));
         if (count($questions) > 0) {
             $csvContent[4] = array(

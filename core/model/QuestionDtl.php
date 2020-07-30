@@ -47,6 +47,26 @@ class QuestionDtl {
 
     }
 
+    public static function getByTransctionDate($questionMstrId, $transactionDate) {
+        $query = "
+            SELECT DISTINCT a.*
+            FROM questiondtl AS a 
+            INNER JOIN questionresponse AS b ON a.PK_questionDtl = b.FK_questionDtl
+            INNER JOIN questionsession AS c ON b.FK_questionSession = c.PK_questionSession
+            INNER JOIN questiongrp AS d ON a.FK_questionGrp = d.PK_questionGrp
+            WHERE a.FK_questionMstr = '{$questionMstrId}'
+                AND c.sessionDate BETWEEN '{$transactionDate} 00:00:00' AND '{$transactionDate} 23:59:59'
+            ORDER BY d.sorting, a.sorting 
+        ";
+        $result = $GLOBALS['connection'] -> query($query);
+
+        if ($result -> num_rows > 0) {
+            return $result -> fetch_all(MYSQLI_ASSOC);
+        }
+
+        return [];
+    }
+
     public static function getByPage($details) {
         $query = "
             SELECT a.* 
