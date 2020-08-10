@@ -127,7 +127,7 @@ if (isset($_POST['employeeId'])) {
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">First Name : </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="firstName" placeholder="First Name" value="' . $employee['firstName'] . '">
+                                        <input type="text" class="form-control" name="firstName" placeholder="First Name" value="' . utf8_encode($employee['firstName']) . '">
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@ if (isset($_POST['employeeId'])) {
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Middle Name : </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="middleName" placeholder="Middle Name" value="' . $employee['middleName'] . '">
+                                        <input type="text" class="form-control" name="middleName" placeholder="Middle Name" value="' . utf8_encode($employee['middleName']) . '">
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@ if (isset($_POST['employeeId'])) {
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Last Name : </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="lastName" placeholder="Last Name" value="' . $employee['lastName'] . '">
+                                        <input type="text" class="form-control" name="lastName" placeholder="Last Name" value="' . utf8_encode($employee['lastName']) . '">
                                     </div>
                                 </div>
                             </div>

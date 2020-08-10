@@ -14,7 +14,7 @@
 
             <?php require_once 'include/page-part/header.inc.php'; ?>
 
-            <div class="container-fluid">
+            <div class="container-fluid app-content">
 
                 <div class="row margin-top-lg">
                     <div class="col-6 offset-3">
