@@ -63,7 +63,11 @@ function validate_form(form) {
     if (inputField[0].getAttribute('field-type') != null) {
       dataType = inputField[0].getAttribute('field-type')
     }
-    formValidity = final_data_check(inputField[0], description, dataType, true, formValidity);
+    var isRequired = false;
+    if (inputField[0].getAttribute('field-required') != null) {
+      isRequired = inputField[0].getAttribute('field-required')
+    }
+    formValidity = final_data_check(inputField[0], description, dataType, isRequired, formValidity);
   } else if (formName == 'admin-login') {
     formValidity = final_data_check(inputField[0], 'User ID', 'text-int', true, formValidity);
     formValidity = final_data_check(inputField[1], 'Password', 'text-int', true, formValidity);

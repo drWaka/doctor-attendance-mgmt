@@ -1,5 +1,5 @@
 <!-- Page Content Start -->
-<div class="container-fluid">
+<div class="container-fluid app-content">
 <div class="row">
     <div class="col-md-5">
     <h1 class="margin-top-sm page-header">

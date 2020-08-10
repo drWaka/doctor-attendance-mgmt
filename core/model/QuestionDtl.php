@@ -214,17 +214,17 @@ class QuestionDtl {
         } else if ($fieldType == 'DATE') {
             $field = "
                 <input type='text' name='dataType' hidden='hidden' value='date'/>
-                <input type='text' name='isRequired' hidden='hidden' value='1'/>
-                <input type='text' name='desc' hidden='hidden' value='Symptoms onset date'/>
+                <input type='text' name='isRequired' hidden='hidden' value='0'/>
+                <input type='text' name='desc' hidden='hidden' value='Symptom(s) onset date'/>
 
                 <div class='col-10 offset-1'>
                     <input 
                         type='date' 
                         name='response' 
                         class='form-control {$error['class']}'
-                        field-desc='Symptoms onset date' 
+                        field-desc='Symptom(s) onset date' 
                         field-type='date' 
-                        field-required='1'
+                        field-required='0'
                         value='{$questionResponse}'
                     >
                     {$error['icon']}

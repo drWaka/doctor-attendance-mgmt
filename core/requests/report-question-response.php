@@ -7,6 +7,7 @@ if (
     isset($_POST['csvEmployeeName']) && 
     isset($_POST['csvSessionDate']) && 
     isset($_POST['csvQuestionMstrId']) && 
+    isset($_POST['csvSessionRating']) && 
     isset($_POST['csvDivisionId']) && 
     isset($_POST['csvDepartmentId'])
 ) {
@@ -15,9 +16,12 @@ if (
     $sessionDate = new form_validation($_POST['csvSessionDate'], 'date', 'Session Date', true);
     $divisionId = new form_validation($_POST['csvDivisionId'], 'str-int', 'Division ID', true);
     $departmentId = new form_validation($_POST['csvDepartmentId'], 'str-int', 'Department ID', true);
+    $sessionRating = new form_validation($_POST['csvSessionRating'], 'str', 'Session Rating', true);
 
     if (
-        $questionMstrId -> valid == 1 && $employeeName -> valid == 1 && $sessionDate -> valid == 1 && $divisionId -> valid == 1 && $departmentId -> valid == 1
+        $questionMstrId -> valid == 1 && $employeeName -> valid == 1 && 
+        $sessionDate -> valid == 1 && $divisionId -> valid == 1 && 
+        $departmentId -> valid == 1 && $sessionRating -> valid == 1
     ) {
         // Determine if the Question Master Id exists
         $question = QuestionMstr::show($questionMstrId -> value);
@@ -29,7 +33,9 @@ if (
     }
 
     if (
-        $questionMstrId -> valid == 1 && $employeeName -> valid == 1 && $sessionDate -> valid == 1 && $divisionId -> valid == 1 && $departmentId -> valid == 1
+        $questionMstrId -> valid == 1 && $employeeName -> valid == 1 && 
+        $sessionDate -> valid == 1 && $divisionId -> valid == 1 && 
+        $departmentId -> valid == 1 && $sessionRating -> valid == 1
     ) {
         $csvContent = array();
         // CSV Header
@@ -78,7 +84,7 @@ if (
                 WHERE xa.FK_employee = a.PK_employee
                     AND xa.FK_questionMstr = {$questionMstrId -> value}
                     AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
-            ), '-') AS summary";
+            ), 'No Response') AS summary";
             foreach($questions as $question) {
                 $csvContent[4][count($csvContent[4])] = strip_tags($question['question']);
 
@@ -117,6 +123,17 @@ if (
                 OR CONCAT(lastName, ', ', firstName, ' ', SUBSTR(middleName, 1, 1)) LIKE '%{$employeeName -> value}%'
                 OR employeeNo LIKE '%{$employeeName -> value}%')
         ";
+        if ($sessionRating -> value != 'all') {
+            $employeeQuery .= "
+                AND LOWER(IFNULL((
+                    SELECT xa.remarks
+                    FROM questionsession AS xa
+                    WHERE xa.FK_employee = a.PK_employee
+                        AND xa.FK_questionMstr = {$questionMstrId -> value}
+                        AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
+                ), 'No Response')) = '{$sessionRating -> value}'
+            ";
+        }
 
         if ($divisionId -> value != 'all' && is_numeric($divisionId -> value)) {
             $employeeQuery .= " AND c.PK_mscDivision = '{$divisionId -> value}'";
@@ -177,6 +194,8 @@ if (
             $errorMessage = $employeeName -> err_msg;
         } else if ($sessionDate -> valid == 0) {
             $errorMessage = $sessionDate -> err_msg;
+        } else if ($sessionRating -> valid == 0) {
+            $errorMessage = $sessionRating -> err_msg;
         } else if ($divisionId -> valid == 0) {
             $errorMessage = $divisionId -> err_msg;
         } else if ($departmentId -> valid == 0) {

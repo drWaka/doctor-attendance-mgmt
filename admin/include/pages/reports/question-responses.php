@@ -1,5 +1,5 @@
 <!-- Page Content Start -->
-<div class="container-fluid">
+<div class="container-fluid app-content">
 <div class="row">
     <div class="col-md-5">
     <h1 class="margin-top-sm page-header">
@@ -24,29 +24,30 @@
 </div>
 <div class="row advance-filter hide">
 
-    <div class="col-6 margin-bottom-xs">
+    <div class="col-4 margin-bottom-xs">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12">
             <label for="useDateRng" class="rangeLbl"> Response Date :</label>
         </div>
-        <div class="col-8">
+        <div class="col-12">
             <input type="date" name="sessionDate" class="form-control filter" value="<?= date('Y-m-d'); ?>">
         </div>
     </div>
     </div>
     
-    <div class="col-6 margin-bottom-xs">
+    <div class="col-4 margin-bottom-xs">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12">
         <label for="useIdRng" class="rangeLbl"> Questionnaire : </label>
         </div>
-        <div class="col-8">
+        <div class="col-12">
             <select name="questionMstrId" class="form-control filter" id="">
                 <?php
                     $questions = QuestionMstr::index();
 
                     foreach ($questions as $question) {
-                        echo "<option value='{$question['PK_questionMstr']}'>{$question['title']}</option>";
+                        $selected = ($question['PK_questionMstr'] == '1') ? 'selected' : '';
+                        echo "<option value='{$question['PK_questionMstr']}' {$selected}>{$question['title']}</option>";
                     }
                 ?>
             </select>
@@ -54,12 +55,28 @@
     </div>
     </div>
 
-    <div class="col-6 margin-bottom-xs">
+    <div class="col-4 margin-bottom-xs">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12">
+        <label for="useIdRng" class="rangeLbl"> Response Result : </label>
+        </div>
+        <div class="col-12">
+            <select name="sessionRating" class="form-control filter" id="">
+                <option value="all">All Result</option>
+                <option value="without any symptom">Without Symptoms</option>
+                <option value="with symptoms">With Symptoms</option>
+                <option value="no response">No Response</option>
+            </select>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-4 margin-bottom-xs">
+    <div class="row">
+        <div class="col-12">
             <label for="useDateRng" class="rangeLbl"> Division :</label>
         </div>
-        <div class="col-8">
+        <div class="col-12">
             <select name="divisionId" class="form-control" id="">
                 <option value="all">All Division</option>
                 <?php
@@ -77,12 +94,12 @@
     </div>
     </div>
 
-    <div class="col-6 margin-bottom-xs">
+    <div class="col-4 margin-bottom-xs">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12">
             <label for="useDateRng" class="rangeLbl"> Department :</label>
         </div>
-        <div class="col-8">
+        <div class="col-12">
             <select name="departmentId" class="form-control filter" id="">
                 <option value="all">All Department</option>
             </select>
@@ -114,6 +131,7 @@
             <input type="text" name="csvEmployeeName" hidden>
             <input type="text" name="csvQuestionMstrId" hidden>
             <input type="date" name="csvSessionDate" hidden>
+            <input type="text" name="csvSessionRating" hidden>
             <input type="text" name="csvDivisionId" hidden>
             <input type="text" name="csvDepartmentId" hidden>
             <button class="btn btn-success w-100">Generate CSV File</button>
@@ -139,6 +157,7 @@
         let employeeName = document.querySelector('[name="employeeName"]').value;
         let sessionDate = document.querySelector('[name="sessionDate"]').value;
         let questionMstrId = document.querySelector('[name="questionMstrId"]').value;
+        let sessionRating = document.querySelector('[name="sessionRating"]').value;
         let departmentId = document.querySelector('[name="departmentId"]').value;
         let divisionId = document.querySelector('[name="divisionId"]').value;
 
@@ -151,6 +170,7 @@
             questionMstrId : questionMstrId,
             departmentId : departmentId,
             divisionId : divisionId,
+            sessionRating : sessionRating,
             pageLimit : pageConfig.limit,
             currentPage : pageConfig.page
           }, 
@@ -179,6 +199,10 @@
         let departmentId = document.querySelector('[name="departmentId"]');
         let csvDepartmentId = document.querySelector('[name="csvDepartmentId"]');
         csvDepartmentId.value = departmentId.value;
+
+        let sessionRating = document.querySelector('[name="sessionRating"]');
+        let csvSessionRating = document.querySelector('[name="csvSessionRating"]');
+        csvSessionRating.value = sessionRating.value;
     }
 
     // $(document).ready(function() {
