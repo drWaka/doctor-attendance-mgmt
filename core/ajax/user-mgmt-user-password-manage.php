@@ -41,7 +41,7 @@ if (
         $newPassword -> valid == 1 && $reNewPassword -> valid == 1
     ) {
         // Validate User ID Uniqueness
-        $userRecord = UserMstr::show($userId -> valid);
+        $userRecord = UserMstr::show($userId -> value);
         if (!(count($userRecord) > 0)) {
             $userId -> valid = 0;
             $userId -> err_msg = 'User record not found<br>Please contact your System Administrator';

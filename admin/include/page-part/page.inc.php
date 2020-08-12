@@ -60,9 +60,9 @@
         loadRecord();
         console.log('waka');
         // Load Report Form
-        // if (typeof loadReportForm != undefined) {
-        //   loadReportForm();
-        // }
+        if (typeof loadReportForm != "undefined") {
+          loadReportForm();
+        }
 
         $(document).on('click', '.filter-toggle', function() {
           let advanceFilter = document.querySelector('.advance-filter');
@@ -78,7 +78,7 @@
           pageConfig['page'] = 1;
           loadRecord();
           // Load Report Form
-          if (typeof loadReportForm != undefined) {
+          if (typeof loadReportForm != "undefined") {
             loadReportForm();
           }
         });
@@ -87,9 +87,112 @@
           pageConfig['page'] = 1;
           loadRecord();
           // Load Report Form
-          if (typeof loadReportForm != undefined) {
+          if (typeof loadReportForm != "undefined") {
             loadReportForm();
           }
+        });
+
+        // Exceptions/Custom JS Scripts
+
+        // Custom Event Listenter for Division Element for the Respondent Masterlist
+        $(document).on('change', '.advance-filter [name="divisionId"]', function() {
+            // Update Department Field
+            let divisionId = $(this).val();
+            console.log('wakatuber');
+            send_request_asycn (
+                '../core/ajax/report-question-filter-division-department.php', 
+                'POST', 
+                {
+                    divisionId : divisionId
+                }, 
+                '.advance-filter [name="departmentId"]', 
+                'async-form'
+            );
+            setTimeout(() => {
+              // Update Unit Field
+              let departmentId = (document.querySelector('.advance-filter [name="departmentId"]')).value;
+              send_request_asycn (
+                  '../core/ajax/report-question-filter-department-unit.php', 
+                  'POST', 
+                  {
+                      departmentId : departmentId
+                  }, 
+                  '.advance-filter [name="unitId"]', 
+                  'async-form'
+              );
+              setTimeout(() => {
+                pageConfig['page'] = 1;
+                loadRecord();
+              }, 200);
+            }, 200);
+        });
+
+        // For the Respondent Details
+        $(document).on('change', '#transaction-modal [name="divisionId"]', function() {
+            // Update Department Field
+            let divisionId = $(this).val();
+            send_request_asycn (
+                '../core/ajax/report-question-filter-division-department.php', 
+                'POST', 
+                {
+                    divisionId : divisionId
+                }, 
+                '#transaction-modal [name="departmentId"]', 
+                'async-form'
+            );
+            setTimeout(() => {
+              // Update Unit Field
+              let departmentId = (document.querySelector('#transaction-modal [name="departmentId"]')).value;
+              send_request_asycn (
+                  '../core/ajax/report-question-filter-department-unit.php', 
+                  'POST', 
+                  {
+                      departmentId : departmentId
+                  }, 
+                  '#transaction-modal [name="unitId"]', 
+                  'async-form'
+              );
+              setTimeout(() => {
+                pageConfig['page'] = 1;
+                loadRecord();
+              }, 200);
+            }, 200);
+        });
+
+        // Custom Event Listenter for Department Element for the Respondent Masterlist
+        $(document).on('change', '.advance-filter [name="departmentId"]', function() {
+            let departmentId = $(this).val();
+            send_request_asycn (
+                '../core/ajax/report-question-filter-department-unit.php', 
+                'POST', 
+                {
+                    departmentId : departmentId
+                }, 
+                '.advance-filter [name="unitId"]', 
+                'async-form'
+            );
+            setTimeout(() => {
+              pageConfig['page'] = 1;
+              loadRecord();
+            }, 500);
+        });
+        
+        // For the Respondent Details
+        $(document).on('change', '#transaction-modal [name="departmentId"]', function() {
+            let departmentId = $(this).val();
+            send_request_asycn (
+                '../core/ajax/report-question-filter-department-unit.php', 
+                'POST', 
+                {
+                    departmentId : departmentId
+                }, 
+                '#transaction-modal [name="unitId"]', 
+                'async-form'
+            );
+            setTimeout(() => {
+              pageConfig['page'] = 1;
+              loadRecord();
+            }, 500);
         });
       });
     </script>

@@ -19,12 +19,14 @@ if (
     isset($_POST['lastName']) && isset($_POST['birthDate']) && 
     isset($_POST['gender']) && isset($_POST['mobileNo']) && 
     isset($_POST['addressLine1']) && isset($_POST['addressLine2']) && 
-    isset($_POST['addressLine3']) && isset($_POST['email'])
+    isset($_POST['addressLine3']) && isset($_POST['email']) && 
+    isset($_POST['unitId'])
 ) {
     $employeeId = new form_validation($_POST['employeeId'], 'str-int', 'Employee ID', true);
     $employeeNo = new form_validation($_POST['employeeNo'], 'str-int', 'Employee No', true);
     $divisionId = new form_validation($_POST['divisionId'], 'int', 'Division ID', true);
     $departmentId = new form_validation($_POST['departmentId'], 'int', 'Division ID', true);
+    $unitId = new form_validation($_POST['unitId'], 'int', 'Unit ID', true);
     $firstName = new form_validation($_POST['firstName'], 'str', 'First Name', true);
     $middleName = new form_validation($_POST['middleName'], 'str', 'Middle Name', false);
     $lastName = new form_validation($_POST['lastName'], 'str', 'Last Name', true);
@@ -48,7 +50,8 @@ if (
         $lastName -> valid == 1 && $birthDate -> valid == 1 && 
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
-        $addressLine3 -> valid == 1 && $email -> valid == 1
+        $addressLine3 -> valid == 1 && $email -> valid == 1 && 
+        $unitId -> valid == 1
     ) {
         // Verify if the Employee ID is valid
         $employee = Employee::show($employeeId -> value);
@@ -67,7 +70,8 @@ if (
         $lastName -> valid == 1 && $birthDate -> valid == 1 && 
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
-        $addressLine3 -> valid == 1 && $email -> valid == 1
+        $addressLine3 -> valid == 1 && $email -> valid == 1 && 
+        $unitId -> valid == 1
     ) {
         // Validate the uniqueness of Employee No
         $employee = Employee::getByEmployeeNo($employeeNo -> value);
@@ -88,7 +92,8 @@ if (
         $lastName -> valid == 1 && $birthDate -> valid == 1 && 
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
-        $addressLine3 -> valid == 1 && $email -> valid == 1
+        $addressLine3 -> valid == 1 && $email -> valid == 1 && 
+        $unitId -> valid == 1
     ) {
         $isSuccess = true;
         $modalLbl = array(
@@ -101,6 +106,7 @@ if (
             "employeeNo" => $employeeNo -> value,
             "FK_mscDepartment" => $departmentId -> value,
             "FK_mscDivision" => $divisionId -> value,
+            "FK_mscUnit" => $unitId -> value,
             "firstName" => $firstName -> value,
             "middleName" => $middleName -> value,
             "lastName" => $lastName -> value,
@@ -175,6 +181,7 @@ if (
             $employeeNoErr = new error_handler($employeeNo -> err_msg);
             $divisionIdErr = new error_handler($divisionId -> err_msg);
             $departmentIdErr = new error_handler($departmentId -> err_msg);
+            $unitIdErr = new error_handler($unitId -> err_msg);
             $firstNameErr = new error_handler($firstName -> err_msg);
             $middleNameErr = new error_handler($middleName -> err_msg);
             $lastNameErr = new error_handler($lastName -> err_msg);
@@ -211,6 +218,27 @@ if (
                 }
             }
             $departmentElem .= "</select>";
+
+            $unitElem = "";
+            $units = MscUnit::getByDepartment($unitId -> value);
+            $unitElem .= "<select name='unitId' class='form-control {$unitIdErr -> error_class}'>";
+
+            $selected = ($unitId -> value == 0 && $employeeId -> value !== 'new-rec') 
+                ? "selected"
+                : "";
+            $unitElem .= "
+                <option value='' style='display:none;'>Choose a Unit</option>
+                <option value='0' {$selected}>No Unit</option>
+            ";
+            if (!is_null($units)) {
+                if (count($units) > 0) {
+                    foreach ($units as $unit) {
+                        $selected = ($unit['PK_mscUnit'] == $unitId -> value) ? "selected" : "";
+                        $unitElem .= "<option value='{$unit['PK_mscUnit']}' $selected>{$unit['description']}</option>";
+                    }
+                }
+            }
+            $unitElem .= "</select>";
             
             $maleSelected = (strtolower($gender -> value) == 'm') ? "selected" : "";
             $femaleSelected = (strtolower($gender -> value) == 'f') ? "selected" : "";
@@ -224,6 +252,7 @@ if (
             if (!empty($birthDate -> value)) {
                 $employeeBirthdate = date('Y-m-d', strtotime($birthDate -> value));
             }
+
             $response['content']['modal'] = modalize(
                 '<div class="row">
                     <div class="col-sm-12">
@@ -234,9 +263,10 @@ if (
                     <div class="col-sm-12 item-guide-mgmt">
                         <form form-name="respondent-form" action="../core/ajax/respondent-manage.php" tran-type="async-form">
                             <input type="text" name="employeeId" hidden="hidden" value="' . $employeeId -> value . '">
-
+    
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-12"><b>Employee Information</b></div>
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Employee No. : </label>
                                         <div class="form-group col-sm-12">
@@ -246,7 +276,7 @@ if (
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Division : </label>
                                         <div class="form-group col-sm-12">
@@ -256,7 +286,9 @@ if (
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+    
+    
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Department : </label>
                                         <div class="form-group col-sm-12">
@@ -266,53 +298,52 @@ if (
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <label for="" class="text-left control-label col-sm-12">Unit : </label>
+                                        <div class="form-group col-sm-12">
+                                            ' . $unitElem . '
+                                            ' . $unitIdErr -> error_icon . '
+                                            ' . $unitIdErr -> error_text . '
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
+    
+                            <div class="row margin-top-xs">
+                                <div class="col-12"><b>Personal Information</b></div>
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">First Name : </label>
                                         <div class="form-group col-sm-12">
-                                            <input type="text" class="form-control ' . $firstNameErr -> error_class . '" name="firstName" placeholder="First Name" value="' . $firstName -> value . '">
+                                            <input type="text" class="form-control ' . $firstNameErr -> error_class . '" name="firstName" placeholder="First Name" value="' . ($firstName -> value) . '">
                                             ' . $firstNameErr -> error_icon . '
                                             ' . $firstNameErr -> error_text . '
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Middle Name : </label>
                                         <div class="form-group col-sm-12">
-                                            <input type="text" class="form-control ' . $middleNameErr -> error_class . '" name="middleName" placeholder="Middle Name" value="' . $middleName -> value . '">
+                                            <input type="text" class="form-control ' . $middleNameErr -> error_class . '" name="middleName" placeholder="Middle Name" value="' . ($middleName -> value) . '">
                                             ' . $middleNameErr -> error_icon . '
                                             ' . $middleNameErr -> error_text . '
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Last Name : </label>
                                         <div class="form-group col-sm-12">
-                                            <input type="text" class="form-control ' . $lastNameErr -> error_class . '" name="lastName" placeholder="Last Name" value="' . $lastName -> value . '">
+                                            <input type="text" class="form-control ' . $lastNameErr -> error_class . '" name="lastName" placeholder="Last Name" value="' . ($lastName -> value) . '">
                                             ' . $lastNameErr -> error_icon . '
                                             ' . $lastNameErr -> error_text . '
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="row">
-                                        <label for="" class="text-left control-label col-sm-12">Birthdate : </label>
-                                        <div class="form-group col-sm-12">
-                                            <input type="date" class="form-control uppercase ' . $birthDateErr -> error_class . '" name="birthDate" value="' . $employeeBirthdate . '">
-                                            ' . $birthDateErr -> error_icon . '
-                                            ' . $birthDateErr -> error_text . '
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
+    
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Gender : </label>
                                         <div class="form-group col-sm-12">
@@ -322,7 +353,22 @@ if (
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+    
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <label for="" class="text-left control-label col-sm-12">Birthdate : </label>
+                                        <div class="form-group col-sm-12">
+                                            <input type="date" class="form-control uppercase ' . $birthDateErr -> error_class . '" name="birthDate" value="' . $employeeBirthdate . '">
+                                            ' . $birthDateErr -> error_icon . '
+                                            ' . $birthDateErr -> error_text . '
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row margin-top-xs">
+                                <div class="col-12"><b>Contact Information</b></div>
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Mobile No. : </label>
                                         <div class="form-group col-sm-12">
@@ -332,10 +378,17 @@ if (
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <label for="" class="text-left control-label col-sm-12">Email : </label>
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control ' . $emailErr -> error_class . '" name="email" placeholder="Email" value="' . $email -> value . '">
+                                            ' . $emailErr -> error_icon . '
+                                            ' . $emailErr -> error_text . '
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Street, Zone, Barangay : </label>
                                         <div class="form-group col-sm-12">
@@ -345,7 +398,7 @@ if (
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">City : </label>
                                         <div class="form-group col-sm-12">
@@ -355,7 +408,7 @@ if (
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="row">
                                         <label for="" class="text-left control-label col-sm-12">Province : </label>
                                         <div class="form-group col-sm-12">
@@ -366,20 +419,7 @@ if (
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="row">
-                                        <label for="" class="text-left control-label col-sm-12">Email : </label>
-                                        <div class="form-group col-sm-12">
-                                            <input type="text" class="form-control ' . $emailErr -> error_class . '" name="email" placeholder="Email" value="' . $email -> value . '">
-                                            ' . $emailErr -> error_icon . '
-                                            ' . $emailErr -> error_text . '
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+    
                         </form>
                     </div>
                 </div>', 

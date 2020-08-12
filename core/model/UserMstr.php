@@ -28,7 +28,6 @@ class UserMstr {
             SELECT * FROM usermstr
             WHERE PK_userMstr = '{$id}'
         ";
-        // die($query);
         $result = $GLOBALS['connection'] -> query($query);
 
         if ($result -> num_rows > 0) {
