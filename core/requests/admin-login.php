@@ -42,16 +42,16 @@ if (isset($_POST['userId']) && isset($_POST['password'])) {
         }
     }
 
-
-
     if ($userId -> valid == 1 && $password -> valid == 1) {
         $userAccount = UserAccount::getByLogin(array(
             "userId" => $userId -> value
         ));
         $userRecord = UserMstr::show($userAccount[0]['FK_userMstr']);
+        $userType = UserType::show($userAccount[0]['FK_userType']);
         $_SESSION['userId'] = $userRecord[0]['PK_userMstr'];
         $_SESSION['firstName'] = $userRecord[0]['fname'];
         $_SESSION['lastName'] = $userRecord[0]['lname'];
+        $_SESSION['userType'] = strtolower($userType[0]['description']);
 
         header("Location: ../../admin/homepage.php");
     } else {

@@ -135,6 +135,57 @@ class form_validation {
   function test_password($data, $label) {
     $this -> valid = 1;
     $this -> value = $data;
+
+    // Must be 8 characters long
+    if (strlen($this -> value) < 8) {
+      $this -> valid = 0;
+      $this -> err_msg = "{$label} must be atleast 8 characters";
+    }
+
+    if ($this -> valid == 1) {
+      $flags = array(
+        "hasCapital" => 0,
+        "hasSmall" => 0,
+        "hasNumber" => 0
+      );
+      $charSet = array(
+        "capital" => array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'),
+        "small" => array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'),
+        "number" => array('0','1','2','3','4','5','6','7','8','9')
+      );
+      $dataPerChar = str_split($this -> value);
+      foreach ($dataPerChar as $char) {
+        // Check for Capital Letter
+        if (array_search($char, $charSet['capital']) !== false) {
+          $flags['hasCapital'] = 1;
+        }
+
+        // Check for Small Letter
+        if (array_search($char, $charSet['small']) !== false) {
+          $flags['hasSmall'] = 1;
+        }
+
+        // Check for Numeric Character
+        if (array_search($char, $charSet['number']) !== false) {
+          $flags['hasNumber'] = 1;
+        }
+      }
+
+      if ($flags['hasNumber'] == 0) {
+        $this -> valid = 0;
+        $this -> err_msg = "{$label} must consist atleast 1 number";
+      }
+
+      if ($flags['hasSmall'] == 0) {
+        $this -> valid = 0;
+        $this -> err_msg = "{$label} must consist atleast 1 small letter";
+      }
+
+      if ($flags['hasCapital'] == 0) {
+        $this -> valid = 0;
+        $this -> err_msg = "{$label} must consist atleast 1 capital letter";
+      }
+    }
   }
 
   function test_email($data, $label) {

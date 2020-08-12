@@ -27,20 +27,38 @@
     </li>
     
     <li class="sidebar-nav">
-        <a href="#" class="sidebar-nav-link">
+        <a href="user-mgmt.php?pageName=users" class="sidebar-nav-link">
             <i class="fa fa-user"></i> User Management
         </a>
     </li>
   </ul>
 
   <div class="sidebar-footer">
-    <a href="#" data-toggle="tooltip" class="transaction-btn" trans-name="modal-rec" data-target="modal-container" data-link="../asset/core/ajax/user-mgmt-select.php" data-content="{&quot;userId&quot; : &quot;<?= $_SESSION['userId'] ?>&quot;}" title="My Profile">
+  <a href="#" data-toggle="tooltip" 
+      class="transaction-btn"
+      trans-name='async-form'
+      data-link='../core/ajax/user-mgmt-user-select.php'
+      data-content='{
+          &quot;userMstrId&quot; : &quot;<?=$_SESSION['userId'] ?>&quot;
+      }'
+      data-target='modal-container'
+      title="Edit My Profile"
+    >
       <i class="icon-user"></i> 
     </a>
-    <a href="#" data-toggle="tooltip" class="transaction-btn" trans-name="modal-rec" data-target="modal-container" data-link="../asset/core/ajax/password-mgmt-select.php" data-content="{&quot;userId&quot; : &quot;<?= $_SESSION['userId'] ?>&quot;}" title="Change Password">
+    <a href="#" data-toggle="tooltip" class="transaction-btn" 
+      trans-name='async-form'
+      data-link='../core/ajax/user-mgmt-user-password-select.php'
+      data-content='{
+          &quot;userMstrId&quot; : &quot;<?=$_SESSION['userId'] ?>&quot;,
+          &quot;tranType&quot; : &quot;userReset&quot;
+      }'
+      data-target='modal-container'
+      title='Change My Password'
+    >
       <i class="icon-key"></i> 
     </a>
-    <a href="../asset/core/php/logout-script.php" data-toggle="tooltip" title="Logout">
+    <a href="../core/requests/admin-logout.php" data-toggle="tooltip" title="Logout">
       <i class="icon-logout"></i>
     </a>
   </div>
