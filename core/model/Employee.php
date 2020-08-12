@@ -13,13 +13,13 @@ class Employee {
                 birthDate, gender, mobileNo, 
                 AddressLine1, AddressLine2, AddressLine3, 
                 employeeNo, email, FK_mscDivision,
-                FK_mscDepartment
+                FK_mscDepartment, FK_mscUnit
             ) VALUES (
                 '{$data['firstName']}', '{$data['middleName']}', '{$data['lastName']}', 
                 '{$data['birthDate']}', '{$data['gender']}', '{$data['mobileNo']}', 
                 '{$data['addressLine1']}', '{$data['addressLine2']}', '{$data['addressLine3']}', 
                 '{$data['employeeNo']}', '{$data['email']}', '{$data['FK_mscDivision']}', 
-                '{$data['FK_mscDepartment']}'
+                '{$data['FK_mscDepartment']}', '{$data['FK_mscUnit']}'
             )
         ";
         if ($GLOBALS['connection'] -> query($query)) {
@@ -58,7 +58,8 @@ class Employee {
                 employeeNo = '{$data['employeeNo']}',
                 email = '{$data['email']}',
                 FK_mscDivision = '{$data['FK_mscDivision']}',             
-                FK_mscDepartment = '{$data['FK_mscDepartment']}'
+                FK_mscDepartment = '{$data['FK_mscDepartment']}',
+                FK_mscUnit = '{$data['FK_mscUnit']}'
             WHERE PK_employee = '{$data['PK_employee']}'
         ";
         // die($query);

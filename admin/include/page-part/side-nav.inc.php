@@ -20,10 +20,16 @@
         </ul>
     </li>
 
-    <li class="sidebar-nav">
-        <a href="respondents.php?pageName=respondents" class="sidebar-nav-link">
-            <i class="fa fa-user"></i> Respondent Management
+    <li class="sidebar-nav-group">
+        <a href="#respondent-mgmt" class="sidebar-nav-link" data-toggle="collapse">
+            <i class="fa fa-user"></i> Respondent Mgmt.
         </a>
+        <ul id="respondent-mgmt" class="collapse" data-parent="#sidebar-nav">
+            <li><a href="respondents.php?pageName=respondents" class="sidebar-nav-link">Respondents</a></li>
+            <li><a href="respondents.php?pageName=division" class="sidebar-nav-link">Division</a></li>
+            <li><a href="respondents.php?pageName=department" class="sidebar-nav-link">Department</a></li>
+            <li><a href="respondents.php?pageName=unit" class="sidebar-nav-link">Unit</a></li>
+        </ul>
     </li>
     
     <li class="sidebar-nav">

@@ -82,12 +82,12 @@ if (
                                 data-content='{
                                     &quot;userMstrId&quot; : &quot;{$userAccounts[$i]['PK_userMstr']}&quot;
                                 }'
-                                data-target='modal-container'
+                                data-target='.modal-container'
                                 title='Edit User'
                             ><i class='fa fa-pencil-alt'></i></button>
                             <button class='btn btn-outline-danger transaction-btn' 
                                 data-link='../core/ajax/generic-warning-modal.php' 
-                                data-target='modal-container' 
+                                data-target='.modal-container' 
                                 trans-name='async-form' 
                                 data-content='{
                                     &quot;transType&quot;   : &quot;delete&quot;,
@@ -106,7 +106,7 @@ if (
                                     &quot;userMstrId&quot; : &quot;{$userAccounts[$i]['PK_userMstr']}&quot;,
                                     &quot;tranType&quot; : &quot;adminReset&quot;
                                 }'
-                                data-target='modal-container'
+                                data-target='.modal-container'
                                 title='Reset Account Password'
                             ><i class='fa fa-lock'></i></button>
                         </td>

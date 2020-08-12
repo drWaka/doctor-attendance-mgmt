@@ -33,7 +33,8 @@ if (isset($_POST['employeeId'])) {
                 "email" => '',
                 "employee_type" => '',
                 "FK_mscDivision" => 0,
-                "FK_mscDepartment" => 0
+                "FK_mscDepartment" => 0,
+                "FK_mscUnit" => 0
             );
         } else {
             $employee = Employee::show($employeeId -> value);
@@ -71,6 +72,27 @@ if (isset($_POST['employeeId'])) {
             }
         }
         $departmentElem .= "</select>";
+
+        $unitElem = "";
+        $units = MscUnit::getByDepartment($employee['FK_mscDepartment']);
+        $unitElem .= "<select name='unitId' class='form-control'>";
+        
+        $selected = ($employee['FK_mscUnit'] == 0 && $employeeId -> value !== 'new-rec') 
+            ? "selected" 
+            : "";
+        $unitElem .= "
+            <option value='' style='display:none;'>Choose a Unit</option>
+            <option value='0' {$selected}>No Unit</option>
+        ";
+        if (!is_null($units)) {
+            if (count($units) > 0) {
+                foreach ($units as $unit) {
+                    $selected = ($unit['PK_mscUnit'] == $employee['FK_mscUnit']) ? "selected" : "";
+                    $unitElem .= "<option value='{$unit['PK_mscUnit']}' $selected>{$unit['description']}</option>";
+                }
+            }
+        }
+        $unitElem .= "</select>";
         
         $maleSelected = (strtolower($employee['gender']) == 'm') ? "selected" : "";
         $femaleSelected = (strtolower($employee['gender']) == 'f') ? "selected" : "";
@@ -96,7 +118,8 @@ if (isset($_POST['employeeId'])) {
                         <input type="text" name="employeeId" hidden="hidden" value="' . $employeeId -> value . '">
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-12"><b>Employee Information</b></div>
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Employee No. : </label>
                                     <div class="form-group col-sm-12">
@@ -104,7 +127,7 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Division : </label>
                                     <div class="form-group col-sm-12">
@@ -112,7 +135,9 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+
+
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Department : </label>
                                     <div class="form-group col-sm-12">
@@ -120,10 +145,19 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label for="" class="text-left control-label col-sm-12">Unit : </label>
+                                    <div class="form-group col-sm-12">
+                                        ' . $unitElem . '
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-4">
+                        <div class="row margin-top-xs">
+                            <div class="col-12"><b>Personal Information</b></div>
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">First Name : </label>
                                     <div class="form-group col-sm-12">
@@ -131,7 +165,7 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Middle Name : </label>
                                     <div class="form-group col-sm-12">
@@ -139,7 +173,7 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Last Name : </label>
                                     <div class="form-group col-sm-12">
@@ -147,18 +181,8 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="row">
-                                    <label for="" class="text-left control-label col-sm-12">Birthdate : </label>
-                                    <div class="form-group col-sm-12">
-                                        <input type="date" class="form-control uppercase" name="birthDate" value="' . $employeeBirthdate . '">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Gender : </label>
                                     <div class="form-group col-sm-12">
@@ -166,7 +190,20 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label for="" class="text-left control-label col-sm-12">Birthdate : </label>
+                                    <div class="form-group col-sm-12">
+                                        <input type="date" class="form-control uppercase" name="birthDate" value="' . $employeeBirthdate . '">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row margin-top-xs">
+                            <div class="col-12"><b>Contact Information</b></div>
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Mobile No. : </label>
                                     <div class="form-group col-sm-12">
@@ -174,10 +211,15 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label for="" class="text-left control-label col-sm-12">Email : </label>
+                                    <div class="form-group col-sm-12">
+                                        <input type="text" class="form-control" name="email" placeholder="Email" value="' . $employee['email'] . '">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Street, Zone, Barangay : </label>
                                     <div class="form-group col-sm-12">
@@ -185,7 +227,7 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">City : </label>
                                     <div class="form-group col-sm-12">
@@ -193,22 +235,11 @@ if (isset($_POST['employeeId'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Province : </label>
                                     <div class="form-group col-sm-12">
                                         <input type="text" class="form-control" name="addressLine3" placeholder="Province" value="' . $employee['AddressLine3'] . '">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="row">
-                                    <label for="" class="text-left control-label col-sm-12">Email : </label>
-                                    <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="email" placeholder="Email" value="' . $employee['email'] . '">
                                     </div>
                                 </div>
                             </div>

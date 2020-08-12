@@ -80,7 +80,7 @@
                     &quot;userMstrId&quot; : &quot;new&quot;
 
                 }'
-                data-target='modal-container'
+                data-target='.modal-container'
                 title='Edit User'
             ><i class='fa fa-plus'></i> Add New User</button>
             </div>

@@ -122,6 +122,10 @@
   width: auto;
 }
 
+.app-content {
+  padding-bottom: 50px;
+}
+
 /* width */
 .app-content::-webkit-scrollbar {
   width: 5px;

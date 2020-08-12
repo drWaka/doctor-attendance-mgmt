@@ -30,7 +30,6 @@ function send_request_asycn (url, method, data, container, transName, content_ty
         }
 
         // Determine if the container contains form
-        container = (container.indexOf('.') > -1) ? container : '.' + container;
         console.log(container);
         let containerNode = document.querySelector(container);
         let formNode = containerNode.querySelector('form');

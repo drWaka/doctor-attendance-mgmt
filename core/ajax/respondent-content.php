@@ -18,23 +18,29 @@ if (
     isset($_POST['employeeName']) && 
     isset($_POST['departmentId']) &&
     isset($_POST['divisionId']) &&
+    isset($_POST['unitId']) &&
     isset($_POST['pageLimit']) &&
     isset($_POST['currentPage'])
 ) {
     $employeeName = new form_validation($_POST['employeeName'], 'str-int', 'Employee Name', false);
     $departmentId = new form_validation($_POST['departmentId'], 'str-int', 'Department ID', true);
     $divisionId = new form_validation($_POST['divisionId'], 'str-int', 'Division ID', true);
+    $unitId = new form_validation($_POST['unitId'], 'str-int', 'Unit ID', true);
 
     $pageLimit = new form_validation($_POST['pageLimit'], 'int', 'Page Limit', true);
     $currentPage = new form_validation($_POST['currentPage'], 'int', 'Page No', true);
 
     if (
         $employeeName -> valid == 1 && $departmentId -> valid == 1 && 
-        $divisionId -> valid == 1 && $pageLimit -> valid == 1 && 
-        $currentPage -> valid == 1
+        $divisionId -> valid == 1 && $unitId -> valid == 1 && 
+        $pageLimit -> valid == 1 && $currentPage -> valid == 1
      ) {
         $employeeQuery = "
-            SELECT a.*, b.description AS `department`, c.description AS `division`
+            SELECT 
+                a.*, 
+                b.description AS `department`, 
+                c.description AS `division`,
+                IFNULL((SELECT x.description FROM mscunit AS x WHERE x.PK_mscUnit = a.FK_mscUnit), '-') AS `unit`
             FROM employees AS a
             LEFT OUTER JOIN mscdepartment AS b ON a.FK_mscdepartment = b.PK_mscDepartment
             LEFT OUTER JOIN mscdivision AS c ON a.FK_mscdivision = c.PK_mscdivision
@@ -55,6 +61,10 @@ if (
 
         if ($divisionId -> value != 'all' && is_numeric($divisionId -> value)) {
             $employeeQuery .= "AND c.PK_mscDivision = '{$divisionId -> value}'";
+        }
+
+        if ($unitId -> value != 'all' && is_numeric($unitId -> value)) {
+            $employeeQuery .= "AND a.FK_mscUnit = '{$unitId -> value}'";
         }
         // die($employeeQuery);
         $employeeResult = $connection -> query($employeeQuery);
@@ -106,16 +116,17 @@ if (
                 $response['content']['record'] .= "
                     <td>{$employeeRecord['employeeNo']}</td>
                     <td>{$employeeName}</td>
-                    <td>{$employeeRecord['division']}</td>
-                    <td>{$employeeRecord['department']}</td>
-                    <td>{$dataManagementBtn}</td>
+                    <td class='text-center'>{$employeeRecord['unit']}</td>
+                    <td class='text-center'>{$employeeRecord['department']}</td>
+                    <td class='text-center'>{$employeeRecord['division']}</td>
+                    <td class='text-center'>{$dataManagementBtn}</td>
                 ";
                 $response['content']['record'] .= "<tr>";
             }
         } else {
             // No Employee Record Found
             $response['content']['total'] = 1;
-            $response['content']['record'] = '<tr><td class="text-center" colspan="5">No Record Found</td></tr>';
+            $response['content']['record'] = '<tr><td class="text-center" colspan="6">No Record Found</td></tr>';
         }
     } else {
         $errorMessage = '';
@@ -125,6 +136,8 @@ if (
             $errorMessage = $departmentId -> err_msg;
         } else if ($divisionId -> valid == 0) {
             $errorMessage = $divisionId -> err_msg;
+        } else if ($unitId -> valid == 0) {
+            $errorMessage = $unitId -> err_msg;
         } else if ($pageLimit -> valid == 0) {
             $errorMessage = $pageLimit -> err_msg;
         } else if ($currentPage -> valid == 0) {

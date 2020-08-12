@@ -14,36 +14,40 @@ $response = array(
     "contentType" => ''
 );
 
-if (isset($_POST['divisionId'])) {
-    $divisionId = new form_validation($_POST['divisionId'], 'str-int', 'Division ID', true);
+if (isset($_POST['departmentId'])) {
+    $departmentId = new form_validation($_POST['departmentId'], 'str-int', 'Department ID', true);
 
-    if ($divisionId -> valid == 1) {
+    if ($departmentId -> valid == 1) {
         // Determine if the Division Id exists
-        if ($divisionId -> value != 'all' && is_numeric($divisionId -> value)) {
-            $division = MscDivision::show($divisionId -> value);
+        if ($departmentId -> value != 'all' && is_numeric($departmentId -> value)) {
+            $division = MscDepartment::show($departmentId -> value);
 
             if (!(count($division) > 0)) {
-                $divisionId -> valid = 0;
-                $divisionId -> err_msg = 'Division ID is invalid';
+                $departmentId -> valid = 0;
+                $departmentId -> err_msg = 'Department ID is invalid';
             }
         }
     }
 
-    if ($divisionId -> valid == 1) {
+    if ($departmentId -> valid == 1) {
         $response['contentType'] = 'dynamic-content';
-        $response['content']['form'] = "<option value='all' style='display:none'>Choose a Department</option>";
+        $response['content']['form'] = "<option value='all' style='display:none'>Choose a Unit</option>";
 
-        if ($divisionId -> value != 'all' && is_numeric($divisionId -> value)) {
-            $departments = MscDepartment::getByDivision($divisionId -> value);
-            foreach($departments as $department) {
-                $response['content']['form'] .= "<option value='{$department['PK_mscdepartment']}'>{$department['description']}</option>";
+        if ($departmentId -> value != 'all' && is_numeric($departmentId -> value)) {
+            $units = MscUnit::getByDepartment($departmentId -> value);
+            if (count($units) > 0) {
+                foreach($units as $unit) {
+                    $response['content']['form'] .= "<option value='{$unit['PK_mscUnit']}'>{$unit['description']}</option>";
+                }
+            } else {
+                $response['content']['form'] .= "<option value='0'>No Unit</option>";
             }
         }
 
     } else {
         $errorMessage = '';
-        if ($divisionId -> valid == 0) {
-            $errorMessage = $divisionId -> err_msg;
+        if ($departmentId -> valid == 0) {
+            $errorMessage = $departmentId -> err_msg;
         }
 
         $response['success'] = 'failed';

@@ -24,12 +24,12 @@
 </div>
 <div class="row advance-filter hide">
 
-    <div class="col-6 margin-bottom-xs">
+    <div class="col-4 margin-bottom-xs">
     <div class="row">
-        <div class="col-4">
-            <label for="useDateRng" class="rangeLbl"> Division :</label>
+        <div class="col-12">
+            <label> Division :</label>
         </div>
-        <div class="col-8">
+        <div class="col-12">
             <select name="divisionId" class="form-control" id="">
                 <option value="all">All Division</option>
                 <?php
@@ -47,14 +47,27 @@
     </div>
     </div>
 
-    <div class="col-6 margin-bottom-xs">
+    <div class="col-4 margin-bottom-xs">
     <div class="row">
-        <div class="col-4">
-            <label for="useDateRng" class="rangeLbl"> Department :</label>
+        <div class="col-12">
+            <label> Department :</label>
         </div>
-        <div class="col-8">
+        <div class="col-12">
             <select name="departmentId" class="form-control filter" id="">
                 <option value="all">All Department</option>
+            </select>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-4 margin-bottom-xs">
+    <div class="row">
+        <div class="col-12">
+            <label> Unit :</label>
+        </div>
+        <div class="col-12">
+            <select name="unitId" class="form-control filter" id="">
+                <option value="all">All Unit</option>
             </select>
         </div>
     </div>
@@ -69,9 +82,10 @@
         <tr>
             <th>Employee ID</th>
             <th>Employe Name</th>
-            <th>Division</th>
-            <th>Department</th>
-            <th>Manage</th>
+            <th class='text-center'>Unit</th>
+            <th class='text-center'>Department</th>
+            <th class='text-center'>Division</th>
+            <th class='text-center'>Manage</th>
         </tr>
         </thead>
         <tbody class="record-container">
@@ -110,6 +124,7 @@
         let employeeName = document.querySelector('[name="employeeName"]').value;
         let departmentId = document.querySelector('[name="departmentId"]').value;
         let divisionId = document.querySelector('[name="divisionId"]').value;
+        let unitId = document.querySelector('[name="unitId"]').value;
 
         send_request_asycn (
           '../core/ajax/respondent-content.php', 
@@ -118,6 +133,7 @@
             employeeName : employeeName,
             departmentId : departmentId,
             divisionId : divisionId,
+            unitId : unitId,
             pageLimit : pageConfig.limit,
             currentPage : pageConfig.page
           }, 
