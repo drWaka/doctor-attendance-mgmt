@@ -3,7 +3,14 @@
 class Employee {
 
     public static function index() {
-        
+        $query = "SELECT * FROM employees ORDER BY lastName, firstName, middleName";
+        $result = $GLOBALS['connection'] -> query($query);
+
+        if ($result -> num_rows > 0) {
+            return $result -> fetch_all(MYSQLI_ASSOC);
+        }
+
+        return [];
     }
 
     public static function insert($data) {
@@ -80,25 +87,67 @@ class Employee {
     }
 
     public static function getByEmployeeNo($employeeNo) {
-        $query = "
-            SELECT * FROM employees
-            WHERE employeeNo = '{$employeeNo}'
-        ";
-        $result = $GLOBALS['connection'] -> query($query);
-
-        if ($result -> num_rows > 0) {
-            return $result -> fetch_all(MYSQLI_ASSOC);
-        }
-
-        return [];
+        return self::filter(array(
+            "employeeNo" => $employeeNo
+        ));
     }
 
     public static function getByBirthdate($details) {
-        $query = "
-            SELECT * FROM employees
-            WHERE PK_employee = '{$details['employeeId']}'
-                AND birthDate = '{$details['birthdate']}' 
-        ";
+        return self::filter(array(
+            "employeeId" => $details['employeeId'],
+            "birthdate" => $details['birthdate']
+        ));
+    }
+
+    public static function getByUnit($unitId) {
+        return self::filter(array(
+            "departmentId" => $unitId
+        ));
+    }
+
+    public static function getByDepartment($departmentId) {
+        return self::filter(array(
+            "departmentId" => $departmentId
+        ));
+    }
+
+    public static function getByDivision($divisionId) {
+        return self::filter(array(
+            "divisionId" => $divisionId
+        ));
+    }
+
+    public static function filter($filter) {
+        $where = "";
+        if (isset($details['employeeId'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " PK_employee = '{$details['employeeId']}' ";
+        }
+
+        if (isset($details['birthdate'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " birthDate = '{$details['birthdate']}' ";
+        }
+
+        if (isset($details['employeeNo'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " employeeNo = '{$details['employeeNo']}' ";
+        }
+
+        if (isset($details['unitId'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " FK_mscUnit = '{$details['unitId']}' ";
+        }
+        if (isset($details['departmentId'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " FK_mscDepartment = '{$details['departmentId']}' ";
+        }
+        if (isset($details['divisionId'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " FK_mscDivision = '{$details['divisionId']}' ";
+        }
+
+        $query = "SELECT * FROM employees {$where}";
         $result = $GLOBALS['connection'] -> query($query);
 
         if ($result -> num_rows > 0) {
