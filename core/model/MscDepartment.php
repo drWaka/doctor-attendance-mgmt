@@ -38,8 +38,13 @@ class MscDepartment {
         return null;
     }
 
-    public static function delete () {
+    public static function delete ($id) {
+        $query = "DELETE FROM mscdepartment WHERE PK_mscDepartment = '{$id}'";
+        if ($GLOBALS['connection'] -> query($query)) {
+            return true;
+        }
 
+        return false;
     }
 
     public static function update($details) {

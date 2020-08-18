@@ -26,6 +26,17 @@
     }
 
     if ($recordId -> valid == 1) {
+      // Check if still being reference by any Unit Record
+      $employee = MscUnit::getByDepartment($recordId -> value);
+      if (is_array($employee)) {
+        if (count($employee) > 0) {
+          $recordId -> valid = 0;
+          $recordId -> err_msg = 'Department is still being referenced by an unit record';
+        }
+      }
+    }
+
+    if ($recordId -> valid == 1) {
       if (is_numeric($recordId -> value)) {
         $division = MscDepartment::show($recordId -> value);
         if (is_null($division)) {
@@ -60,7 +71,7 @@
         $response['content']['modal'] = modalize( 
           '<div class="row text-center">
               <h2 class="header capitalize col-12">Error Encountered</h2>
-              <p class="para-text col-12">Error Details: Unable to ' . $transactType['future'] . ' Department Record</p>
+              <p class="para-text col-12">Error Details: Unable to ' . $modalLbl['future'] . ' Department Record</p>
           </div>', 
           array(
             "trasnType" => 'error',

@@ -119,32 +119,32 @@ class Employee {
 
     public static function filter($filter) {
         $where = "";
-        if (isset($details['employeeId'])) {
+        if (isset($filter['employeeId'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " PK_employee = '{$details['employeeId']}' ";
+            $where .= " PK_employee = '{$filter['employeeId']}' ";
         }
 
-        if (isset($details['birthdate'])) {
+        if (isset($filter['birthdate'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " birthDate = '{$details['birthdate']}' ";
+            $where .= " birthDate = '{$filter['birthdate']}' ";
         }
 
-        if (isset($details['employeeNo'])) {
+        if (isset($filter['employeeNo'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " employeeNo = '{$details['employeeNo']}' ";
+            $where .= " employeeNo = '{$filter['employeeNo']}' ";
         }
 
-        if (isset($details['unitId'])) {
+        if (isset($filter['unitId'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " FK_mscUnit = '{$details['unitId']}' ";
+            $where .= " FK_mscUnit = '{$filter['unitId']}' ";
         }
-        if (isset($details['departmentId'])) {
+        if (isset($filter['departmentId'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " FK_mscDepartment = '{$details['departmentId']}' ";
+            $where .= " FK_mscDepartment = '{$filter['departmentId']}' ";
         }
-        if (isset($details['divisionId'])) {
+        if (isset($filter['divisionId'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " FK_mscDivision = '{$details['divisionId']}' ";
+            $where .= " FK_mscDivision = '{$filter['divisionId']}' ";
         }
 
         $query = "SELECT * FROM employees {$where}";
