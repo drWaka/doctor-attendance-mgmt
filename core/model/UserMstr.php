@@ -38,7 +38,7 @@ class UserMstr {
     }
 
     public static function delete ($id) {
-        $query = "DELETE FROM userMstr WHERE PK_userMstr = '{$id}'";
+        $query = "DELETE FROM usermstr WHERE PK_userMstr = '{$id}'";
         if ($GLOBALS['connection'] -> query($query)) {
             return true;
         }
@@ -47,7 +47,7 @@ class UserMstr {
 
     public static function update($details) {
         $query = "
-            UPDATE userMstr
+            UPDATE usermstr
             SET fname = '{$details['firstName']}', 
                 lname = '{$details['lastName']}', 
                 email = '{$details['email']}'

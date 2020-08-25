@@ -27,7 +27,7 @@ class UserAccount {
     }
 
     public static function show($id) {
-        $query = "SELECT * FROM userAcc WHERE PK_userAcc = '{$id}'";
+        $query = "SELECT * FROM useracc WHERE PK_userAcc = '{$id}'";
         $result = $GLOBALS['connection'] -> query($query);
 
         if ($result -> num_rows > 0) {
@@ -38,7 +38,7 @@ class UserAccount {
     }
 
     public static function delete($id) {
-        $query = "DELETE FROM userAcc WHERE PK_userAcc = '{$id}'";
+        $query = "DELETE FROM useracc WHERE PK_userAcc = '{$id}'";
         if ($GLOBALS['connection'] -> query($query)) {
             return true;
         }
@@ -47,7 +47,7 @@ class UserAccount {
 
     public static function update($details) {
         $query = "
-            UPDATE userAcc
+            UPDATE useracc
             SET FK_userType = '{$details['userTypeId']}',
                 isActive = '{$details['isActive']}'
         ";

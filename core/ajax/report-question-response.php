@@ -115,7 +115,7 @@ if (
                 $middleInitial = !empty($employeeRecord['middleName'])
                     ? substr($employeeRecord['middleName'], 0, 1)
                     : '';
-                $employeeName = strtoupper(("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}."));
+                $employeeName = utf8_encode(strtoupper(("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}.")));
 
                 $response['content']['record'] .= "<tr>";
                 $response['content']['record'] .= "

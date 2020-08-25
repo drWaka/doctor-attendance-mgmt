@@ -20,12 +20,22 @@ class MscEmailNotif {
         return false;
     }
 
-    public static function show() {
-        
+    public static function show($id) {
+        $query = "SELECT * FROM mscemailnotif WHERE PK_mscEmailNotif = '{$id}'";
+        $result = $GLOBALS['connection'] -> query($query);
+
+        if ($result -> num_rows > 0) {
+            return $result -> fetch_all(MYSQLI_ASSOC);
+        }
+        return [];
     }
 
-    public static function delete() {
-        
+    public static function delete($id) {
+        $query = "DELETE FROM mscemailnotif WHERE PK_mscEmailNotif = '{$id}'";
+        if ($GLOBALS['connection'] -> query($query)) {
+            return true;
+        }
+        return false;
     }
 
     public static function filter($filter) {
@@ -66,7 +76,6 @@ class MscEmailNotif {
             {$where}
             ORDER BY CONCAT(b.lastName, ', ', b.firstName, ' ', b.middleName)
         ";
-
         $result = $GLOBALS['connection'] -> query($query);
         if ($result -> num_rows > 0) {
             return $result -> fetch_all(MYSQLI_ASSOC);

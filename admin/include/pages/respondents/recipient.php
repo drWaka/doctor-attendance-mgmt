@@ -63,7 +63,7 @@
                     data-link='../core/ajax/recipient-select.php'
                     data-content='{
                         &quot;referenceRecordId&quot; : &quot;<?=$recordId?>&quot;,
-                        &quot;recordType&quot; : &quot;division&quot;
+                        &quot;recordType&quot; : &quot;<?= $recordType ?>&quot;
                     }'
                 >Add Recipient</button>
             </div>

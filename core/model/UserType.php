@@ -4,7 +4,7 @@ class UserType {
 
     public static function index() {
         $query = "
-            SELECT * FROM userType
+            SELECT * FROM usertype
             ORDER BY description
         ";
         $result = $GLOBALS['connection'] -> query($query);

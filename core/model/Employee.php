@@ -101,7 +101,7 @@ class Employee {
 
     public static function getByUnit($unitId) {
         return self::filter(array(
-            "departmentId" => $unitId
+            "unitId" => $unitId
         ));
     }
 

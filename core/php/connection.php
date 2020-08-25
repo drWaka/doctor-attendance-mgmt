@@ -5,10 +5,10 @@ $host = [
     "survey" => 'localhost'
 ];
 $username = [
-    "survey" => 'root'
+    "survey" => 'its-ollh'
 ];
 $password = [
-    "survey" => ''
+    "survey" => 'OLLH@Manil@70'
 ];
 $database = [
     "survey" => 'ollh_esurvey'

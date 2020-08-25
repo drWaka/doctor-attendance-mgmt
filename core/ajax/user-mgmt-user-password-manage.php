@@ -31,7 +31,7 @@ if (
     $tranType = new form_validation($_POST['tranType'], 'str', 'Transaction Type', true);
 
     $isRequired = ($tranType -> value != 'adminReset') ? true : false;
-    $currentPassword = new form_validation($_POST['currentPassword'], 'password', 'Current Password', $isRequired);
+    $currentPassword = new form_validation($_POST['currentPassword'], 'str-int', 'Current Password', $isRequired);
     $newPassword = new form_validation($_POST['newPassword'], 'password', 'New Password', true);
     $isRequired = ($newPassword -> valid == 1 && !empty($newPassword -> value)) ? true : false;
     $reNewPassword = new form_validation($_POST['reNewPassword'], 'str-int', 'New Password', $isRequired);

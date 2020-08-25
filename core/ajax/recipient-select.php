@@ -61,6 +61,7 @@ if (
                         continue;
                     }
                     $employeeName = "{$employeeRecord['lastName']}, {$employeeRecord['firstName']} " . substr($employeeRecord['middleName'], 0, 1) . ".";
+                    $employeeName = utf8_encode(strtoupper($employeeName));
                     $employeeNoElem .= "<option value='{$employeeRecord['PK_employee']}'>{$employeeName}</option>";
                 }
             }
@@ -133,6 +134,6 @@ if (
     );   
 }
 
-
+// die(var_dump($response));
 // Encode JSON Response
 encode_json_file($response);
