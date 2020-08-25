@@ -55,7 +55,7 @@ if (
         } else {
             $userTypeFields[count($userTypeFields)] = $userTypeId -> value;
         }
-
+        
         $userAccounts = UserAccount::getUserMasterlist(array(
             "userName_id" => $userName -> value,
             "userTypeId" => $userTypeFields

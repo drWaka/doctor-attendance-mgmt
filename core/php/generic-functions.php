@@ -107,4 +107,11 @@
 
     return '';
   }
+
+  function isHidden($pageName, $allowedUserTypes) {
+    if (array_search($pageName, $allowedUserTypes) !== false) {
+      return '';
+    }
+    return 'hide';
+  }
 ?>

@@ -37,7 +37,7 @@ if (isset($_POST['recordId'])) {
         $userAccount = UserAccount::getUserMasterlist(array("userId" => $recordId -> value));
         $isSuccess = UserAccount::delete($userAccount[0]['PK_userAcc']);
         if ($isSuccess) {
-            $isSuccess = UserMstr::delete($recordId -> valid);
+            $isSuccess = UserMstr::delete($recordId -> value);
             if ($isSuccess) {
                 $response['contentType'] = 'modal';
                 $response['content']['modal'] = modalize( 

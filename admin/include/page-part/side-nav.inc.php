@@ -11,7 +11,7 @@
   </div>
 
   <ul id="sidebar-nav" class="sidebar-nav">
-    <li class="sidebar-nav-group">
+    <li class="sidebar-nav-group <?= $_SESSION['userType'] . ' ' . isHidden($_SESSION['userType'], ['administrator', 'hrod'])?>">
         <a href="#reports" class="sidebar-nav-link" data-toggle="collapse">
             <i class="fa fa-file"></i> Reports
         </a>
@@ -20,7 +20,7 @@
         </ul>
     </li>
 
-    <li class="sidebar-nav-group">
+    <li class="sidebar-nav-group <?=isHidden($_SESSION['userType'], ['administrator', 'hrod']) ?>">
         <a href="#respondent-mgmt" class="sidebar-nav-link" data-toggle="collapse">
             <i class="fa fa-user"></i> Respondent Mgmt.
         </a>
@@ -32,7 +32,7 @@
         </ul>
     </li>
     
-    <li class="sidebar-nav">
+    <li class="sidebar-nav <?=isHidden($_SESSION['userType'], ['administrator']) ?>">
         <a href="user-mgmt.php?pageName=users" class="sidebar-nav-link">
             <i class="fa fa-user"></i> User Management
         </a>
@@ -47,7 +47,7 @@
       data-content='{
           &quot;userMstrId&quot; : &quot;<?=$_SESSION['userId'] ?>&quot;
       }'
-      data-target='modal-container'
+      data-target='.modal-container'
       title="Edit My Profile"
     >
       <i class="icon-user"></i> 
@@ -59,7 +59,7 @@
           &quot;userMstrId&quot; : &quot;<?=$_SESSION['userId'] ?>&quot;,
           &quot;tranType&quot; : &quot;userReset&quot;
       }'
-      data-target='modal-container'
+      data-target='.modal-container'
       title='Change My Password'
     >
       <i class="icon-key"></i> 
