@@ -7,7 +7,7 @@ function send_request_asycn (url, method, data, container, transName, content_ty
     success : function(result) {
       setTimeout(function() { manageLoading('hide'); }, 200);
       console.log(result);
-      console.log('waka');
+      console.log('waka2');
       result = JSON.parse(result);
       console.log(result);
 

@@ -17,28 +17,28 @@ $response = array(
 
 if (
     isset($_POST['employeeName']) && 
-    isset($_POST['sessionDate']) && 
+    isset($_POST['sessionStartDate']) && 
+    isset($_POST['sessionEndDate']) && 
     isset($_POST['questionMstrId']) &&
     isset($_POST['departmentId']) &&
     isset($_POST['divisionId']) &&
-    isset($_POST['sessionRating']) &&
     isset($_POST['pageLimit']) &&
     isset($_POST['currentPage'])
 ) {
     $questionMstrId = new form_validation($_POST['questionMstrId'], 'int', 'Question Master ID', true);
     $employeeName = new form_validation($_POST['employeeName'], 'str-int', 'Employee Name', false);
-    $sessionDate = new form_validation($_POST['sessionDate'], 'date', 'Session Date', true);
+    $sessionStartDate = new form_validation($_POST['sessionStartDate'], 'date', 'Session Start Date', true);
+    $sessionEndDate = new form_validation($_POST['sessionEndDate'], 'date', 'Session End Date', true);
     $departmentId = new form_validation($_POST['departmentId'], 'str-int', 'Department ID', true);
     $divisionId = new form_validation($_POST['divisionId'], 'str-int', 'Division ID', true);
-    $sessionRating = new form_validation($_POST['sessionRating'], 'str', 'Session Rating', true);
 
     $pageLimit = new form_validation($_POST['pageLimit'], 'int', 'Page Limit', true);
     $currentPage = new form_validation($_POST['currentPage'], 'int', 'Page No', true);
 
     if (
         $questionMstrId -> valid == 1 && $employeeName -> valid == 1 && 
-        $sessionDate -> valid == 1 && $departmentId -> valid == 1 && 
-        $divisionId -> valid == 1 && $sessionRating -> valid == 1 &&
+        $sessionStartDate -> valid == 1 && $sessionEndDate -> valid == 1 &&
+        $departmentId -> valid == 1 && $divisionId -> valid == 1 &&
         $pageLimit -> valid == 1 && $currentPage -> valid == 1
     ) {
         // Determine if the Question Master Id exists
@@ -52,8 +52,8 @@ if (
 
     if (
         $questionMstrId -> valid == 1 && $employeeName -> valid == 1 && 
-        $sessionDate -> valid == 1 && $departmentId -> valid == 1 && 
-        $divisionId -> valid == 1 && $sessionRating -> valid == 1 &&
+        $sessionStartDate -> valid == 1 && $sessionEndDate -> valid == 1 &&
+        $departmentId -> valid == 1 && $divisionId -> valid == 1 &&
         $pageLimit -> valid == 1 && $currentPage -> valid == 1
     ) {
         $employeeQuery = "
@@ -73,18 +73,18 @@ if (
                 OR employeeNo LIKE '%{$employeeName -> value}%')
         ";
 
-        if (strtolower($sessionRating -> value) != 'all') {
-            $rating = strtolower($sessionRating -> value);
-            $employeeQuery .= "
-                AND LOWER(IFNULL((
-                    SELECT xa.remarks
-                    FROM questionsession AS xa
-                    WHERE xa.FK_employee = a.PK_employee
-                        AND xa.FK_questionMstr = {$questionMstrId -> value}
-                        AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
-                ), 'No Response')) = '{$rating}'
-            ";
-        }
+        // if (strtolower($sessionRating -> value) != 'all') {
+        //     $rating = strtolower($sessionRating -> value);
+        //     $employeeQuery .= "
+        //         AND LOWER(IFNULL((
+        //             SELECT xa.remarks
+        //             FROM questionsession AS xa
+        //             WHERE xa.FK_employee = a.PK_employee
+        //                 AND xa.FK_questionMstr = {$questionMstrId -> value}
+        //                 AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
+        //         ), 'No Response')) = '{$rating}'
+        //     ";
+        // }
         if ($departmentId -> value != 'all' && is_numeric($departmentId -> value)) {
             $employeeQuery .= "AND b.PK_mscDepartment = '{$departmentId -> value}'";
         }
@@ -102,15 +102,34 @@ if (
         $employeeRecords = $employeeResult -> fetch_all(MYSQLI_ASSOC);
 
         $response['content']['record'] = '';
+
+        // Table Header
+        $startDateObj = new DateTime(date('Y-m-d', strtotime($sessionStartDate -> value)));
+        $endDateObj = new DateTime(date('Y-m-d', strtotime($sessionEndDate -> value)));
+        $noOfResponseDays = $startDateObj -> diff($endDateObj);
+        $noOfResponseDays = (intval($noOfResponseDays -> format('%a')) + 1);
+        $response['content']['record'] .= '
+            <thead>
+            <tr>
+                <th rowspan="2" style="vertical-align:middle">Employee ID</th>
+                <th rowspan="2" style="vertical-align:middle">Employe Name</th>
+                <th colspan="' . $noOfResponseDays . '" class="text-center">Response Summary</th>
+            </tr>
+        ';
+        $dateFlag = new DateTime(date('Y-m-d', strtotime($sessionStartDate -> value)));
+        do {
+            $response['content']['record'] .= '<th class="text-center">' . $dateFlag -> format('Y-m-d') . '</th>';
+            $dateFlag -> add(new DateInterval('P1D'));
+        } while (strtotime($dateFlag -> format('Y-m-d')) <= strtotime($sessionEndDate -> value));
+
+        $response['content']['record'] .= '
+            </thead>
+            <tbody class="">
+        ';
         if (count($employeeRecords) > 0) {
             foreach ($employeeRecords as $employeeRecord) {
 
-                // Get Response Summary
-                $questionSession = QuestionSession::getSessionByEmpDate(array(
-                    "employeeId" => $employeeRecord['PK_employee'],
-                    "questionMstrId" => $questionMstrId -> value,
-                    "sessionDate" => $sessionDate -> value
-                ));
+                
 
                 $middleInitial = !empty($employeeRecord['middleName'])
                     ? substr($employeeRecord['middleName'], 0, 1)
@@ -122,41 +141,53 @@ if (
                     <td>{$employeeRecord['employeeNo']}</td>
                     <td>{$employeeName}</td>
                 ";
-                
-                if (count($questionSession) > 0) {
-                    $sessionDateVal = date('F d, Y', strtotime($questionSession['sessionDate']));
-                    $response['content']['record'] .= "
-                        <td>{$sessionDateVal}</td>
-                        <td>{$questionSession['remarks']}</td>
-                        <td><button class='btn btn-default'><i class='fa fa-eye'></i></button></td>
-                    ";
-                } else {
-                    // No Response Summary Found
-                    $response['content']['record'] .= "
-                        <td class='text-center' colspan='3'>No Response</td>
-                    ";
-                }
+
+                $dateFlag = new DateTime(date('Y-m-d', strtotime($sessionStartDate -> value)));
+                do {
+                    // Get Response Summary
+                    $questionSession = QuestionSession::getSessionByEmpDate(array(
+                        "employeeId" => $employeeRecord['PK_employee'],
+                        "questionMstrId" => $questionMstrId -> value,
+                        "sessionDate" => $dateFlag -> format('Y-m-d')
+                    ));
+
+                    if (count($questionSession) > 0) {
+                        $sessionDateVal = date('F d, Y', strtotime($questionSession['sessionDate']));
+                        $response['content']['record'] .= "
+                            <td class='text-center'>{$questionSession['remarks']}</td>
+                        ";
+                    } else {
+                        // No Response Summary Found
+                        $response['content']['record'] .= "
+                            <td class='text-center'>No Response</td>
+                        ";
+                    }
+
+                    $dateFlag -> add(new DateInterval('P1D'));
+                } while (strtotime($dateFlag -> format('Y-m-d')) <= strtotime($sessionEndDate -> value));
+
                 $response['content']['record'] .= "<tr>";
             }
         } else {
             // No Employee Record Found
             $response['content']['total'] = 1;
-            $response['content']['record'] = '<tr><td class="text-center" colspan="5">No Record Found</td></tr>';
+            $response['content']['record'] .= '<tr><td class="text-center" colspan="5">No Record Found</td></tr>';
         }
+        $response['content']['record'] .= '</tbody>';
     } else {
         $errorMessage = '';
         if ($questionMstrId -> valid == 0) {
             $errorMessage = $questionMstrId -> err_msg;
         } else if ($employeeName -> valid == 0) {
             $errorMessage = $employeeName -> err_msg;
-        } else if ($sessionDate -> valid == 0) {
-            $errorMessage = $sessionDate -> err_msg;
+        } else if ($sessionStartDate -> valid == 0) {
+            $errorMessage = $sessionStartDate -> err_msg;
+        } else if ($sessionEndDate -> valid == 0) {
+            $errorMessage = $sessionStartDate -> err_msg;
         } else if ($departmentId -> valid == 0) {
             $errorMessage = $departmentId -> err_msg;
         } else if ($divisionId -> valid == 0) {
             $errorMessage = $divisionId -> err_msg;
-        } else if ($sessionRating -> valid == 0) {
-            $errorMessage = $sessionRating -> err_msg;
         } else if ($pageLimit -> valid == 0) {
             $errorMessage = $pageLimit -> err_msg;
         } else if ($currentPage -> valid == 0) {
