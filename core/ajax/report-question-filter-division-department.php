@@ -14,10 +14,11 @@ $response = array(
     "contentType" => ''
 );
 
-if (isset($_POST['divisionId'])) {
+if (isset($_POST['divisionId']) && isset($_POST['allowAllRec'])) {
     $divisionId = new form_validation($_POST['divisionId'], 'str-int', 'Division ID', true);
+    $allowAllRecord = new form_validation($_POST['allowAllRec'], 'int', 'Department ID', true);
 
-    if ($divisionId -> valid == 1) {
+    if ($divisionId -> valid == 1 && $allowAllRecord -> valid == 1) {
         // Determine if the Division Id exists
         if ($divisionId -> value != 'all' && is_numeric($divisionId -> value)) {
             $division = MscDivision::show($divisionId -> value);
@@ -29,9 +30,20 @@ if (isset($_POST['divisionId'])) {
         }
     }
 
-    if ($divisionId -> valid == 1) {
+    if ($divisionId -> valid == 1 && $allowAllRecord -> valid == 1) {
+        // Validate Allow All Record Flag
+        if (strval($allowAllRecord -> value) !== '0' && strval($allowAllRecord -> value) !== '1') {
+            $allowAllRecord -> valid = 0;
+            $allowAllRecord -> err_msg = 'Allow all record flag is invalid';
+        }
+    }
+
+    if ($divisionId -> valid == 1 && $allowAllRecord -> valid == 1) {
         $response['contentType'] = 'dynamic-content';
         $response['content']['form'] = "<option value='all' style='display:none'>Choose a Department</option>";
+        if (strval($allowAllRecord -> value) == '1') {
+            $response['content']['form'] = "<option value='all'>All Departments</option>";
+        }
 
         if ($divisionId -> value != 'all' && is_numeric($divisionId -> value)) {
             $departments = MscDepartment::getByDivision($divisionId -> value);
@@ -44,6 +56,8 @@ if (isset($_POST['divisionId'])) {
         $errorMessage = '';
         if ($divisionId -> valid == 0) {
             $errorMessage = $divisionId -> err_msg;
+        } else if ($allowAllRecord -> valid == 0) {
+            $errorMessage = $allowAllRecord -> err_msg;
         }
 
         $response['success'] = 'failed';

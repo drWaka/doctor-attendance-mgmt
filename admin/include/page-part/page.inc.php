@@ -17,9 +17,35 @@
     .advance-filter label {
       margin-top: 7px;
     }
+
+    /* Loading CSS */
+    .loading-cover {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0004;
+      z-index: 1031;
+    }
+    .loading-cover .load-icon {  
+      position: fixed;
+      top: 30vh;
+      left: 45%;
+      width: 200px;
+      height: 200px;
+    }
+
+    .loading-cover.show {
+      display: block;
+    }
   </style>
   </head>
   <body>
+    <div class="loading-cover">
+      <img class="load-icon" src="../core/img/load-icon.svg" alt="loading icon">
+    </div>
     <div class="app">
         <div class="app-body">
 
@@ -85,6 +111,15 @@
         });
 
         $(document).on('keyup', '.form-control.filter-search', function() {
+          pageConfig['page'] = 1;
+          loadRecord();
+          // Load Report Form
+          if (typeof loadReportForm == "function") {
+            loadReportForm();
+          }
+        });
+        // For Search Box that has Search Button
+        $(document).on('click', '.filter-search-btn', function() {
           pageConfig['page'] = 1;
           loadRecord();
           // Load Report Form

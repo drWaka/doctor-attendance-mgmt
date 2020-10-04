@@ -14,10 +14,11 @@ $response = array(
     "contentType" => ''
 );
 
-if (isset($_POST['departmentId'])) {
+if (isset($_POST['departmentId']) && isset($_POST['allowAllRec'])) {
     $departmentId = new form_validation($_POST['departmentId'], 'str-int', 'Department ID', true);
+    $allowAllRecord = new form_validation($_POST['allowAllRec'], 'int', 'Department ID', true);
 
-    if ($departmentId -> valid == 1) {
+    if ($departmentId -> valid == 1 && $allowAllRecord -> valid == 1) {
         // Determine if the Division Id exists
         if ($departmentId -> value != 'all' && is_numeric($departmentId -> value)) {
             $division = MscDepartment::show($departmentId -> value);
@@ -29,9 +30,20 @@ if (isset($_POST['departmentId'])) {
         }
     }
 
-    if ($departmentId -> valid == 1) {
+    if ($departmentId -> valid == 1 && $allowAllRecord -> valid == 1) {
+        // Validate Allow All Record Flag
+        if (strval($allowAllRecord -> value) !== '0' && strval($allowAllRecord -> value) !== '1') {
+            $allowAllRecord -> valid = 0;
+            $allowAllRecord -> err_msg = 'Allow all record flag is invalid';
+        }
+    }
+
+    if ($departmentId -> valid == 1 && $allowAllRecord -> valid == 1) {
         $response['contentType'] = 'dynamic-content';
         $response['content']['form'] = "<option value='all' style='display:none'>Choose a Unit</option>";
+        if (strval($allowAllRecord -> value) == '1') {
+            $response['content']['form'] = "<option value='all'>All Units</option>";
+        }
 
         if ($departmentId -> value != 'all' && is_numeric($departmentId -> value)) {
             $units = MscUnit::getByDepartment($departmentId -> value);
@@ -48,6 +60,8 @@ if (isset($_POST['departmentId'])) {
         $errorMessage = '';
         if ($departmentId -> valid == 0) {
             $errorMessage = $departmentId -> err_msg;
+        } else if ($allowAllRecord -> valid == 0) {
+            $errorMessage = $allowAllRecord -> err_msg;
         }
 
         $response['success'] = 'failed';
