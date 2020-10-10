@@ -125,7 +125,7 @@
             <input type="date" name="csvSessionEndDate" hidden>
             <input type="text" name="csvDivisionId" hidden>
             <input type="text" name="csvDepartmentId" hidden>
-            <button class="btn btn-success w-100">Generate CSV File</button>
+            <!-- <button class="btn btn-success w-100">Generate CSV File</button> -->
         </form>
     </div>
     <div class="col-4 offset-5">

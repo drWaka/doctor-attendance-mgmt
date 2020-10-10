@@ -18,6 +18,7 @@ $response = array(
 if (
     isset($_POST['employeeName']) && 
     isset($_POST['sessionDate']) && 
+    isset($_POST['cutOffTime']) && 
     isset($_POST['questionMstrId']) &&
     isset($_POST['departmentId']) &&
     isset($_POST['divisionId']) &&
@@ -28,6 +29,7 @@ if (
     $questionMstrId = new form_validation($_POST['questionMstrId'], 'int', 'Question Master ID', true);
     $employeeName = new form_validation($_POST['employeeName'], 'str-int', 'Employee Name', false);
     $sessionDate = new form_validation($_POST['sessionDate'], 'date', 'Session Date', true);
+    $cutOffTime = new form_validation($_POST['cutOffTime'], 'str-int', 'Cutoff Time', true);
     $departmentId = new form_validation($_POST['departmentId'], 'str-int', 'Department ID', true);
     $divisionId = new form_validation($_POST['divisionId'], 'str-int', 'Division ID', true);
     $sessionRating = new form_validation($_POST['sessionRating'], 'str', 'Session Rating', true);
@@ -39,7 +41,8 @@ if (
         $questionMstrId -> valid == 1 && $employeeName -> valid == 1 && 
         $sessionDate -> valid == 1 && $departmentId -> valid == 1 && 
         $divisionId -> valid == 1 && $sessionRating -> valid == 1 &&
-        $pageLimit -> valid == 1 && $currentPage -> valid == 1
+        $pageLimit -> valid == 1 && $currentPage -> valid == 1 && 
+        $cutOffTime -> valid == 1
     ) {
         // Determine if the Question Master Id exists
         $question = QuestionMstr::show($questionMstrId -> value);
@@ -54,10 +57,14 @@ if (
         $questionMstrId -> valid == 1 && $employeeName -> valid == 1 && 
         $sessionDate -> valid == 1 && $departmentId -> valid == 1 && 
         $divisionId -> valid == 1 && $sessionRating -> valid == 1 &&
-        $pageLimit -> valid == 1 && $currentPage -> valid == 1
+        $pageLimit -> valid == 1 && $currentPage -> valid == 1 && 
+        $cutOffTime -> valid == 1
     ) {
-        $employeeQuery = "
-            SELECT a.* 
+        $querySelect = array(
+            "select" => "SELECT a.*",
+            "count" => 'SELECT COUNT(*) AS count'
+        );
+        $employeeQuery = " 
             FROM employees AS a
             LEFT OUTER JOIN mscdepartment AS b ON a.FK_mscdepartment = b.PK_mscDepartment
             LEFT OUTER JOIN mscdivision AS c ON a.FK_mscdivision = c.PK_mscdivision
@@ -81,7 +88,7 @@ if (
                     FROM questionsession AS xa
                     WHERE xa.FK_employee = a.PK_employee
                         AND xa.FK_questionMstr = {$questionMstrId -> value}
-                        AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
+                        AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} {$cutOffTime -> value}\"
                 ), 'No Response')) = '{$rating}'
             ";
         }
@@ -92,15 +99,18 @@ if (
         if ($divisionId -> value != 'all' && is_numeric($divisionId -> value)) {
             $employeeQuery .= "AND c.PK_mscDivision = '{$divisionId -> value}'";
         }
-        // die($employeeQuery);
-        $employeeResult = $connection -> query($employeeQuery);
-        $response['content']['total'] = $employeeResult -> num_rows;
+        // die($querySelect['count'] . $employeeQuery);
+
+        // Pagination Section
+        $employeeResult = $connection -> query($querySelect['count'] . $employeeQuery);
+        $employeeRecords = $employeeResult -> fetch_all(MYSQLI_ASSOC);
+        $response['content']['total'] = $employeeRecords[0]['count'];
         
+        // Data Selection Section
         $offset = ((intval($currentPage -> value) - 1) * $pageLimit -> value);
         $employeeQuery .= "LIMIT {$pageLimit -> value} OFFSET {$offset}";
-        $employeeResult = $connection -> query($employeeQuery);
+        $employeeResult = $connection -> query($querySelect['select'] . $employeeQuery);
         $employeeRecords = $employeeResult -> fetch_all(MYSQLI_ASSOC);
-
         $response['content']['record'] = '';
         if (count($employeeRecords) > 0) {
             foreach ($employeeRecords as $employeeRecord) {
@@ -109,7 +119,10 @@ if (
                 $questionSession = QuestionSession::getSessionByEmpDate(array(
                     "employeeId" => $employeeRecord['PK_employee'],
                     "questionMstrId" => $questionMstrId -> value,
-                    "sessionDate" => $sessionDate -> value
+                    "sessionDate" => array(
+                        "start" => $sessionDate -> value . " 00:00:00",
+                        "end" => $sessionDate -> value . " " . $cutOffTime -> value
+                    )
                 ));
 
                 $middleInitial = !empty($employeeRecord['middleName'])

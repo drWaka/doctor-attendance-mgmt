@@ -77,6 +77,7 @@ class QuestionDtl {
                 AND a.sorting = '{$details['pageNo']}'
                 AND a.isDeleted = 0 
         ";
+        // die($query);
         $result = $GLOBALS['connection'] -> query($query);
         if ($result -> num_rows > 0) {
             return $result -> fetch_all(MYSQLI_ASSOC);
@@ -152,7 +153,10 @@ class QuestionDtl {
         $questionSession = QuestionSession::getSessionByEmpDate(array(
             "questionMstrId" => $details['questionMstrId'],
             "employeeId" => $details['employeeId'],
-            "sessionDate" => date('Y-m-d')
+            "sessionDate" => array(
+                "start" => date('Y-m-d') . " 00:00:00",
+                "end" => date('Y-m-d') . " 23:59:59",
+            )
         ));
         $questionDtlId = self::getQuestionDetailId(array(
             "questionMstrId" => $details['questionMstrId'],
@@ -225,6 +229,26 @@ class QuestionDtl {
                         field-desc='Symptom(s) onset date' 
                         field-type='date' 
                         field-required='0'
+                        value='{$questionResponse}'
+                    >
+                    {$error['icon']}
+                    {$error['text']}
+                </div>
+            ";
+        } else if ($fieldType == 'EMAIL') {
+            $field = "
+                <input type='text' name='dataType' hidden='hidden' value='EMAIL'/>
+                <input type='text' name='isRequired' hidden='hidden' value='1'/>
+                <input type='text' name='desc' hidden='hidden' value='Email Address'/>
+
+                <div class='col-10 offset-1'>
+                    <input 
+                        type='text' 
+                        name='response' 
+                        class='form-control {$error['class']}'
+                        field-desc='Email Address' 
+                        field-type='text-int' 
+                        field-required='1'
                         value='{$questionResponse}'
                     >
                     {$error['icon']}

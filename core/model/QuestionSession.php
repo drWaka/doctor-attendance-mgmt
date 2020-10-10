@@ -7,7 +7,7 @@ class QuestionSession {
     }
 
     public static function create($details) {
-        $currentDatetime = date('Y-m-d h:i:s');
+        $currentDatetime = date('Y-m-d H:i:s');
         $query = "
             INSERT INTO questionsession (FK_questionMstr, FK_employee, sessionDate)
             VALUES ('{$details['questionMstrId']}', '{$details['employeeId']}', '{$currentDatetime}')
@@ -50,7 +50,7 @@ class QuestionSession {
             FROM questionsession AS a
             WHERE a.FK_questionMstr = '{$details['questionMstrId']}'
                 AND a.FK_employee = '{$details['employeeId']}'
-                AND a.sessionDate BETWEEN '{$details['sessionDate']} 00:00:00' AND '{$details['sessionDate']} 23:59:59'
+                AND a.sessionDate BETWEEN '{$details['sessionDate']['start']}' AND '{$details['sessionDate']['end']}'
             LIMIT 1
         ";
 

@@ -10,7 +10,12 @@
     <div class="row">
         
         <div class="col-md-5 offset-md-4">
-            <input type="text" name="employeeName" class="form-control filter-search" placeholder="Employee Name / ID" />
+            <div class="input-group">
+                <input type="text" name="employeeName" class="form-control" placeholder="Employee Name / ID" />
+                <div class="input-group-append">
+                    <button class="btn btn-info filter-search-btn" data-target="[name='employeeName']" type="button"><i class="fa fa-search"></i></button>
+                </div>
+            </div> 
         </div>
 
         <div class="col-md-3">
@@ -31,6 +36,17 @@
         </div>
         <div class="col-12">
             <input type="date" name="sessionDate" class="form-control filter" value="<?= date('Y-m-d'); ?>">
+        </div>
+    </div>
+    </div>
+
+    <div class="col-4 margin-bottom-xs">
+    <div class="row">
+        <div class="col-12">
+            <label for="useDateRng" class="rangeLbl"> Cutoff Time :</label>
+        </div>
+        <div class="col-12">
+            <input type="time" name="cutOffTime" class="form-control filter" value="23:59:59">
         </div>
     </div>
     </div>
@@ -55,21 +71,6 @@
     </div>
     </div>
 
-    <div class="col-4 margin-bottom-xs">
-    <div class="row">
-        <div class="col-12">
-        <label for="useIdRng" class="rangeLbl"> Response Result : </label>
-        </div>
-        <div class="col-12">
-            <select name="sessionRating" class="form-control filter" id="">
-                <option value="all">All Result</option>
-                <option value="without any symptom">Without Symptoms</option>
-                <option value="with symptoms">With Symptoms</option>
-                <option value="no response">No Response</option>
-            </select>
-        </div>
-    </div>
-    </div>
 
     <div class="col-4 margin-bottom-xs">
     <div class="row">
@@ -106,6 +107,22 @@
         </div>
     </div>
     </div>
+
+    <div class="col-4 margin-bottom-xs">
+    <div class="row">
+        <div class="col-12">
+        <label for="useIdRng" class="rangeLbl"> Response Result : </label>
+        </div>
+        <div class="col-12">
+            <select name="sessionRating" class="form-control filter" id="">
+                <option value="all">All Result</option>
+                <option value="without any symptom">Without Symptoms</option>
+                <option value="with symptoms">With Symptoms</option>
+                <option value="no response">No Response</option>
+            </select>
+        </div>
+    </div>
+    </div>
 </div>
 
 
@@ -131,6 +148,7 @@
             <input type="text" name="csvEmployeeName" hidden>
             <input type="text" name="csvQuestionMstrId" hidden>
             <input type="date" name="csvSessionDate" hidden>
+            <input type="date" name="csvcutOffTime" hidden>
             <input type="text" name="csvSessionRating" hidden>
             <input type="text" name="csvDivisionId" hidden>
             <input type="text" name="csvDepartmentId" hidden>
@@ -156,6 +174,7 @@
     function loadRecord() {
         let employeeName = document.querySelector('[name="employeeName"]').value;
         let sessionDate = document.querySelector('[name="sessionDate"]').value;
+        let cutOffTime = document.querySelector('[name="cutOffTime"]').value;
         let questionMstrId = document.querySelector('[name="questionMstrId"]').value;
         let sessionRating = document.querySelector('[name="sessionRating"]').value;
         let departmentId = document.querySelector('[name="departmentId"]').value;
@@ -167,6 +186,7 @@
           {
             employeeName : employeeName,
             sessionDate : sessionDate,
+            cutOffTime : cutOffTime,
             questionMstrId : questionMstrId,
             departmentId : departmentId,
             divisionId : divisionId,
@@ -187,6 +207,10 @@
         let sessionDate = document.querySelector('[name="sessionDate"]');
         let csvSessionDate = document.querySelector('[name="csvSessionDate"]');
         csvSessionDate.value = sessionDate.value;
+
+        let cutOffTime = document.querySelector('[name="cutOffTime"]');
+        let csvcutOffTime = document.querySelector('[name="csvcutOffTime"]');
+        csvcutOffTime.value = cutOffTime.value;
 
         let questionMstrId = document.querySelector('[name="questionMstrId"]');
         let csvQuestionMstrId = document.querySelector('[name="csvQuestionMstrId"]');

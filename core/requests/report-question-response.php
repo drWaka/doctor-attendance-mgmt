@@ -1,4 +1,6 @@
 <?php
+// Special Cases for Reports
+set_time_limit(1000); // Change Max Run Time Limit to 1000 secs
 
 require '../php/_autoload.php';
 require '../model/_autoload.php';
@@ -74,6 +76,7 @@ if (
                 'Employee Name',
                 'Department',
                 'Division', 
+                'Time Taken',
                 'Summary'
             );
 
@@ -108,6 +111,13 @@ if (
                 , CONCAT(a.lastName, \", \", a.firstName, \" \", a.middleName) AS `fullName`
                 , b.description AS `department`
                 , c.description AS `division`
+                , IFNULL((
+                    SELECT DATE_FORMAT(xa.sessionDate, \"%h:%i:%s %p\")
+                    FROM questionsession AS xa
+                    WHERE xa.FK_employee = a.PK_employee
+                        AND xa.FK_questionMstr = {$questionMstrId -> value}
+                        AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
+                ), '-') AS `timeTaken`
                 {$questionQuery}
             FROM employees AS a
             INNER JOIN mscdepartment AS b ON a.FK_mscDepartment = b.PK_mscDepartment

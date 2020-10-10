@@ -32,7 +32,7 @@ if (
             : false;
         $responseVal = new form_validation(
             $_POST['response'],
-            $dataType -> value,
+            strtolower($dataType -> value),
             $desc -> value,
             $isFieldRequired
         );
@@ -165,6 +165,8 @@ if (
                     $questionResponse = !empty($value['response']) 
                         ? $value['response']
                         : '-';
+
+                    $textColor = ($value['rate'] == 0) ? 'black' : 'red';
                     $responses .= "
                     <div class='col-12'>Question #{$counter}</div>
                     <div class='12' style='padding-left: 15px;'>
@@ -172,7 +174,7 @@ if (
                             {$question['question']}
                         </div>
                     </div>
-                    <div class='col-12 margin-bottom'>Response : <b class='capitalize'>{$questionResponse}</b></div>
+                    <div class='col-12 margin-bottom'>Response : <b class='capitalize' style='color:{$textColor}'>{$questionResponse}</b></div>
                     ";
                     $counter++;
                 }
@@ -264,15 +266,37 @@ if (
                 )
             );
         } else {
-            $questionDetails = QuestionDtl::getByPage(array(
+            // Page & Group No Management
+            $questionParam = array(
                 "questionMstrId" => $questionMstrId -> value,
                 "groupNo" => $groupNo -> value,
+                // "pageNo" => (intval($pageNo -> value) - 1)
                 "pageNo" => $pageNo -> value
-            ));
+            );
+
+            // if ($questionParam['pageNo'] == 0) {
+            //     // Minimum Page of the Question Group reached
+            //     $questionParam['groupNo'] -= 1;
+            //     if ($questionParam['groupNo'] == 0) {
+            //         // Minimum Page & Group No reached
+            //         $questionParam['groupNo'] = 1;
+            //         $questionParam['pageNo'] = 1;
+            //     } else {
+            //         // Get the Max Page No of the prev Question Group
+            //         $questionParam['pageNo'] = QuestionDtl::getMaxPageNo(array(
+            //             "questionMstrId" => $questionMstrId -> value,
+            //             "groupNo" => $questionParam['groupNo']
+            //         ));
+            //     }
+            // }
+
+            // die(var_dump($questionParam));
+
+            $questionDetails = QuestionDtl::getByPage($questionParam);
 
             $response['contentType'] = 'dynamic-content';
             $response['content']['form'] = "
-                <div class='col-10 offset-1 margin-top-md margin-bottom-xs' style='font-weight: 600'>
+                <div class='col-12 margin-top-md margin-bottom-xs' style='font-weight: 600'>
                     Question :
                 </div>
                 {$questionDetails[0]['question']}
@@ -282,8 +306,8 @@ if (
                 'questionMstrId' => $questionMstrId -> value,
                 'questionSessionId' => $sessionId -> value,
                 'employeeId' => $employeeId -> value,
-                'groupNo' => '1',
-                'pageNo' => '1',
+                'groupNo' => $questionParam['groupNo'],
+                'pageNo' => $questionParam['pageNo'],
                 'error' => array(
                     "hasError" => 1,
                     "errorMessage" => $responseVal -> err_msg
