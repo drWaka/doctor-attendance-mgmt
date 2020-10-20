@@ -1,0 +1,463 @@
+"Our Lady of Lourdes Hospital"
+"E-Triage Survey"
+"'September 27, 2020"
+
+"Employee No","Employee Name",Department,Division,Summary,"What is your working schedule today?","In the past two (2) weeks did you experience Cough?","In the past two (2) weeks did you experience Shortness of breath?","In the past two (2) weeks did you experience Colds?","In the past two (2) weeks did you experience Throat pain?","In the past two (2) weeks did you experience Influenza-like symptoms (headache, muscle and joint pains, diarrhea, lack of smell or taste)?","In the past two (2) weeks did you experience any Fever with a temperature of 37.5&deg;C or more?","Date of onset of symptoms stated previously?  *Note: Please leave this question blank if you didn't have any symptoms","Do you have a history of COVID-19 infection?","Are there any member of your household that diagnosed with COVID-19?","In the past 2 weeks, did you have any exposure to someone who is confirmed to be COVID-19 (+)?"
+0000-1999,"ABDULWAHAB, HANISAH MANAN","St. Anthony","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1516,"AGAUNA, DYANE JEAN VALDEZ",Radiology,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1796,"AGUILAR, PRENECY VILLAS","Medical Director's Office","Medical Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1686,"ALAMANI, MELANIE CUDAL",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0395,"ALCALA, ROWENA NUESCA",CASHIERING,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1865,"ALCANAR, BERNALYN DOMINGO","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-0254,"ALCANTARA, LOLITA SAGARAL","St. Jude","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1042,"ALFABETE, ALMIRA OLEDAN",Pulmonary,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1520,"ALFECHE, KARLA MAE DELA CRUZ",Radiology,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0075,"ALTAMIRA, MARY GRACE LADIA","Nursing Office","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1222,"AMANSEC, ANGELIE MAE PAMEN",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1151,"AMPARO, ROCHELLE ONG","Central Sterile Supply Room","Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1957,"ANCHETA, KATRINA VARGAS",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1121,"ANCOG, JESSY BULILAN","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,yes
+0000-0047,"ANDAP, JOHN MARK EMPANG",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1802,"ANGELES, RIEZL ANN CORDOVA",Purchasing,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0289,"AQUINO, HENRY TRIMUCHA","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0256,"AQUINO, VALENTINA HERNANDEZ","St. Arnold","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1157,"ARAN, EDGAR MANALO","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0291,"ARIZALA, LORENZ ABA","St. Jude","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1214,"ARRABIS, SEDELINA OSTACO","St. Jude","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0018,"ARRUEJO, VISITACION MENDEZ",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1427,"ASEO, MARY ROSE SUNGA","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1843,"ASTROLOGO, JE ANN DESTACAMENTO","Lactation Management","Medical Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,yes,yes
+0000-0255,"ASUNCION, CHARINA ARGONCILLO","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0409,"ASUZANO, MA. GINA VALENZUELA",PAYROLL,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1545,"ATIENZA, NENIE AMAR","St. Joseph","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0717,"AVENIDO, MARY KATHERINE SARIBAY",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1665,"AWIL, JAYSON CADELEÑA","Endoscopy Center","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1885,"AYCARDO, SHARA MURCIA","Heart Station","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,yes,yes
+0000-1730,"BACULI, ROCHELLE CAMILLE REYES","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1399,"BAGOTSAY, CARMELLE DAWN ALABA",Hemodialysis,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1639,"BAIS, JULIE ANN OCATE",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1127,"BALAGTAS, ALAN PATRICK AQUINO",Radiology,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2004,"BALASI, JEFFERSON MERIALES","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1825,"BALDO, MARIBEL ESPENIDA","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1441,"BALETE, IAN KEVIN CARRILLO","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1234,"BALISACAN, AIMEE JANE BERGADO","Delivery Room","Nursing Services Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,no
+0000-1532,"BALISACAN, ALVIN JAY BERGADO","Central Stores","Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1689,"BAÑAGA, LYKA ENCINARES",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1947,"BANGUG, REGINE MANGALILI",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1781,"BARCELON, IVY ANN .","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1923,"BARCOMA, JAINA GRACE CUTANDA",ADMITTING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1968,"BARGOLA, MA. MERCEDES SAN MATEO","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,yes
+0000-1075,"BAROÑA, CHERRY VE SALAZAR","Compensation & Benefits Administration","Human Resource and Organizational Development Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1566,"BARREDO, LLEWELLYN LEONAH REYES",Purchasing,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1757,"BARRESI, JERICA ZVYKA MAALA","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1277,"BARRIL, VICTORIA SUMAMPONG",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1975,"BARROZO, JR., MARIO RAMIREZ",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0675,"BASA, ELEN GRACE TUANTE",Pharmacy,"Pharmacy Services","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,no
+0000-1953,"BAUTISTA, REGINA ANGELICA GUMARU",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2019,"BELARAS, KRIZZA KAYE VILLAMAR","Delivery Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1934,"BELEN, JOANNE DIANO",PHILHEALTH,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1003,"BELTRAN, ROSEVILLE CAGUNGUN",Hemodialysis,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1380,"BENEDICTO, RAFAEL LABALAN","Central Stores","Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1724,"BENITEZ, JOHN RIDDICK ORIS","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1962,"BERISO, MARIA LIZA VIRTUS","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0467,"BERMEJO, SHEENA LYD GUMBA","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1345,"BERMUDEZ, FLOYD ARAN DEL CARMEN","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1768,"BLANCAFLOR, IRIS BORLAZA",ADMITTING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0515,"BRIONES, ROMEO VARGAS","Administrative Services","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1914,"BUENO, JONAR SOTO","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-1161,"BUENO, MARK RYAN TRINIDAD","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1508,"BUMACOD, MICHAEL MORALES","Central Stores","Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0432,"CABALTICA, ALEXANDER BAJAMONDE","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0046,"CABANGON, LEAH DELOS SANTOS",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0258,"CABANTOG, MA. NERY FAJARDO","Delivery Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1586,"CABARCO, RUTH SARAH BATARA","Health Management Organization","Sales & Marketing Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-0004,"CALIP, EVANGELINE HAO",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0295,"CALIP, GARY EUGENIO","Delivery Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1632,"CALIXTRO, CLAUDINE NEGRE","Neurophysiology Center","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1710,"CALLORINA, JANINE DE GUZMAN",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-1875,"CAMANGIAN, RICA MAE ACOSTA","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0686,"CAMASOSA, ALLAN PORCINCULA",Radiology,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0119,"CAMERO, RUTH VILLANUEVA","Nursing Office","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1401,"CAMINO, RAE JOELLE SIA","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,yes
+0000-1076,"CANCEJO, MICHELLE ILAGAN","St. Joseph","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1108,"CANO, MARY ANN ISABEL BIO","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1456,"CAPISTRANO, JOANA MARIE FELICIANO","St. Anne","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-1666,"CAPRE, CHONA BAMUYA","Heart Station","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1109,"CAPUTLI, PHILBERT DELFIN",Pulmonary,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+T000-0178,"CARIDO, LIEZEL ANNE LACHICA","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1402,"CARINUGAN, MARY ANN FAUSTE","St. Anthony","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1887,"CARLUTO, ANGELA ALILING","Heart Station","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1708,"CARNATE, IRENE VICTORIO",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1779,"CARTILLA, MENCHELLE GRACE PEREZ",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1189,"CARZON, MARLON LAHAY-LAHAY","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0121,"CASILI, JOVEL BOLOK","St. Anthony","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0259,"CASLIB, NORA CABUNGAN","Central Sterile Supply Room","Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1871,"CASTELLANO, MARIE ELAINE GATUS","Heart Station","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1381,"CASTILLO, IVY LIABAN","Eye Center","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1460,"CASTILLO, NOLAN CHARLEMAGNE PEREZ",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-0793,"CATUBAG, VIVIAN CABILEC",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1683,"CAYETANO, VIOLETA KRYZELL NEGRANZA","St. Joseph","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-0412,"CILLAN, SALVACION CLAVECILLAS",BILLING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1479,"CONCEPCION, DEVINE KRIS RODRIGUEZ",PHILHEALTH,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1397,"CONCEPCION, MA. LUISA JANE RAGADIO","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1411,"CONSTANTINO, MA. CRYSTAL SILVESTRE","Delivery Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1118,"CONSUEGRA, GREGORIO . ",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-0015,"COSTALES, ARGEAN GASPAR",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1643,"CRUZ, MARIA NONETH ADIA",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1241,"CRUZ, NIKKO LLENA","St. Anthony","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1991,"CRUZ, REYCHELLE MARIE LUIS",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1325,"CUASAY, JOSEPH BATICOS",PHILHEALTH,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1800,"DACASIN, KLAUDETH MORIEL ANGELES",PAYROLL,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1438,"DALA, PRINCES LEONA","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1744,"DALAO, FRANCES ABEGAIL VIDUYA","Neurophysiology Center","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,yes,no
+0000-1960,"DANAO, JOHN FRANCIS TOLENTINO",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1882,"DANTES, DYAN PINEDA",CASHIERING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1709,"DATU, MARY JOY CABALLES","St. Anne","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1716,"DE BELEN, MA. ARNESA BAUTISTA","Health Management Organization","Sales & Marketing Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1583,"DE JESUS, VONN RYAN OLIVER .",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0086,"DE LARA, ANGELYN BENITO","Nursing Office","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1858,"DE LUNA, REGINA RAMIREZ",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0375,"DE PEDRO, GLENIN JOSEPH JAVIER","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0832,"DE PEDRO, ROSALINA BARCE",Laboratory,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1531,"DEFENSOR, MELVIN RELLES","Central Stores","Finance Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,no
+0000-1420,"DEL PRADO, JOHNICA GLEINE MAGNO",ADMITTING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1693,"DEL ROSARIO, BEATRICE ANNE ZARAGOZA","Talent Management","Human Resource and Organizational Development Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-0377,"DELA CRUZ, CESARIO LARIOSA","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0830,"DELA CRUZ, MA. STELLA LOURDES CRUZ",PHILHEALTH,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-1774,"DELA ROSA, APRILLE ROSE GADIN","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0302,"DELA VEGA, RYAN QUIAMBAO","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1278,"DEPUNO, CLARISSA LIVADO","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2005,"DEUNA, ARWIN DIVINA",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1690,"DIAMANTE, JR., SALLY  AVILLON","Finance ","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1424,"DIAZ, JOBELLYN PAPA","Health Management Organization","Sales & Marketing Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1382,"DIÑOSO, GRACE CHELLE TADENA",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1435,"DIONEDA, MA. JUVILISA BARCE",Hemodialysis,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1487,"DOMINGO, AILIE EVAN RICAFRENTE","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1971,"DOMINGO, NEILEENE JOY SIMEON","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0662,"EBORA, FRANCIS PAULO PERDIGUIN","Medical Records","Medical Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1780,"ECHON, HANNAH MAE HEBRON","St. Jude","Nursing Services Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,yes
+0000-1446,"ECLARINAL, APRILLE JOY FABELLARE","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1801,"ELEFAN, AIKA MARIE MATEO","Health Management Organization","Sales & Marketing Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1986,"EMPERADOR, GIANINA SHAINE ASPURIA",Oncology,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1888,"ENRIQUEZ, JR., RENATO IMPERIAL","Central Sterile Supply Room","Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1832,"ESCANDOR, ARACELI CHAVEZ",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0842,"ESCOBAL, GLENDEL ANDOY","Medical Director's Office","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2003,"ESTABLECIDA, GREG JOSEPH MERTO",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1980,"ESTOESTA, CLARA MARIZ MAPALO",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1550,"EUGENIO, JENILYN TOMAS","St. Anne","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-1715,"EVANGELISTA, JEMRICKSON FABI",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0152,"FARIN, CZARINA CHASMALIM EMPAYNADO","Nursing Office","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1569,"FELIPE, ELOISA JULIA BERDUL","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1633,"FERNANDEZ, JUNTIN FLORENDO",PHILHEALTH,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0033,"FERNANDO, JOHN CEL FOLLERO",Laboratory,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1793,"FERNANDO, LILIBETH MONTON","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1743,"FIGUEROA, KRISTINA MARIE PETIS","Health Management Organization","Sales & Marketing Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-0308,"FLONASCA, JUNRY SISI","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0309,"FLORES, RODERICK ILI","St. Arnold","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1383,"FORMACION, JAMIE MARIE MANOJO",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,no
+0000-1306,"GABLAN, ASHLYN QUINTO",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1672,"GABOR, SHYNE KASHMIR ATIENZA","Heart Station","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1961,"GADIANO, MHARIEL MARANION",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1723,"GALACINAO, CAREY FAUSTINE CABUGAO","Endoscopy Center","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1619,"GALANG, ARVIN MANALILI",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1503,"GALANG, JAWORSKI BALGOMA",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0364,"GALOS, ANDREW FULAY",Biomedical,"Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0635,"GAN, MARK DOMINIC ARNOCO",Pulmonary,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-0905,"GANITANO, JEAN MYRA ABUSO","Neurophysiology Center","Ancillary Services Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,no
+0000-1472,"GARCHITORENA, RODELYN REGENIO",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1540,"GARCIA, MARY CATHRINE JUDE",OPS/ER,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1407,"GASPAR, CARMINA RAMOS","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1913,"GERELLA, MARIA CARMELA REYES","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-1791,"GLORIA, JAMAICHA CUERVO","Medical Director's Office","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0369,"GOLUCINO, LEO JATE","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0287,"GOMEZ, ANGEL DEL ROSARIO","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0312,"GONZALES, JOHN CALIBOSO","St. Anne","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0267,"GONZALES, LOLITA VILLAS","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0329,"GONZALEZ, ALMA JOSE",ADMITTING,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0541,"GRAVAMEN, JENNIFER ALLEN EUSEBIO","Nursing Office","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1386,"GUANLAO, QUIMBERLIE GERARCAS",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1981,"GUEVARRA, ALLAN BAY","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-0268,"HINGCO, JOCELYN RICAFRANCA","St. Therese","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0173,"HIPOLITO, RICHELLE ANNE CASINSINAN",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0728,"HORTALEZA, GLAIZA VISSIA PORRAS","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-0175,"IGNAO, VANESSA MADERAZO","Nursing Office","Nursing Services Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,yes,yes
+0000-1341,"INOCENCIO, JULIE ANNE MARIE PRIMICIAS","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0945,"JAMORA, MARK ATREYU DELA",Oncology,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1805,"JANOLO, SHANNA MARIZ ISIDRO","St. Arnold","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-1821,"JAVIER, MARY AUREN ACUEZA","St. Jude","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,2020-09-27,yes,no,yes
+0000-0907,"JIMENEZ, GRACE DEL PILAR","Medical Director's Office","Medical Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1844,"JIMENEZ, JOELLA JEAN BAUTISTA",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0816,"JIMENEZ, YSABELLE ANNE LEODONES","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0179,"JOVEN, JAMES BENEDICT YMASA","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1494,"JUAN, MARILOU ROSARIO","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1682,"LACHICA, DEAREST FERRY",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1506,"LACSON, DENNIS RYAN BALLESTEROS","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1996,"LAGUNSAD, MARIA EDARLYN LUANZON","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1533,"LAMSEN, KASELYN BAUA",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1468,"LAMUG, BIVERLY BALILING",Radiology,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1777,"LAPUEBLA, RICHELLE LUBUGUEN","St. Joseph","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1115,"LAQUINDANUM, RICO TOBIAS","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0016,"LARISMA, AGNES ANDREA DAGALA",Laboratory,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1618,"LAROYA, MARK AGUDONG","St. Joseph","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1895,"LAURETA, ANNA DOMINIQUE LEONILLO","St. Jude","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1636,"LAZAR, ALVIN CADINONG","Infection Control","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1511,"LAZARO, JEANNIE DANGLA CRUZ","Health Management Organization","Sales & Marketing Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1579,"LEAÑO, JOSEPH EDGAR CRUZ",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0967,"LEONES, SANDRA BENLOT",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1931,"LIM, ARAM JED UY","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1246,"LIWAG, JAM AZENITH VILLAMATER","Delivery Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2009,"LLENARISAS, BIANCA BOBIS",ADMITTING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0379,"LLONOZA, LAVELANNE GUBAT",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1990,"LOQUIAS, JULIE ANN DALIDA",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0271,"LORESTO, SHIRLEY CLAVECILLAS","Delivery Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0509,"LUCABAN, ZAIDA CABELTES","Central Sterile Supply Room","Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1529,"LUCERO, ANGEL ROSE VALDEZ",CASHIERING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0749,"LUMBAO, JERRYLYN BONITA",Purchasing,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1205,"MACEDA, MARIE KATHLEEN VILLAREAL",Purchasing,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0805,"MAGDAY, MARIE JOY MICULOB","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-0919,"MAGPALE, MARIE JOY SANCHEZ","Medical Records","Medical Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1169,"MAGPAYO, LENNY  HERMO",CASHIERING,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0314,"MALICDEM, MARK VALIENTE","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1521,"MALLARI, JAIMICA MAGYAYA",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0408,"MANDAPAT, ROSALIE TANALIGA",BILLING,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1149,"MANDREZA, HANSELD ROSE MODINA",Purchasing,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1647,"MAÑOZA, MA. CHRISTINE PATALINGHUG",Hemodialysis,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1282,"MANTILLA, KEVIN MERELL RACHO","Business Center","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1892,"MANUEL, MARIA MICHELLE MERCADO","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1855,"MANZANO, JOAN SANCHEZ",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-1654,"MARARAC, ANGELINA SALAZAR","Heart Station","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+T000-0156,"MARBELLA, SHAINA MARIE PRESILLAS","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1135,"MATA, MERWIN MOLLENO","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1577,"MEJIA, JENNIFER BERMUDEZ","Administrative Services","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1239,"MELCHOR, EUGENE BELARMINO","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1963,"MENDOZA, ESMERALD  CANTILA","St. Joseph","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,yes
+0000-1909,"MESALUCHA, KATHLENE MAY DACILLO","St. Anne","Nursing Services Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,no
+0000-1925,"MIGO, ANA MERLY ABRIGO",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-1861,"MIRALO, NIKKA JO FADRI","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1236,"MIRANDA, ROWELLA KAY BERNARDO","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1216,"MONTALBO, EXEQUIEL ESGUERRA","St. Joseph","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1507,"MONTEMAYOR, KIM THERESE POLINES","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-1696,"MONTIANO, JANINE CABANIG",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2007,"MONZON, MARILYN BACARO","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1523,"MOTOL, REXELL JOHN GALLETA",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1499,"MOZO, KARLA LUZ CABEGUIN",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1187,"NABOR, RICHA VASQUEZ",Purchasing,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1404,"NAIN, AMEERA ADJAWALI",Pulmonary,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1782,"NECOSIA, ABIGAIL .",PHILHEALTH,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1235,"NIBAY, JEREME JIMENEZ","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0196,"NOLASCO, ARLYNE CAYABYAB","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1850,"NOTARIO, ALFA MAE BANTASAN","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1848,"OANDASAN, VIOLET BACUDO",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-0402,"OCO, FE BAÑEGA","Business Center","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1356,"OLAMIT, EDUARD SALISE","St. Anne","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1576,"ONIAS, JEFFREY ORDAÑEZ",ADMITTING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0003,"OSANO, LEORY ALONGAT",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,yes,yes
+0000-1868,"OSIEL, MARIEL YABAO",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0602,"OSMEÑA, FREDERICK TAN","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,yes,no
+0000-1921,"PABLO, LARA MA. CARMELA DIMAANDAL",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0397,"PACHECO, ANALYN BAYANAY",CASHIERING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1764,"PADER, JR., RODOLFO GALANZA","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1207,"PAGOBO, JOELA SINDAY","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1539,"PALERACIO, PATRICIA RUALO","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1835,"PALMA, JOSHUA RAPANOT",PHILHEALTH,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0738,"PALOMARES, JOY ARZADON","Medical Director's Office","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1699,"PANAGINIP, JENNIFER BALALA",ADMITTING,"Finance Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,no
+0000-1328,"PANGANIBAN, AILENE  JACILA","Talent Management","Human Resource and Organizational Development Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1900,"PANGANTIJON, JEROME VELASCO","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1680,"PANGILINAN, BRYLLE JAE YABUT","St. Jude","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1514,"PANGYARIHAN, RENZO GROMEO","Information Technology Services","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0833,"PANITERCE, MARK LAURENZE NAZARREA","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1634,"PASCUA, CARMONETTE REFUERZO","Health Management Organization","Sales & Marketing Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1853,"PEGARIDO, LIEZL ROQUE","St. Joseph","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1641,"PEÑAMANTE, SAYRIN IRA POLISON",Hemodialysis,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0789,"PIJAN, RIO ASTURIANO",CASHIERING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0698,"PILOTON, JANETH CERILLA","St. Anne","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1897,"PINEDA, GERARDO DORATO","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1194,"PINEDA, SHERYL ANN VILLEGAS",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1475,"POCO, MAGNOLIA PAMELA CRUZ","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-1725,"PONGASE, CLARICEZON ANONAS","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1966,"QUENGA, MA. ERICA PEDROSO",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1859,"QUINES, ELIZA LATAYAN",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-1492,"QUINTIN, MELANIE GILDORE","Eye Center","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1778,"QUINTO, MIRIAM MANLUCTAO","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1365,"QUITE, ARNEL TALAGTAG","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0817,"QUITORIO, KENNETH CELAJIS",Biomedical,"Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1955,"RAMO, CRYSTAL JOY ESTRADA",ADMITTING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0043,"RAMOS, ANGELINA DIAZ",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1880,"RAMOS, GRACELYN ABIOG","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1717,"RAMOS, JOHN BENEDICT DIAZ","Information Technology Services","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0317,"RAQUIN, RONNIE CHALE","St. Vincent","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-2075,"RATON, GABRIEL DUMALAOG","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0401,"RAYMUNDO, MAUREEN BAUTISTA",CASHIERING,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0332,"REBOSURA, MARIA ANNA ANGELA CARLOS",ADMITTING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1907,"REGALADO, NEÑO BOY BARREDO","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1967,"REPUBLICA, MARIZ ILANO","Medical Social Services","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0318,"RESULTAY, JAIME DELA VEGA",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1728,"REUTEREZ, KENNETH GERUNDA",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,yes
+0000-1320,"REYES, ANGELI CLAIRE SALAZAR","Heart Station","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1979,"REYLA, JOVEN LUNGAN","Compensation & Benefits Administration","Human Resource and Organizational Development Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1064,"RICAFRENTE, RUFFA CHARLENE MARQUEZ",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1846,"RICAPLAZA, MARISOL BALAGUER","Central Stores","Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1063,"RIGONAN, ERWIN ROMMEL ADRIANO","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,yes
+0000-0319,"RIOS, ROLANDO MAQUILAN","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1703,"ROBEL, MYREEN ANNE COCHANGCO","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1700,"ROBLES, EZRA NICOLO BACULI",Radiology,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,yes,yes
+0000-1355,"RODAS, GLYNESS ANN REVILLA","Delivery Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0222,"RODRIGUEZ, MERLY MIGUEL","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-0939,"ROSS, JECILLE AVERILLA","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1271,"RUBI, JERGEN MAE CAPRECHO","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0058,"RUIZ, ADELINA PANLAQUE","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0944,"RUIZ, JOMIL ZAMUDIO",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1827,"SABADO, LUCKY ROSE LACANLALE","Endoscopy Center","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1423,"SABLON, ANGELI RAE CABURNIDA",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1695,"SACDALAN, RAMON JOSEPH ANGANGAN","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0366,"SAGUIL, REMEDIOS BUENAVENTURA","Medical Social Services","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1970,"SALAMILLAS, JERRAL EVAN GARCIA","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1254,"SALAZAR, RYAN NEAL TOPACIO",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-1890,"SALIGUMBA, LOUIE MARI PINTOR",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1571,"SALIGUMBA, LOUISE BELLE PINTOR",Hemodialysis,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0085,"SALLO, CYREL FULGAR","Nursing Office","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0363,"SAMBRANO, MARIA GRACIA JABINES","Office of the President","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0444,"SAMPAYAN, RICARDO DULDULAO","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1794,"SAMUDIO, MARKUS ALLEN GONZALES","Operating Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1620,"SAN JUAN, MICAELLA URSUA",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1493,"SANTIAGO, JIANA KOLINE SABIDO",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1116,"SANTIAGO, RIZIEL JOYCE TEOPISTO",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1517,"SANTOS, AARON PAUL MINA",Radiology,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-0549,"SANTOS, BENELIA ESTEPA","Intensive Care Unit","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1311,"SANTOS, KARMELA INTOY",BILLING,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-0014,"SARTO, NORA LAXAMANA",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0368,"SAUZA, BENY BOBIE DETOMAS","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1445,"SEBASTIAN, ANTHONETTE TABBUAC",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0005,"SEÑA, EILYN PENTINIO",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-0250,"SERNICULA, DIANA YEBES","Delivery Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,yes
+0000-0936,"SIOTING, GEORGE MORENO","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0736,"SMOLLY, JANET PABILA","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2076,"SOLAS, MELKY OLAVIDEZ","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on duty",no,no,no,no,no,no,,yes,no,no
+0000-0049,"SOLOMON, CRESTI RAFOL","Neurophysiology Center","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1946,"SOMBRANO, ELAINE BERNADETTE LOSAÑES",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1646,"SORIANO, JOHANNA ROSE CORPUZ",OPS/ER,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1929,"STA. TERESA, JR., RYAN OMAR AMAR",Pulmonary,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2006,"SUDARIO, LUZVIMINDA COSTELO","Administrative Services","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1430,"SUMANG, FRANCIS IVAN BRIONES","Endoscopy Center","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0514,"TAGANA, ROBERTO SILLO","Administrative Services","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0695,"TAMARES, JOSEPH BRIAN VALEROS","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0687,"TAPAO, DAVE MOLLEDA",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0060,"TAPERLA, JEANNIE IBALAROSA","Heart Station","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-0029,"TASARRA, MARY GRACE TAPADO",Laboratory,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1555,"TAYO, PRINCE JOHN CARLO MAHILUM",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0812,"TECSON, LALAINE JABINES",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0323,"TED, CHRISTIAN CAO",OPS/ER,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1694,"TEJADA, MICHAEL DE GUZMAN",Pharmacy,"Pharmacy Services","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0281,"TEJERERO, RUTH TESORERO",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0019,"TEODORO, ANNIE BERMUDEZ",Laboratory,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0510,"TERO, RAYMON SAGO","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0283,"TIANZON, MA. ASUNCION CASLIB","St. Anne","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1662,"TIBURCIO, MARIA ANGEL BELDIA","St. Anthony","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0569,"TING, ELVIN GO","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-1776,"TOBIAS, RIZZA LAMASON","St. Jude","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1671,"TORIO, ELA-MAE MERCADO","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1291,"TORMON, RENEEBY TIU","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1985,"TORRES, ELLERICA MAE CRISTOBAL","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1260,"TORRES, ETHEL MAE ENORIO","Compensation & Benefits Administration","Human Resource and Organizational Development Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-0400,"TUANTE, DANTE MANUTA",CASHIERING,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1790,"TUMOLVA, MA. INA SAGUN","Physical Facilities","Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1534,"TUQUIB, PAULA LUZ BAUTISTA","Eye Center","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1917,"TUVILLARA, EDEN TUMESA","Delivery Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,yes,yes
+0000-1852,"TYCHINGCO, NATHANIEL SALCEDO","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1368,"URETA, GIAN CARLO ANG","Talent Management","Human Resource and Organizational Development Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,yes
+0000-1842,"URGELLES, GILLEANNE CHAVEZ","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1186,"USAL, RONALYN PIZARRO","St. Jude","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-1762,"UY, ELLAINE POLICARPIO","Nutrition Clinic","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+T000-0110,"VALDEPEÃ‘AS, CAROLINE ROAN","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1315,"VALDEZ, JOSHUA ARIEL PANAHON",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1392,"VALENTON, MA. KATHERINE MAGTIBAY","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-2020,"VENTENILLA, ROMMEL RAMPOLA","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0330,"VENTURA, FLOR IMELDA RAQUEL",ADMITTING,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1429,"VENUS, MARIAM REGIENE BASHER","Endoscopy Center","Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1799,"VILLALOBOS, JANELLE LADRILLONO",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0044,"VILLALUZ, JOCELYN DIZON",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0045,"VILLALUZ, MARCO POLO OGNES",Radiology,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1940,"VILLANUEVA, ANNA CARMELA FALCO","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-0750,"VILLANUEVA, LIDA SINGSON","Information Technology Services","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-1930,"VILLANUEVA, SHAINA JOICE ANIMOS",ADMITTING,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-0958,"VILLARIÑA, DIANNE CABANTOG","Delivery Room","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1663,"VIRTUSIO, MARGARET MENDOZA","St. Anthony","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1595,"YDEL, ALYSSA KHAYE HORNILLOS","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-1538,"YU, LEONARD THOMAS MARQUIÑO","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+44421,"Sadava, Teresita Bolotaulo","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+46408,"Semilla, Nable Asturiano","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+47075,"David, Jose Viri","Surgery ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+51032,"Colendrino, Rosinna Teodoro","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+53225,"Pacheco, Wilfredo Bautista",Orthopedic,"Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+55033,"Querijero, Danilo Francesco Palaypay","Surgery ","Medical Services Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,yes,no
+56910,"Savillo, Ma. Isabel Pablo","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+58392,"Carandang, Michael  Villegas","Surgery ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+62182,"Marin, Ramon  Reyes","Surgery ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+65065,"Paliza, Gracia Co",Pediatrics,"Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+66229,"Borja, Arminda Pablo","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+69364,"Sarte, Alvis Sabilla","Surgery ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+69870,"Lei, Rosemarie Afos","Surgery ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+70001,"Sese, Ross Fajardo","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+71704,"Gardaya, Raul Turqueza","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+72319,"Mirasol, Ma. Angelina Laigo","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+73692,"Del Rosario, Analina Sikat","OB & Gynecology Office","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+78819,"Ribargoso, Nympha David","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+79271,"Reyes, Richmond Cheng","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+85806,"Buensuceso, Jill Pulmones","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+87660,"Gomez, Antonietta Ramona Villanueva",Pediatrics,"Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+88774,"Dacanay, Leonides Jesus Sanchez","Surgery ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+106545,"Semilla-Lim, Bernadette Cruz","Internal Medicine ","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+107033,"Avendaño, Mark Joseph Cunanan","Surgery ","Medical Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+115830,"Rodriguez, Luis Rey Arellano",Consultant,Doctors,"Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+124373,"Carilo, Bianca Criselda ",Consultant,Doctors,"Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+127662,"Hsu Hsieh , Herman  Castro",Consultant,Doctors,"Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+129076,"Dollete, Martha Camille Fontanilla",Consultant,Doctors,"Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+120274,"Luna, Katrina De Castro","Internal Medicine ","Medical Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+134916,"Mendoza, Zyrheal ","OB & Gynecology Office","Medical Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2023,"CATUBIG, JOYCE ABE",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2027,"RARO, MICHELLE STA. CLARA","St. Anne","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2065,"Lanzarrote, Charmine Latorre",PHILHEALTH,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2052,"Cawas, Joyce Del Rosario",PHILHEALTH,"Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+180419,"Rivadelo, Rosemary Ann Adawag",Hemodialysis,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0604127,"Nieva, Ma Khristina L",Unionbank,Concessionaire,"Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+OS00-0155,"Flores, Poalua Anthonette Ybera","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,no,no
+0000-2043,"Alcuriza, Mary Grace Valdez","St. Arnold","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2042,"Duterte, Menchu Dacara",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+T000-0208,"Cruz, Rosana Villion","Physical Therapy and Rehabilitation","Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2041,"Talicop, Analisah Mansawi",OPS/ER,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2040,"Dupet, Jian Marco Peregrino","Operating Room","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,yes,yes
+0000-2039,"Santos, Maribel Ocuaman",Reliever,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2037,"Clarito, Joy Camille Ulan","St. Anthony","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-2035,"Horlina, Maria Kimberly Garcia",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2032,"Moreno, Kreanne Kathryll Evaristo",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2045,"Cawas, Jelleen Del Rosario","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2046,"Zurbano, Ma. Krizzia Manzanilla","Quality, Systems & Information Management","Office of the President","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2077,"Ciego, Annaliza Bartolome","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2048,"Buncad, Rachel Santos","St. Martin","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2051,"Fabon, John Anthony Velarde","Business Center","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+SGEBMET-003,"Garcia, David Jr. Dela Cruz",Biomedical,"Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+SGEBMET-002,"Dela Cruz, Rouell Salazar",Biomedical,"Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2053,"Clemente, Victorino Jr. ",PHILHEALTH,"Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+03-2018-05,"Enriquez, Leah Carpio","Cakes &amp; Bakes",Concessionaire,"Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+03-2018-06,"Pura, Khyrizza Joyce Lacson","Cakes &amp; Bakes",Concessionaire,"Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2056,"GARCIA, RAYMOND LOUIE LETARGO","Blessed Josepha","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-2057,"PADILLA, ELAINE LEONICO","Blessed Josepha","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes
+0000-2059,"BELTRAN, ELVIS MORE","Blessed Josepha","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2061,"CASIA, MA. CHERRY ANN LAVA",IMCU/NICU,"Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2062,"MAMALATEO, MARITES FACTORAN","St. Therese","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2063,"TORION, GRETCHEN LASTRA","St. Arnold","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+T000-0209,"TAGANA, MIKEE MANCIA",Laboratory,"Ancillary Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+T000-0210,"SUSTITUEDO, DERWIN ARCENAL",Laboratory,"Ancillary Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+SGEADMIN-031,"Aguas, Xena Celestial",Biomedical,"Facilities Development & Management Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2066,"RETUERMA, JONASAN CILLAN","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2071,"CIPRIANO, REGINA MAE VIKTORIA LORENZO",Pharmacy,"Pharmacy Services","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2073,"Enriquez, Cuiaralyn Silvano","Central Stores","Finance Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2074,"Bolivar, Diana Rose Tarriela",Hemodialysis,"Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,yes,yes,no
+0000-2079,"Sakkam, Rasidin Bangsil",Pulmonary,"Ancillary Services Division","Without Any Symptom","on leave",no,no,no,no,no,no,,no,no,yes
+0000-2080,"Tena, Niesa Buerano","GENERAL ACCOUNTING","Finance Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2081,"Gallo, Mary Grace Lapitan","St. Arnold","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2082,"Rances, Jeff Ramboyong","St. Arnold","Nursing Services Division","Without Any Symptom","on restday",no,no,no,no,no,no,,no,no,no
+0000-2085,"Dadivas, Diosa Roxanne Flores","St. Anthony","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+0000-2091,"Tadeo, January Anne Amburgo","St. Anthony","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,no
+2020042134,"CONTE, JESSICA RENDON","Blessed Josepha","Nursing Services Division","Without Any Symptom","on duty",no,no,no,no,no,no,,no,no,yes

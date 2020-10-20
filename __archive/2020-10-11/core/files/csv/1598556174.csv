@@ -1,0 +1,25 @@
+"Our Lady of Lourdes Hospital"
+"E-Triage Survey"
+"'August 28, 2020"
+
+"Employee No","Employee Name",Department,Division,Summary,"What is your working schedule today?","In the past two (2) weeks did you experience Cough?","In the past two (2) weeks did you experience Shortness of breath?","In the past two (2) weeks did you experience Colds?","In the past two (2) weeks did you experience Throat pain?","In the past two (2) weeks did you experience Influenza-like symptoms (headache, muscle and joint pains, diarrhea, lack of smell or taste)?","In the past two (2) weeks did you experience any Fever with a temperature of 37.5&deg;C or more?","Date of onset of symptoms stated previously?  *Note: Please leave this question blank if you didn't have any symptoms","Do you have a history of COVID-19 infection?","Are there any member of your household that diagnosed with COVID-19?","In the past 2 weeks, did you have any exposure to someone who is confirmed to be COVID-19 (+)?"
+0000-1042,"ALFABETE, ALMIRA OLEDAN",Pulmonary,"Ancillary Services Division","With Symptoms","on duty",no,no,yes,no,no,no,,no,no,no
+0000-1632,"CALIXTRO, CLAUDINE NEGRE","Neurophysiology Center","Ancillary Services Division","With Symptoms","on duty",no,no,no,no,yes,no,2020-08-28,no,no,yes
+0000-1710,"CALLORINA, JANINE DE GUZMAN",OPS/ER,"Nursing Services Division","With Symptoms","on duty",no,no,yes,no,yes,no,2020-08-09,yes,no,no
+0000-1108,"CANO, MARY ANN ISABEL BIO","Quality, Systems & Information Management","Office of the President","With Symptoms","on leave",no,no,no,no,yes,no,2020-08-26,no,no,no
+0000-1709,"DATU, MARY JOY CABALLES","St. Anne","Nursing Services Division","With Symptoms","on leave",yes,no,no,no,no,no,2020-08-23,no,no,yes
+0000-1913,"GERELLA, MARIA CARMELA REYES","Physical Therapy and Rehabilitation","Ancillary Services Division","With Symptoms","on duty",no,no,no,no,yes,no,2020-08-19,no,no,no
+0000-1636,"LAZAR, ALVIN CADINONG","Infection Control","Medical Services Division","With Symptoms","on duty",yes,no,no,no,no,no,,no,no,no
+0000-1404,"NAIN, AMEERA ADJAWALI",Pulmonary,"Ancillary Services Division","With Symptoms","on duty",no,no,yes,no,yes,yes,2020-08-23,no,no,yes
+0000-1764,"PADER, JR., RODOLFO GALANZA","GENERAL ACCOUNTING","Finance Division","With Symptoms","on duty",yes,no,no,no,no,no,,no,no,no
+0000-1728,"REUTEREZ, KENNETH GERUNDA",Radiology,"Ancillary Services Division","With Symptoms","on leave",no,no,no,no,yes,no,2020-08-22,yes,no,yes
+0000-1254,"SALAZAR, RYAN NEAL TOPACIO",OPS/ER,"Nursing Services Division","With Symptoms","on duty",no,no,no,yes,yes,no,2020-08-07,yes,no,no
+0000-0049,"SOLOMON, CRESTI RAFOL","Neurophysiology Center","Ancillary Services Division","With Symptoms","on restday",no,no,no,no,no,yes,2020-08-22,no,no,yes
+0000-0992,"TEMPLONUEVO, KARLA LOUISE BUSTOS",Pulmonary,"Ancillary Services Division","With Symptoms","on duty",no,no,yes,yes,no,no,,no,no,no
+0000-1662,"TIBURCIO, MARIA ANGEL BELDIA","St. Vincent","Nursing Services Division","With Symptoms","on leave",yes,no,no,no,no,yes,2020-08-13,no,no,no
+0000-0516,"TUBLE, EUGELYN GEMAO","Central Stores","Finance Division","With Symptoms","on duty",yes,no,yes,no,yes,no,2020-08-06,no,no,no
+129076,"Dollete, Martha Camille Fontanilla",Consultant,Doctors,"With Symptoms","on duty",no,no,no,yes,no,no,2020-08-22,no,no,no
+0000-2028,"CUA, JEREMIAH VASQUEZ",OPS/ER,"Nursing Services Division","With Symptoms","on duty",no,no,no,no,yes,no,,no,no,no
+0000-2033,"Alamia, Nafi Abubakar",Pulmonary,"Ancillary Services Division","With Symptoms","on duty",no,no,yes,no,no,no,,no,no,yes
+0000-2049,"Cunanan, May Bernadette De Guzman","St. Martin","Nursing Services Division","With Symptoms","on duty",yes,no,yes,yes,yes,yes,,no,no,yes
+0000-2057,"PADILLA, ELAINE LEONICO",Reliever,"Nursing Services Division","With Symptoms","on duty",no,no,no,no,yes,no,2020-08-19,no,no,no

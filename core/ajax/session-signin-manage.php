@@ -3,6 +3,10 @@
 require '../php/_autoload.php';
 require '../model/_autoload.php';
 
+// MPDF Aliases
+use \Mpdf\Mpdf;
+use \Mpdf\HTMLParserMode;
+
 // JSON Response
 $response = array(
     "success" => 'success',
@@ -160,6 +164,89 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
                 ));
 
             } else {
+                // Generate Gate Pass PDF
+                $employee = Employee::getByEmployeeNo($employeeId -> value);
+                $employeeNo = Employee::show($employee[0]['PK_employee']);
+
+                $file = array(
+                    "path" => __DIR__ . '/../files/pdf/',
+                    "file" => date('Y-m-d') . "-" . $employeeNo['employeeNo'],
+                    "weblink" => $_SERVER['PHP_SELF'] . '/../../files/pdf/' . date('Y-m-d') . "-" . $employeeNo['employeeNo'] . '.pdf'
+                );
+
+                if (!file_exists($file['path'] . $file['file'] . '.pdf')) {
+                    $pdfObj = new Mpdf([
+                        'tempDir' => $file['path']
+                    ]);
+                    $cssFiles = array(
+                        // 'template' => file_get_contents(__DIR__ . '/../../vendor/admin4b/css/admin4b.min.css'),
+                        "custom" => file_get_contents(__DIR__ . '/../css/pdf-template-style.css')
+                    );
+    
+                    // Day of the Week
+                    $day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                    // Employee Name
+                    $middleInitial = (!is_null($employeeNo['middleName']) || !empty($employeeNo['middleName']))
+                        ? substr($employeeNo['middleName'], 0, 1) . '.'
+                        : '';
+                    $employeeName = $employeeNo['firstName'] . ' ' . $middleInitial .  ' ' . $employeeNo['lastName'];
+                    // Department
+                    $department = MscDepartment::show($employeeNo['FK_mscDepartment']);
+                    $department = $department['description'];
+                    // Division
+                    $division = MscDivision::show($employeeNo['FK_mscDivision']);
+                    $division = $division['description'];
+    
+                    // Health Status
+                    $healthStatus = QuestionSession::getSessionByEmpDate(array(
+                        "questionMstrId" => $questionMstrId -> value,
+                        "employeeId" => $employeeNo['PK_employee'],
+                        "sessionDate" => array(
+                            'start' => date('Y-m-d') . ' 00:00:00',
+                            'end' => date('Y-m-d') . ' 23:59:59'
+                        )
+                    ));
+                    // die(var_dump($healthStatus));
+                    $color = 'green';
+                    if (intval($healthStatus['totalRate']) > 0) $color = 'red';
+                    $healthStatus = "<span style='color:{$color}'>{$healthStatus['remarks']}</span>";
+    
+                    $html = '
+                        <div class="row">
+                            <div class="col-6 text-left">
+                                ' . date('Ymd') . '-' . $employeeNo['employeeNo'] . '
+                            </div>
+                            <div class="col-6 text-right">
+                                ' . $day[date('w')] . date(', F d, Y') . '
+                            </div>
+                        </div>
+                        <div class="row header">
+                            <div class="col-12 logo-container text-center">
+                                <img src="../img/ollh-logo.gif" alt="ollh-logo" style="width: 8%;">
+                            </div>
+                            <div class="col-12 header-text text-center">
+                                Our Lady of Lourdes Hospital <br>
+                                eTriage Hospital Pass
+                            </div>
+                        </div>
+    
+                        <div class="row text-center header">
+                            <div class="col-12 header-text margin-top">Health Declaration Status : </div>
+                            <div class="col-12">
+                                <h2 class="uppercase health-status">' . $healthStatus . '</h2>
+                            </div>
+                            <div class="col-12 uppercase"><b>' . $employeeNo['employeeNo'] . ' &minus; ' . $employeeName . '</b></div>
+                            <div class="col-12">' . $department . '</div>
+                            <div class="col-12">' . $division . '</div>
+                        </div>
+                    ';
+                    // PDF File Creation
+                    $file['path'] = $file['path'] . $file['file'] . '.pdf';
+                    $pdfObj->WriteHTML($cssFiles['custom'], HTMLParserMode::HEADER_CSS);
+                    $pdfObj->WriteHTML($html, HTMLParserMode::HTML_BODY);
+                    $pdfObj->Output($file['path'], 'F');
+                }
+
                 // Set success to fail to prevent adding multiple no of event at html form
                 $response['success'] = 'failed';
                 $response['contentType'] = 'modal';
@@ -167,6 +254,8 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
                     '<div class="row text-center">
                         <h2 class="header capitalize col-12">Survey already taken</h2>
                         <p class="para-text col-12">You have already finished taking the survey today. <br> Please come back again tommorow.</p>
+
+                        <p class="para-text col-10 offset-1">Wanted to download your latest Hospital Pass? Please click <a target="_blank" href="' . $file['weblink'] . '">here</a>.</p>
                     </div>', 
                     array(
                         "trasnType" => 'error',

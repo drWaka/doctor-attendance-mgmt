@@ -1,0 +1,36 @@
+"Our Lady of Lourdes Hospital"
+"E-Triage Survey"
+"'August 16, 2020"
+
+"Employee No","Employee Name",Department,Division,Summary,"What is your working schedule today?","In the past two (2) weeks did you experience Cough?","In the past two (2) weeks did you experience Shortness of breath?","In the past two (2) weeks did you experience Colds?","In the past two (2) weeks did you experience Throat pain?","In the past two (2) weeks did you experience Influenza-like symptoms (headache, muscle and joint pains, diarrhea, lack of smell or taste)?","In the past two (2) weeks did you experience any Fever with a temperature of 37.5&deg;C or more?","Date of onset of symptoms stated previously?  *Note: Please leave this question blank if you didn't have any symptoms","Do you have a history of COVID-19 infection?","Are there any member of your household that diagnosed with COVID-19?","In the past 2 weeks, did you have any exposure to someone who is confirmed to be COVID-19 (+)?"
+0000-1017,"ABONG, MAFE BARAQUIA","Delivery Room","Nursing Services Division","With Symptoms","on duty",no,no,no,yes,no,no,2020-08-06,no,no,no
+0000-1874,"BALADJAY, NOVEA SEBULLEN","St. Jude","Nursing Services Division","With Symptoms","on leave",yes,no,yes,yes,yes,no,2020-08-13,no,no,yes
+0000-0424,"BAÑARES, JONAH ENCINARES","Central Stores","Finance Division","With Symptoms","on duty",no,no,no,no,yes,no,2020-08-16,no,no,no
+0000-1391,"BOYLES, HERMINIA OLIVEROS","St. Anne","Nursing Services Division","With Symptoms","on duty",no,no,no,yes,yes,no,,no,no,yes
+0000-1401,"CAMINO, RAE JOELLE SIA","Intensive Care Unit","Nursing Services Division","With Symptoms","on leave",yes,no,yes,no,yes,yes,2020-07-29,yes,no,no
+0000-1501,"CAÑETE, DELILAH VERGARA","St. Arnold","Nursing Services Division","With Symptoms","on leave",yes,no,yes,yes,yes,yes,2020-07-31,yes,no,yes
+0000-1479,"CONCEPCION, DEVINE KRIS RODRIGUEZ",PHILHEALTH,"Finance Division","With Symptoms","on duty",no,no,yes,no,no,no,2020-07-21,no,no,no
+0000-1916,"CONCEPCION, JAN CRISSEL MANI",Pulmonary,"Ancillary Services Division","With Symptoms","on duty",no,no,yes,no,no,no,,no,no,no
+0000-0830,"DELA CRUZ, MA. STELLA LOURDES CRUZ",PHILHEALTH,"Finance Division","With Symptoms","on leave",yes,no,no,no,yes,no,2020-07-23,yes,no,no
+0000-0304,"EBIOLA, HUBERT BUAL",Hemodialysis,"Nursing Services Division","With Symptoms","on leave",yes,no,no,no,no,no,,no,no,no
+0000-1192,"GAVILAGA, ISSA MANZANAS","St. Joseph","Nursing Services Division","With Symptoms","on leave",yes,no,yes,no,yes,no,2020-08-09,yes,no,yes
+0000-0541,"GRAVAMEN, JENNIFER ALLEN EUSEBIO","Nursing Office","Nursing Services Division","With Symptoms","on leave",no,no,no,yes,yes,no,2020-08-13,no,no,no
+0000-1844,"JIMENEZ, JOELLA JEAN BAUTISTA",Pharmacy,"Pharmacy Services","With Symptoms","on duty",no,no,no,yes,yes,yes,2020-08-04,no,no,no
+0000-0602,"OSMEÑA, FREDERICK TAN","Physical Therapy and Rehabilitation","Ancillary Services Division","With Symptoms","on restday",yes,no,no,no,no,no,2020-07-20,yes,yes,no
+0000-1454,"PAR, REENA MAE  DELOS REYES","St. Jude","Nursing Services Division","With Symptoms","on leave",yes,no,yes,yes,yes,yes,2020-08-11,no,no,yes
+0000-1062,"PARTOS, GRACIEL COMPAY","St. Arnold","Nursing Services Division","With Symptoms","on leave",no,no,no,yes,yes,no,2020-08-03,no,no,yes
+0000-0129,"PLASABAS, CHARMAINE CONSUL","St. Jude","Nursing Services Division","With Symptoms","on leave",no,no,no,yes,yes,yes,2020-08-13,no,no,yes
+0000-1831,"PURISIMA, RIZA NERWIN DE LEON","St. Jude","Nursing Services Division","With Symptoms","on leave",yes,no,yes,yes,yes,no,2020-08-13,no,yes,yes
+0000-1717,"RAMOS, JOHN BENEDICT DIAZ","Information Technology Services","Office of the President","With Symptoms","on restday",no,yes,no,no,no,no,,no,no,no
+0000-1728,"REUTEREZ, KENNETH GERUNDA",Radiology,"Ancillary Services Division","With Symptoms","on leave",no,no,yes,yes,yes,no,2020-08-12,yes,yes,yes
+0000-1571,"SALIGUMBA, LOUISE BELLE PINTOR",Hemodialysis,"Nursing Services Division","With Symptoms","on duty",no,no,yes,no,no,no,2020-07-22,no,no,yes
+0000-0005,"SEÑA, EILYN PENTINIO",Pharmacy,"Pharmacy Services","With Symptoms","on restday",no,no,no,no,yes,no,2020-08-14,no,no,no
+0000-1751,"SUAREZ, YANCY LAUGANO","Information Technology Services","Office of the President","With Symptoms","on restday",yes,no,no,yes,no,no,2020-08-13,no,no,no
+0000-1662,"TIBURCIO, MARIA ANGEL BELDIA","St. Vincent","Nursing Services Division","With Symptoms","on leave",yes,no,no,no,no,yes,2020-08-13,no,no,no
+0000-1840,"VENTIC, FLORIEBELLE TAGORDA","St. Martin","Nursing Services Division","With Symptoms","on leave",no,no,yes,no,yes,no,2020-08-01,no,no,no
+0000-0958,"VILLARIÑA, DIANNE CABANTOG","Delivery Room","Nursing Services Division","With Symptoms","on leave",no,no,no,yes,yes,yes,2020-08-08,no,no,no
+120274,"Luna, Katrina De Castro",Consultant,Doctors,"With Symptoms","on restday",no,no,no,yes,no,no,2020-08-06,no,no,no
+136488,"Villanueva, Ma. Katrina ",Resident,Doctors,"With Symptoms","on duty",no,no,no,yes,no,no,2020-08-12,no,no,yes
+190118,"Lanzarrote, Charmine Latorre",PHILHEALTH,"Finance Division","With Symptoms","on leave",yes,yes,no,no,no,no,2020-08-09,no,no,no
+OS00-0155,"Flores, Poalua Anthonette Ybera","Quality, Systems & Information Management","Office of the President","With Symptoms","on leave",no,no,no,no,yes,no,2020-07-22,yes,no,yes
+0000-2033,"Alamia, Nafi Abubakar",Pulmonary,"Ancillary Services Division","With Symptoms","on duty",no,no,yes,yes,no,no,,no,no,yes

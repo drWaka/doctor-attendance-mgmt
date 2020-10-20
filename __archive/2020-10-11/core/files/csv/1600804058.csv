@@ -1,0 +1,16 @@
+"Our Lady of Lourdes Hospital"
+"E-Triage Survey"
+"'September 23, 2020"
+
+"Employee No","Employee Name",Department,Division,Summary,"What is your working schedule today?","In the past two (2) weeks did you experience Cough?","In the past two (2) weeks did you experience Shortness of breath?","In the past two (2) weeks did you experience Colds?","In the past two (2) weeks did you experience Throat pain?","In the past two (2) weeks did you experience Influenza-like symptoms (headache, muscle and joint pains, diarrhea, lack of smell or taste)?","In the past two (2) weeks did you experience any Fever with a temperature of 37.5&deg;C or more?","Date of onset of symptoms stated previously?  *Note: Please leave this question blank if you didn't have any symptoms","Do you have a history of COVID-19 infection?","Are there any member of your household that diagnosed with COVID-19?","In the past 2 weeks, did you have any exposure to someone who is confirmed to be COVID-19 (+)?"
+0000-1915,"BERCELES, JEHAN PASCUA","Quality, Systems & Information Management","Office of the President","With Symptoms","on duty",no,no,no,no,yes,no,2020-09-23,no,no,no
+0000-1108,"CANO, MARY ANN ISABEL BIO","Quality, Systems & Information Management","Office of the President","With Symptoms","on restday",no,no,no,no,no,yes,2020-09-21,no,no,no
+0000-1397,"CONCEPCION, MA. LUISA JANE RAGADIO","Operating Room","Nursing Services Division","With Symptoms","on leave",yes,no,yes,yes,yes,yes,2020-09-15,no,no,no
+0000-1800,"DACASIN, KLAUDETH MORIEL ANGELES",PAYROLL,"Finance Division","With Symptoms","on duty",no,no,no,no,yes,no,2020-09-22,no,no,no
+0000-1691,"DELA CRUZ, ANNALYN JUSTIMBASTE",OPS/ER,"Nursing Services Division","With Symptoms","on restday",no,no,no,yes,no,no,2020-09-19,no,no,no
+0000-0749,"LUMBAO, JERRYLYN BONITA",Purchasing,"Finance Division","With Symptoms","on duty",no,no,no,yes,no,no,2020-09-08,no,no,no
+0000-1519,"MASAGANDA, JOHNCARLO ARELLANO",Biomedical,"Facilities Development & Management Division","With Symptoms","on duty",no,no,no,no,yes,no,2020-09-14,no,no,no
+0000-0447,"NADURATA, CHRYSLER RIVERA","Information Technology Services","Office of the President","With Symptoms","on duty",no,no,yes,no,no,no,,no,no,no
+0000-1517,"SANTOS, AARON PAUL MINA",Radiology,"Ancillary Services Division","With Symptoms","on duty",yes,no,no,no,no,no,,yes,no,no
+0000-1311,"SANTOS, KARMELA INTOY",BILLING,"Finance Division","With Symptoms","on duty",no,no,no,no,yes,no,,yes,no,no
+128942,"Aquino, Arvin Paulo S",Resident,Doctors,"With Symptoms","on duty",no,no,no,no,no,yes,2020-09-14,no,no,no
