@@ -65,8 +65,8 @@ $(document).ready(function(){
       setTimeout(() => {
         pageConfig['page'] = 1;
         loadRecord();
-      }, 200);
-    }, 200);
+      }, 500);
+    }, 500);
   });
 
   $(document).on('change', departmentElem['report'], function() {
@@ -105,8 +105,8 @@ $(document).ready(function(){
         setTimeout(() => {
           pageConfig['page'] = 1;
           loadRecord();
-        }, 200);
-      }, 200);
+        }, 500);
+      }, 500);
   });
 
   $(document).on('change', departmentElem['modal'], function() {

@@ -13,6 +13,14 @@ class QuestionSession {
             VALUES ('{$details['questionMstrId']}', '{$details['employeeId']}', '{$currentDatetime}')
         ";
 
+        $hospitalPassMailingStatus = SystemFeatures::isFeatureEnabled('MAIL_HOSP_PASS');
+        if ($hospitalPassMailingStatus == false) {
+            $query = "
+                INSERT INTO questionsession (FK_questionMstr, FK_employee, sessionDate, isMailed)
+                VALUES ('{$details['questionMstrId']}', '{$details['employeeId']}', '{$currentDatetime}', 1)
+            ";
+        }
+
         $response = array(
             "errorMessage" => '',
             "hasError" => 0

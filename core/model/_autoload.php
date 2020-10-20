@@ -17,3 +17,5 @@
     require_once 'UserAccount.php';
     require_once 'UserMstr.php';
     require_once 'UserType.php';
+
+    require_once 'SystemFeatures.php';
