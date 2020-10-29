@@ -215,7 +215,7 @@ if (isset($_POST['employeeId'])) {
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Email : </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="email" placeholder="Email" value="' . $employee['email'] . '">
+                                        <input type="text" class="form-control" name="email" placeholder="Email" value="' . utf8_encode($employee['email']) . '">
                                     </div>
                                 </div>
                             </div>
@@ -223,7 +223,7 @@ if (isset($_POST['employeeId'])) {
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Street, Zone, Barangay : </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="addressLine1" placeholder="Street, Zone, Barangay" value="' . $employee['AddressLine1'] . '">
+                                        <input type="text" class="form-control" name="addressLine1" placeholder="Street, Zone, Barangay" value="' . utf8_encode($employee['AddressLine1']) . '">
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +231,7 @@ if (isset($_POST['employeeId'])) {
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">City : </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="addressLine2" placeholder="City" value="' . $employee['AddressLine2'] . '">
+                                        <input type="text" class="form-control" name="addressLine2" placeholder="City" value="' . utf8_encode($employee['AddressLine2']) . '">
                                     </div>
                                 </div>
                             </div>
@@ -239,7 +239,7 @@ if (isset($_POST['employeeId'])) {
                                 <div class="row">
                                     <label for="" class="text-left control-label col-sm-12">Province : </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="addressLine3" placeholder="Province" value="' . $employee['AddressLine3'] . '">
+                                        <input type="text" class="form-control" name="addressLine3" placeholder="Province" value="' . utf8_encode($employee['AddressLine3']) . '">
                                     </div>
                                 </div>
                             </div>

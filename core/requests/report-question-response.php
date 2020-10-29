@@ -87,6 +87,7 @@ if (
                 WHERE xa.FK_employee = a.PK_employee
                     AND xa.FK_questionMstr = {$questionMstrId -> value}
                     AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
+                    AND xa.isDone = 1
             ), 'No Response') AS summary";
             foreach($questions as $question) {
                 $csvContent[4][count($csvContent[4])] = strip_tags($question['question']);
@@ -100,6 +101,7 @@ if (
                         AND xa.FK_questionMstr = {$questionMstrId -> value}
                         AND xb.FK_questionDtl = {$question['PK_questiondtl']}
                         AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
+                        AND xa.isDone = 1
                 ), '-') AS question{$question['PK_questiondtl']}";
             }
         }
@@ -141,6 +143,7 @@ if (
                     WHERE xa.FK_employee = a.PK_employee
                         AND xa.FK_questionMstr = {$questionMstrId -> value}
                         AND xa.sessionDate BETWEEN \"{$sessionDate -> value} 00:00:00\" AND \"{$sessionDate -> value} 23:59:59\"
+                        AND xa.isDone = 1
                 ), 'No Response')) = '{$sessionRating -> value}'
             ";
         }

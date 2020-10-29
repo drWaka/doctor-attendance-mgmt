@@ -2,13 +2,13 @@
 
 // Application Database Connection
 $host = [
-    "survey" => 'localhost'
+    "survey" => '103.3.60.121'
 ];
 $username = [
-    "survey" => 'root'
+    "survey" => 'its-ollh'
 ];
 $password = [
-    "survey" => ''
+    "survey" => 'OLLH@Manil@70'
 ];
 $database = [
     "survey" => 'ollh_esurvey'

@@ -52,20 +52,44 @@ class QuestionSession {
 
     }
 
-    public static function getSessionByEmpDate($details) {
-        $query = "
-            SELECT *
-            FROM questionsession AS a
-            WHERE a.FK_questionMstr = '{$details['questionMstrId']}'
-                AND a.FK_employee = '{$details['employeeId']}'
-                AND a.sessionDate BETWEEN '{$details['sessionDate']['start']}' AND '{$details['sessionDate']['end']}'
-            LIMIT 1
-        ";
+    public static function filter($filter, $addition = '') {
+        $where = "";
+        if (isset($filter['questionMstrId'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " a.FK_questionMstr = '{$filter['questionMstrId']}' ";
+        }
+        if (isset($filter['employeeId'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " a.FK_employee = '{$filter['employeeId']}' ";
+        }
+        if (isset($filter['isDone'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            $where .= " a.isDone = '{$filter['isDone']}' ";
+        }
+        if (isset($filter['sessionDate'])) {
+            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+            if (isset($filter['sessionDate']['start']) && isset($filter['sessionDate']['end'])) {
+                $where .= " a.sessionDate BETWEEN '{$filter['sessionDate']['start']}' AND '{$filter['sessionDate']['end']}'";
+            } else {
+                $where .= " a.sessionDate = '{$filter['sessionDate']}' ";
+            }
+        }
 
+        $query = "SELECT * FROM questionsession AS a {$where} {$addition}";
+        // die($query);
         $result = $GLOBALS['connection'] -> query($query);
         if ($result -> num_rows > 0) {
             $record =  $result -> fetch_all(MYSQLI_ASSOC);
-            return $record[0];
+            return $record;
+        }
+
+        return [];
+    }
+
+    public static function getSessionByEmpDate($details) {
+        $sessionRecord = self::filter($details, 'LIMIT 1');
+        if (count($sessionRecord) > 0) {
+            return $sessionRecord[0];
         }
 
         return [];
@@ -110,7 +134,8 @@ class QuestionSession {
             UPDATE questionsession
             SET isDone = 1,
                 totalRate = '{$details['totalRate']}',
-                remarks = '{$details['remarks']}'
+                remarks = '{$details['remarks']}',
+                finalizedDate = CURRENT_TIMESTAMP
             WHERE PK_questionSession = '{$details['questionSessionId']}'
         ";
         // die($query);

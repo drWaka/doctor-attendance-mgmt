@@ -122,7 +122,8 @@ if (
                     "sessionDate" => array(
                         "start" => $sessionDate -> value . " 00:00:00",
                         "end" => $sessionDate -> value . " " . $cutOffTime -> value
-                    )
+                    ),
+                    "isDone" => '1'
                 ));
 
                 $middleInitial = !empty($employeeRecord['middleName'])
