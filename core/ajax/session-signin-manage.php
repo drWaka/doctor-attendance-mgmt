@@ -166,7 +166,7 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
             } else {
                 // Is Generate Hospital Pass Feature is Enabled
                 $hospitalPassMessage = '';
-                $hospitalPassMailingStatus = SystemFeatures::isFeatureEnabled('MAIL_HOSP_PASS');
+                $hospitalPassMailingStatus = SystemFeatures::isFeatureEnabled('GEN_HOSP_PASS');
 
                 if ($hospitalPassMailingStatus == true) {
                     // Generate Gate Pass PDF
