@@ -178,6 +178,13 @@ if (
                     ";
                     $counter++;
                 }
+                
+                // Is Generate Hospital Pass Feature Enabled
+                $hospitalPassMailingStatus = SystemFeatures::isFeatureEnabled('GEN_HOSP_PASS');
+                $generatePassBtnClass = '';
+                if ($hospitalPassMailingStatus == true) {
+                    $generatePassBtnClass = 'gen-hosp-pass-btn';
+                }
 
                 $response['contentType'] = 'dynamic-content';
                 $response['content']['form'] = "
@@ -206,7 +213,7 @@ if (
                             >Back</button>
                         </div>
                         <div class='col-4 text-center'>
-                            <button type='button' class='btn btn-info w-100 transaction-button'
+                            <button type='button' class='btn btn-info w-100 transaction-button {$generatePassBtnClass}'
                                 tran-type='async-form'
                                 tran-link='core/ajax/survey-question-finalize.php'
                                 tran-data='{

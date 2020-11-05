@@ -222,7 +222,7 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
                                     ' . date('Ymd') . '-' . $employeeNo['employeeNo'] . '
                                 </div>
                                 <div class="col-6 text-right">
-                                    ' . $day[date('w')] . date(', F d, Y') . '
+                                    <b><u>' . $day[date('w')] . date(', F d, Y') . '</u></b>
                                 </div>
                             </div>
                             <div class="row header">
@@ -238,9 +238,9 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
                             <div class="row text-center header">
                                 <div class="col-12 header-text margin-top">Health Declaration Status : </div>
                                 <div class="col-12">
-                                    <h2 class="uppercase health-status">' . $healthStatus . '</h2>
+                                    <h2 class="uppercase health-status first">' . $healthStatus . '</h2>
+                                    <h2 class="health-status"><b>' . $employeeNo['employeeNo'] . ' &minus; ' . $employeeName . '</b></h2>
                                 </div>
-                                <div class="col-12 uppercase"><b>' . $employeeNo['employeeNo'] . ' &minus; ' . $employeeName . '</b></div>
                                 <div class="col-12">' . $department . '</div>
                                 <div class="col-12">' . $division . '</div>
                             </div>
