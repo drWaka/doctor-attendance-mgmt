@@ -119,6 +119,12 @@
         </div>
     </div>
     <?php require_once 'includes/date-picker-modal.php'; ?>
+
+    <!-- Generation of Hospital Pass Form -->
+    <form method="post" action="hospital-pass.php" id="hospital-pass-form" style="display:none" target="_blank">
+        <input type="text" name="employeeId" hidden>
+        <input type="text" name="sessionId" hidden>
+    </form>
 </body>
 <?php require_once 'includes/js-init.php'; ?>
 <script src="core/js/date-picker-modal-1.0.0.js"></script>
@@ -147,6 +153,17 @@
             console.log(data);
 
             send_request_asycn(link, 'POST', data, container, type);
+        });
+
+         // Hospital Pass Generation Event
+        $(document).on('click', '.gen-hosp-pass-btn', function(){
+            let hospitalPassForm = document.querySelector('#hospital-pass-form');
+            let hospitalPassFormInputs = hospitalPassForm.querySelectorAll('input');
+            let inputValues = JSON.parse($(this).attr('tran-data'));
+            hospitalPassFormInputs[0].value = inputValues['employeeId'];
+            hospitalPassFormInputs[1].value = inputValues['sessionId'];
+
+            hospitalPassForm.submit();
         });
     });
 </script>
