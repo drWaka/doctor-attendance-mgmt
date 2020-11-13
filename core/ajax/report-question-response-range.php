@@ -122,6 +122,7 @@ if (
         $response['content']['total'] = $employeeRow[0]['count'];
         
         $executionQuery = $querySelect['select'] . $employeeQuery;
+        die($executionQuery);
         $offset = ((intval($currentPage -> value) - 1) * $pageLimit -> value);
         $executionQuery .= "LIMIT {$pageLimit -> value} OFFSET {$offset}";
         $employeeResult = $connection -> query($executionQuery);

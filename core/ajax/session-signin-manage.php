@@ -215,14 +215,13 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
                         $color = 'green';
                         if (intval($healthStatus['totalRate']) > 0) $color = 'red';
                         $healthStatus = "<span style='color:{$color}'>{$healthStatus['remarks']}</span>";
-        
+                        
+                        $validityDate = new DateTime(date('Y-m-d'));
+                        $validityDate -> add(new DateInterval('P1D'));
                         $html = '
                             <div class="row">
                                 <div class="col-6 text-left">
-                                    ' . date('Ymd') . '-' . $employeeNo['employeeNo'] . '
-                                </div>
-                                <div class="col-6 text-right">
-                                    <b><u>' . $day[date('w')] . date(', F d, Y') . '</u></b>
+                                    
                                 </div>
                             </div>
                             <div class="row header">
@@ -234,16 +233,22 @@ if (isset($_POST['questionMstrId']) && isset($_POST['employeeId']) && isset($_PO
                                     eTriage Hospital Pass
                                 </div>
                             </div>
-        
+            
                             <div class="row text-center header">
                                 <div class="col-12 header-text margin-top">Health Declaration Status : </div>
                                 <div class="col-12">
-                                    <h2 class="uppercase health-status first">' . $healthStatus . '</h2>
+                                    <h2 class="uppercase health-status first">
+                                        ' . $healthStatus . '<br>
+                                        <small>Valid on:</small> <small style="color: blue">' . $validityDate -> format('l') . $validityDate -> format(', F d, Y') . '</small>
+                                    </h2>
                                     <h2 class="health-status"><b>' . $employeeNo['employeeNo'] . ' &minus; ' . $employeeName . '</b></h2>
                                 </div>
                                 <div class="col-12">' . $department . '</div>
                                 <div class="col-12">' . $division . '</div>
                             </div>
+            
+                            <p class="help-text text-center">For inquiries and concerns please email us at compliance@ollh.ph</p>
+                            <p class="help-text text-center"><b>Hospital Pass # :</b> ' . date('Ymd') . '-' . $employeeNo['employeeNo'] . '</p>
                         ';
                         // PDF File Creation
                         $file['path'] = $file['path'] . $file['file'] . '.pdf';

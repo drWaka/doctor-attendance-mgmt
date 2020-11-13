@@ -28,6 +28,15 @@ body {
     margin-top: 15px;
 }
 
+small {
+    font-size: 60%;
+}
+
+p.help-text {
+    font-size: 13px;
+    margin-top: 20px;
+}
+
 /* Yancy Framework */
 
 /* Grid Layout Style */

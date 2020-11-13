@@ -60,7 +60,7 @@ if (isset($_POST['questionMstrId'])) {
                 <div class='form-row'>
                     <label class='col-sm-8 offset-sm-2' for='employeeId'>Employee ID: </label>
                     <div class='col-sm-8 offset-sm-2'>
-                        <input type='text' name='employeeId' id='employeeId' class='form-control' placeholder='0000-0000'/>
+                        <input type='text' name='employeeId' id='employeeId' class='form-control' placeholder='0000-0000' value='0000-'/>
                     </div>
                 </div>
                 <div class='form-row'>

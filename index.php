@@ -157,13 +157,15 @@
 
          // Hospital Pass Generation Event
         $(document).on('click', '.gen-hosp-pass-btn', function(){
-            let hospitalPassForm = document.querySelector('#hospital-pass-form');
-            let hospitalPassFormInputs = hospitalPassForm.querySelectorAll('input');
-            let inputValues = JSON.parse($(this).attr('tran-data'));
-            hospitalPassFormInputs[0].value = inputValues['employeeId'];
-            hospitalPassFormInputs[1].value = inputValues['sessionId'];
+            setTimeout(() => {
+                let hospitalPassForm = document.querySelector('#hospital-pass-form');
+                let hospitalPassFormInputs = hospitalPassForm.querySelectorAll('input');
+                let inputValues = JSON.parse($(this).attr('tran-data'));
+                hospitalPassFormInputs[0].value = inputValues['employeeId'];
+                hospitalPassFormInputs[1].value = inputValues['sessionId'];
 
-            hospitalPassForm.submit();
+                hospitalPassForm.submit();
+            }, 3000);
         });
     });
 </script>
