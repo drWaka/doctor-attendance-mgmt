@@ -140,9 +140,10 @@ if (
                 if (count($questionSession) > 0) {
                     $sessionDateVal = date('F d, Y', strtotime($questionSession['sessionDate']));
                     $response['content']['record'] .= "
+                        <td>" . $questionSession['PK_questionSession'] . "</td>
                         <td>{$sessionDateVal}</td>
                         <td>{$questionSession['remarks']}</td>
-                        <td><button class='btn btn-default'><i class='fa fa-eye'></i></button></td>
+                        
                     ";
                 } else {
                     // No Response Summary Found

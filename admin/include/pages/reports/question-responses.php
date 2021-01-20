@@ -133,9 +133,9 @@
         <tr>
             <th>Employee ID</th>
             <th>Employe Name</th>
+            <th>Hospital Pass No.</th>
             <th>Survey Date</th>
             <th>Summary</th>
-            <th>View</th>
         </tr>
         </thead>
         <tbody class="record-container">

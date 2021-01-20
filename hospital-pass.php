@@ -89,12 +89,13 @@ if (
 
             // Health Status
             $healthStatus = QuestionSession::show($sessionId -> value);
+            // die(var_dump($healthStatus));
             $color = 'green';
             if (intval($healthStatus[0]['totalRate']) > 0) $color = 'red';
-            $healthStatus = "<span style='color:{$color}'>{$healthStatus[0]['remarks']}</span>";
+            $hospitalPassStatus = "<span style='color:{$color}'>{$healthStatus[0]['remarks']}</span>";
 
-            $validityDate = new DateTime(date('Y-m-d'));
-            $validityDate -> add(new DateInterval('P1D'));
+            $validityDate = new DateTime(date('Y-m-d', strtotime($healthStatus[0]['sessionDate'])));
+            // $validityDate -> add(new DateInterval('P1D'));
 
             echo '
                 <div class="row">
@@ -116,7 +117,7 @@ if (
                     <div class="col-12 header-text margin-top">Health Declaration Status : </div>
                     <div class="col-12">
                         <h2 class="uppercase health-status first">
-                            ' . $healthStatus . '<br>
+                            ' . $hospitalPassStatus . '<br>
                             <small>Valid on:</small> <small style="color: blue">' . $validityDate -> format('l') . $validityDate -> format(', F d, Y') . '</small>
                         </h2>
                         <h2 class="health-status"><b>' . $employeeNo['employeeNo'] . ' &minus; ' . $employeeName . '</b></h2>
@@ -126,7 +127,7 @@ if (
                 </div>
 
                 <p class="help-text text-center">For inquiries and concerns please email us at compliance@ollh.ph</p>
-                <p class="help-text text-center"><b>Hospital Pass # :</b> ' . date('Ymd') . '-' . $employeeNo['employeeNo'] . '</p>
+                <p class="help-text text-center"><b>Hospital Pass # :</b> ' . $healthStatus[0]['PK_questionSession'] . '</p>
             ';
         } else {
             echo '
