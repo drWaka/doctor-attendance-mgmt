@@ -16,36 +16,17 @@ $response = array(
 
 if (
     isset($_POST['departmentName']) &&
-    isset($_POST['divisionId']) &&
     isset($_POST['pageLimit']) &&
     isset($_POST['currentPage'])
 ) {
     $departmentName = new form_validation($_POST['departmentName'], 'str-int', 'Department Name', false);
-    $divisionId = new form_validation($_POST['divisionId'], 'str-int', 'Division ID', true);
-
     $pageLimit = new form_validation($_POST['pageLimit'], 'int', 'Page Limit', true);
     $currentPage = new form_validation($_POST['currentPage'], 'int', 'Page No', true);
 
-    if ($departmentName -> valid == 1 && $divisionId -> valid == 1 && $pageLimit -> valid == 1 && $currentPage -> valid == 1) {
-        // Validate Division Record
-        if ($divisionId -> value !== 'all') {
-            $division = MscDivision::show($divisionId -> value);
-
-            $divisionId -> valid = 1;
-            $divisionId -> err_msg = 'Division record not found';
-            if (is_array($division)) {
-                if (count($division) > 0) {
-
-                }
-            }
-        }
-    }
-
-    if ($departmentName -> valid == 1 && $divisionId -> valid == 1 && $pageLimit -> valid == 1 && $currentPage -> valid == 1) {
+    if ($departmentName -> valid == 1 && $pageLimit -> valid == 1 && $currentPage -> valid == 1) {
         $filter = array(
             "description" => $departmentName -> value
         );
-        if ($divisionId -> value !== 'all') $filter['divisionId'] = $divisionId -> value;
         $department = MscDepartment::filter($filter);
         if (is_array($department)) {
             $response['content']['total'] = count($department);
@@ -94,8 +75,6 @@ if (
                     $response['content']['record'] .= "
                         <td>{$department[$i]['PK_mscDepartment']}</td>
                         <td>{$department[$i]['department']}</td>
-                        <td>{$department[$i]['division']}</td>
-                        <td class='text-center'>{$recipientManagementBtn}</td>
                         <td class='text-center'>{$dataManagementBtn}</td>
                     ";
                     $response['content']['record'] .= "<tr>";
@@ -112,8 +91,6 @@ if (
         $errorMessage = '';
         if ($departmentName -> valid == 0) {
             $errorMessage = $departmentName -> err_msg;
-        } else if ($divisionId -> valid == 0) {
-            $errorMessage = $divisionId -> err_msg;
         } else if ($pageLimit -> valid == 0) {
             $errorMessage = $pageLimit -> err_msg;
         } else if ($currentPage -> valid == 0) {

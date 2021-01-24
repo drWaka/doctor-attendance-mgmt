@@ -43,7 +43,7 @@
       <div class="row login-header">
         <div class="col-12 text-center">
           <img src="../core/img/ollh-logo.gif" alt="">
-          <h2>E-Survey System <br><small>Our Lady Of Lourdes Hospital</small></h2>
+          <h2><?= $_ENV['APP_NAME'] ?><br><small>Our Lady Of Lourdes Hospital</small></h2>
         </div>
       </div>
       <form class="" action="../core/requests/admin-login.php" method="post" submit-type="synchronous" form-name="admin-login">

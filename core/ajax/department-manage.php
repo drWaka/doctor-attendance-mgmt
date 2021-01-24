@@ -14,18 +14,16 @@ $response = array(
 
 if (
     isset($_POST['departmentId']) && 
-    isset($_POST['description']) && 
-    isset($_POST['divisionId'])
+    isset($_POST['description']) 
 ) {
     $departmentId = new form_validation($_POST['departmentId'], 'str-int', 'Department ID', true);
     $description = new form_validation($_POST['description'], 'str-int', 'Department Name', true);
-    $divisionId = new form_validation($_POST['divisionId'], 'int', 'Division ID', true);
     
     $flags = array(
         'hasError' => 0,
         'isDone' => 0
     );
-    if ($departmentId -> valid == 1 && $description -> valid == 1 && $divisionId -> valid == 1) {
+    if ($departmentId -> valid == 1 && $description -> valid == 1) {
         // Verify if the Employee ID is valid
         $employee = MscDepartment::show($departmentId -> value);
         if (is_null($employee)) {
@@ -36,7 +34,6 @@ if (
         } else {
             $isExists = MscDepartment::checkUnique(array(
                 "description" => $description -> value,
-                "divisionId" => $divisionId -> value,
                 "departmentId" => $departmentId -> value
             ));
 
@@ -47,7 +44,7 @@ if (
         }
     }
 
-    if ($departmentId -> valid == 1 && $description -> valid == 1 && $divisionId -> valid == 1) {
+    if ($departmentId -> valid == 1 && $description -> valid == 1) {
         $isSuccess = true;
         $modalLbl = array(
             "present" => '',
@@ -57,7 +54,6 @@ if (
         $dataContainer = array(
             "departmentId" => $departmentId -> value,
             "description" => $description -> value,
-            "divisionId" => $divisionId -> value
         );
         if ($departmentId -> value == 'new-rec') {
             $modalLbl = array(
@@ -120,25 +116,7 @@ if (
             );
         } else {
             $descriptionErr = new error_handler($description -> err_msg);
-            $divisionIdErr = new error_handler($divisionId -> err_msg);
 
-            $divisionElem = "";
-            $division = MscDivision::index();
-            $divisionElem .= "
-                <select name='divisionId' id='' class='form-control {$divisionIdErr -> error_class}'>
-                    <option value='' style='display:none;'>Select Division</option>
-            ";
-            if (is_array($division)) {
-                if (count($division) > 0) {
-                    foreach($division as $row) {
-                        $selected = ($row['PK_mscdivision'] == $divisionId -> value) 
-                            ? 'selected' 
-                            : '';
-                        $divisionElem .= "<option value='{$row['PK_mscdivision']}' {$selected}>{$row['description']}</option>";
-                    }
-                }
-            }
-            $divisionElem .= "</select>";
             $response['content']['modal'] = modalize(
                 '<div class="row">
                     <div class="col-sm-12">
@@ -158,19 +136,6 @@ if (
                                             <input type="text" class="form-control ' . $descriptionErr -> error_class . '" name="description" placeholder="Department Name" value="' . $description -> value . '">
                                             ' . $descriptionErr -> error_icon . '
                                             ' . $descriptionErr -> error_text . '
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <label for="" class="text-left control-label col-sm-12">Division: </label>
-                                        <div class="form-group col-sm-12">
-                                            ' . $divisionElem . '
-                                            ' . $divisionIdErr -> error_icon . '
-                                            ' . $divisionIdErr -> error_text . '
                                         </div>
                                     </div>
                                 </div>

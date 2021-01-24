@@ -1,3 +1,4 @@
 # Ignore these files
 __archive/
 core/files/
+core/php/.env

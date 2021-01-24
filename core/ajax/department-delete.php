@@ -26,20 +26,9 @@
     }
 
     if ($recordId -> valid == 1) {
-      // Check if still being reference by any Unit Record
-      $employee = MscUnit::getByDepartment($recordId -> value);
-      if (is_array($employee)) {
-        if (count($employee) > 0) {
-          $recordId -> valid = 0;
-          $recordId -> err_msg = 'Department is still being referenced by an unit record';
-        }
-      }
-    }
-
-    if ($recordId -> valid == 1) {
       if (is_numeric($recordId -> value)) {
-        $division = MscDepartment::show($recordId -> value);
-        if (is_null($division)) {
+        $department = MscDepartment::show($recordId -> value);
+        if (is_null($department)) {
           $recordId -> valid = 0;
           $recordId -> err_msg = 'Department Record Not Found';
         }

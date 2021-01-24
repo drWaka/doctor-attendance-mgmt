@@ -1,7 +1,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand navbar-light bg-white">
   <button type="button" class="btn btn-sidebar" data-toggle="sidebar"><i class="icon-menu"></i></button>
-  <div class="navbar-brand">OLLH &minus; eSurvey</div>
+  <div class="navbar-brand">OLLH &minus; <?= $_ENV['APP_SHORT_NAME'] ?></div>
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
       <a href="#" class="nav-link dropdown-toggle capitalize" data-toggle="dropdown">

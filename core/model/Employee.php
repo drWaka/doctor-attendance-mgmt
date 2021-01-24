@@ -19,14 +19,12 @@ class Employee {
                 firstName, middleName, lastName, 
                 birthDate, gender, mobileNo, 
                 AddressLine1, AddressLine2, AddressLine3, 
-                employeeNo, email, FK_mscDivision,
-                FK_mscDepartment, FK_mscUnit
+                employeeNo, email, FK_mscDepartment
             ) VALUES (
                 '{$data['firstName']}', '{$data['middleName']}', '{$data['lastName']}', 
                 '{$data['birthDate']}', '{$data['gender']}', '{$data['mobileNo']}', 
                 '{$data['addressLine1']}', '{$data['addressLine2']}', '{$data['addressLine3']}', 
-                '{$data['employeeNo']}', '{$data['email']}', '{$data['FK_mscDivision']}', 
-                '{$data['FK_mscDepartment']}', '{$data['FK_mscUnit']}'
+                '{$data['employeeNo']}', '{$data['email']}', '{$data['FK_mscDepartment']}'
             )
         ";
         if ($GLOBALS['connection'] -> query($query)) {
@@ -63,16 +61,21 @@ class Employee {
                 AddressLine2 = '{$data['addressLine2']}',
                 AddressLine3 = '{$data['addressLine3']}',                
                 employeeNo = '{$data['employeeNo']}',
-                email = '{$data['email']}',
-                FK_mscDivision = '{$data['FK_mscDivision']}',             
-                FK_mscDepartment = '{$data['FK_mscDepartment']}',
-                FK_mscUnit = '{$data['FK_mscUnit']}'
+                email = '{$data['email']}',             
+                FK_mscDepartment = '{$data['FK_mscDepartment']}'
             WHERE PK_employee = '{$data['PK_employee']}'
         ";
         // die($query);
         if ($GLOBALS['connection'] -> query($query)) {
             return true;
         }
+
+        return false;
+    }
+
+    public static function setInactive($id) {
+        $query = "UPDATE employees SET isDeleted = 1 WHERE PK_employee = '{$id}'";
+        if ($GLOBALS['connection'] -> query($query)) return true;
 
         return false;
     }
@@ -99,21 +102,9 @@ class Employee {
         ));
     }
 
-    public static function getByUnit($unitId) {
-        return self::filter(array(
-            "unitId" => $unitId
-        ));
-    }
-
     public static function getByDepartment($departmentId) {
         return self::filter(array(
             "departmentId" => $departmentId
-        ));
-    }
-
-    public static function getByDivision($divisionId) {
-        return self::filter(array(
-            "divisionId" => $divisionId
         ));
     }
 
@@ -134,20 +125,23 @@ class Employee {
             $where .= " employeeNo = '{$filter['employeeNo']}' ";
         }
 
-        if (isset($filter['unitId'])) {
-            $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " FK_mscUnit = '{$filter['unitId']}' ";
-        }
         if (isset($filter['departmentId'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
             $where .= " FK_mscDepartment = '{$filter['departmentId']}' ";
         }
-        if (isset($filter['divisionId'])) {
+
+        if (!isset($filter['isDeleted'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " FK_mscDivision = '{$filter['divisionId']}' ";
+            $where .= " isDeleted = 0 ";
+        } else {
+            if (!empty($filter['isDeleted'])) {
+                $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+                $where .= " isDeleted = '{$filter['isDeleted']}' ";
+            }
         }
 
         $query = "SELECT * FROM employees {$where}";
+        // die($query);
         $result = $GLOBALS['connection'] -> query($query);
 
         if ($result -> num_rows > 0) {

@@ -1,7 +1,6 @@
 <?php
-  include '../php/connection.php';
-  include '../php/server-side-validation.php';
-  include '../php/generic-functions.php';
+  require '../php/_autoload.php';
+  require '../model/_autoload.php';
 
   // JSON Variables
   $response = array(

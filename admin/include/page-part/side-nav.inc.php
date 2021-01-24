@@ -7,7 +7,7 @@
   
   <div class="sidebar-header">
     <img src="../core/img/ollh-logo.gif" class="user-photo">
-    <p class="username">E-Survey System<br><small>Our Lady Of Lourdes Hospital</small></p>
+    <p class="username"><?= $_ENV['APP_NAME'] ?><br><small>Our Lady Of Lourdes Hospital</small></p>
   </div>
 
   <ul id="sidebar-nav" class="sidebar-nav">
@@ -23,13 +23,11 @@
 
     <li class="sidebar-nav-group <?=isHidden($_SESSION['userType'], ['administrator', 'hrod']) ?>">
         <a href="#respondent-mgmt" class="sidebar-nav-link" data-toggle="collapse">
-            <i class="fa fa-user"></i> Respondent Mgmt.
+            <i class="fa fa-user"></i> Doctor Mgmt.
         </a>
         <ul id="respondent-mgmt" class="collapse" data-parent="#sidebar-nav">
-            <li><a href="respondents.php?pageName=respondents" class="sidebar-nav-link">Respondents</a></li>
-            <li><a href="respondents.php?pageName=division" class="sidebar-nav-link">Division</a></li>
-            <li><a href="respondents.php?pageName=department" class="sidebar-nav-link">Department</a></li>
-            <li><a href="respondents.php?pageName=unit" class="sidebar-nav-link">Unit</a></li>
+            <li><a href="doctor.php?pageName=doctor" class="sidebar-nav-link">Doctor</a></li>
+            <li><a href="doctor.php?pageName=department" class="sidebar-nav-link">Department</a></li>
         </ul>
     </li>
     

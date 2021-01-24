@@ -20,8 +20,7 @@ if (isset($_POST['departmentId'])) {
         // Verify if the Employee ID is valid
         if ($departmentId -> value == 'new-rec') {
             $department = array(
-                "description" => '',
-                "FK_mscDivision" => ''
+                "description" => ''
             );
         } else {
             $department = MscDepartment::show($departmentId -> value);
@@ -34,23 +33,6 @@ if (isset($_POST['departmentId'])) {
     }
 
     if ($departmentId -> valid == 1) {
-        $divisionElem = "";
-        $division = MscDivision::index();
-        $divisionElem .= "
-            <select name='divisionId' id='' class='form-control'>
-                <option value='' style='display:none;'>Select Division</option>
-        ";
-        if (is_array($division)) {
-            if (count($division) > 0) {
-                foreach($division as $row) {
-                    $selected = ($row['PK_mscdivision'] == $department['FK_mscDivision']) 
-                        ? 'selected' 
-                        : '';
-                    $divisionElem .= "<option value='{$row['PK_mscdivision']}' {$selected}>{$row['description']}</option>";
-                }
-            }
-        }
-        $divisionElem .= "</select>";
         $response['content']['modal'] = modalize(
             '<div class="row">
                 <div class="col-sm-12">
@@ -68,17 +50,6 @@ if (isset($_POST['departmentId'])) {
                                     <label for="" class="text-left control-label col-sm-12">Department Name: </label>
                                     <div class="form-group col-sm-12">
                                         <input type="text" class="form-control" name="description" placeholder="Department Name" value="' . $department['description'] . '">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <label for="" class="text-left control-label col-sm-12">Division: </label>
-                                    <div class="form-group col-sm-12">
-                                        ' . $divisionElem . '
                                     </div>
                                 </div>
                             </div>

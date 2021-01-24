@@ -2,19 +2,19 @@
 
 // Application Database Connection
 $host = [
-    "survey" => 'localhost'
+    "survey" => $_ENV['DB_HOST']
 ];
 $username = [
-    "survey" => 'root'
+    "survey" => $_ENV['DB_USER']
 ];
 $password = [
-    "survey" => ''
+    "survey" => $_ENV['DB_PASS']
 ];
 $database = [
-    "survey" => 'ollh_esurvey'
+    "survey" => $_ENV['DB_NAME']
 ];
 $port = [
-    "survey" => '3308'
+    "survey" => $_ENV['DB_PORT']
 ];
 
 // System Configuration Connection 
