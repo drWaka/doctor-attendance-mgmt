@@ -111,7 +111,7 @@ if (
                 <button {$isDisabled} class='btn btn-success transaction-btn' title='Edit Respondent'
                     trans-name='async-form'
                     data-target='.modal-container'
-                    data-link='../core/ajax/doctor-sched-select.php'
+                    data-link='../core/ajax/doctor-schedule-select.php'
                     data-content='{
                         &quot;employeeId&quot; : &quot;{$employeeRecord['PK_employee']}&quot;
                     }'
