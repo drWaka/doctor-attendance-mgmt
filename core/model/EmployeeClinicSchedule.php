@@ -61,15 +61,15 @@ class EmployeeClinicSchedule {
 
     public static function getByEmployeeId($employeeNo) {
         return self::filter(array(
-            "employeId" => $employeeNo
+            "employeeId" => $employeeNo
         ));
     }
 
     public static function filter($filter) {
         $where = "";
-        if (isset($filter['employeId'])) {
+        if (isset($filter['employeeId'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " FK_employee = '{$filter['employeId']}' ";
+            $where .= " FK_employee = '{$filter['employeeId']}' ";
         }
 
         if (isset($filter['day'])) {
@@ -89,7 +89,6 @@ class EmployeeClinicSchedule {
                 WHEN 'SAT' THEN 7
             END
         ";
-        // die($query);
         $result = $GLOBALS['connection'] -> query($query);
 
         if ($result -> num_rows > 0) {

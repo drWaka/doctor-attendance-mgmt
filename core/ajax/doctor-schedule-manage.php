@@ -123,7 +123,7 @@ if (
 
         foreach ($schedule['schedule'] as $sched) {
             $schedRec = EmployeeClinicSchedule::filter(array(
-                'employeeId' => $schedule['schedule'],
+                'employeeId' => $schedule['employeeId'],
                 'day' => $sched['day']
             ));
 

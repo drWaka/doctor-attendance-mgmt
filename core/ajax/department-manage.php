@@ -14,16 +14,18 @@ $response = array(
 
 if (
     isset($_POST['departmentId']) && 
-    isset($_POST['description']) 
+    isset($_POST['description']) && 
+    isset($_POST['specialization']) 
 ) {
     $departmentId = new form_validation($_POST['departmentId'], 'str-int', 'Department ID', true);
     $description = new form_validation($_POST['description'], 'str-int', 'Department Name', true);
+    $specialization = new form_validation($_POST['specialization'], 'str-int', 'Department Specalization', true);
     
     $flags = array(
         'hasError' => 0,
         'isDone' => 0
     );
-    if ($departmentId -> valid == 1 && $description -> valid == 1) {
+    if ($departmentId -> valid == 1 && $description -> valid == 1 && $specialization -> valid == 1) {
         // Verify if the Employee ID is valid
         $employee = MscDepartment::show($departmentId -> value);
         if (is_null($employee)) {
@@ -44,7 +46,7 @@ if (
         }
     }
 
-    if ($departmentId -> valid == 1 && $description -> valid == 1) {
+    if ($departmentId -> valid == 1 && $description -> valid == 1 && $specialization -> valid == 1) {
         $isSuccess = true;
         $modalLbl = array(
             "present" => '',
@@ -54,6 +56,7 @@ if (
         $dataContainer = array(
             "departmentId" => $departmentId -> value,
             "description" => $description -> value,
+            "specialization" => $specialization -> value,
         );
         if ($departmentId -> value == 'new-rec') {
             $modalLbl = array(
@@ -116,6 +119,7 @@ if (
             );
         } else {
             $descriptionErr = new error_handler($description -> err_msg);
+            $specializationErr = new error_handler($specialization -> err_msg);
 
             $response['content']['modal'] = modalize(
                 '<div class="row">
@@ -136,6 +140,19 @@ if (
                                             <input type="text" class="form-control ' . $descriptionErr -> error_class . '" name="description" placeholder="Department Name" value="' . $description -> value . '">
                                             ' . $descriptionErr -> error_icon . '
                                             ' . $descriptionErr -> error_text . '
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <label for="" class="text-left control-label col-sm-12">Specialization: </label>
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control  ' . $specializationErr -> error_class . '" name="specialization" placeholder="Department Specialization" value="' . $specialization -> value . '">
+                                            ' . $specializationErr -> error_icon . '
+                                            ' . $specializationErr -> error_text . '
                                         </div>
                                     </div>
                                 </div>

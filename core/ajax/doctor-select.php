@@ -31,6 +31,7 @@ if (isset($_POST['employeeId'])) {
                 "AddressLine3" => '',
                 "employeeNo" => '',
                 "email" => '',
+                "clinic" => '',
                 "FK_mscDepartment" => 0
             );
         } else {
@@ -47,12 +48,12 @@ if (isset($_POST['employeeId'])) {
         $departmentElem = "";
         $departments = MscDepartment::index();
         $departmentElem .= "<select name='departmentId' class='form-control'>";
-        $departmentElem .= "<option value='' style='display:none;'>Choose a Department</option>";
+        $departmentElem .= "<option value='' style='display:none;'>Choose a Department / Specialization</option>";
         if (!is_null($departments)) {
             if (count($departments) > 0) {
                 foreach ($departments as $department) {
                     $selected = ($department['PK_mscdepartment'] == $employee['FK_mscDepartment']) ? "selected" : "";
-                    $departmentElem .= "<option value='{$department['PK_mscdepartment']}' $selected>{$department['description']}</option>";
+                    $departmentElem .= "<option value='{$department['PK_mscdepartment']}' $selected>{$department['description']} / {$department['specialization']}</option>";
                 }
             }
         }
@@ -93,9 +94,17 @@ if (isset($_POST['employeeId'])) {
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    <label for="" class="text-left control-label col-sm-12">Department : </label>
+                                    <label for="" class="text-left control-label col-sm-12">Department / Specialization : </label>
                                     <div class="form-group col-sm-12">
                                         ' . $departmentElem . '
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label for="" class="text-left control-label col-sm-12">Clinic Room No. : </label>
+                                    <div class="form-group col-sm-12">
+                                        <input type="text" class="form-control" name="clinic" placeholder="Clinic Room No." value="' . $employee['clinic'] . '">
                                     </div>
                                 </div>
                             </div>

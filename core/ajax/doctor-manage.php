@@ -19,7 +19,7 @@ if (
     isset($_POST['gender']) && isset($_POST['mobileNo']) && 
     isset($_POST['addressLine1']) && isset($_POST['addressLine2']) && 
     isset($_POST['addressLine3']) && isset($_POST['email']) && 
-    isset($_POST['departmentId'])
+    isset($_POST['departmentId']) && isset($_POST['clinic'])
 ) {
     $employeeId = new form_validation($_POST['employeeId'], 'str-int', 'Employee ID', true);
     $employeeNo = new form_validation($_POST['employeeNo'], 'str-int', 'Employee No', true);
@@ -27,13 +27,14 @@ if (
     $firstName = new form_validation($_POST['firstName'], 'str', 'First Name', true);
     $middleName = new form_validation($_POST['middleName'], 'str', 'Middle Name', false);
     $lastName = new form_validation($_POST['lastName'], 'str', 'Last Name', true);
-    $birthDate = new form_validation($_POST['birthDate'], 'date', 'Birthdate', true);
+    $birthDate = new form_validation($_POST['birthDate'], 'date', 'Birthdate', false);
     $gender = new form_validation($_POST['gender'], 'str', 'Gender', false);
     $mobileNo = new form_validation($_POST['mobileNo'], 'str-int', 'Mobile No.', false);
     $addressLine1 = new form_validation($_POST['addressLine1'], 'str-int', 'Address Line 1', false);
     $addressLine2 = new form_validation($_POST['addressLine2'], 'str-int', 'City', false);
     $addressLine3 = new form_validation($_POST['addressLine3'], 'str-int', 'Province', false);
     $email = new form_validation($_POST['email'], 'email', 'Email', false);
+    $clinic = new form_validation($_POST['clinic'], 'int', 'Clinic Room No', true);
 
     $flags = array(
         'hasError' => 0,
@@ -47,7 +48,7 @@ if (
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
         $addressLine3 -> valid == 1 && $email -> valid == 1 && 
-        $departmentId -> valid == 1
+        $departmentId -> valid == 1 && $clinic -> valid == 1
     ) {
         // Verify if the Employee ID is valid
         $employee = Employee::show($employeeId -> value);
@@ -66,7 +67,7 @@ if (
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
         $addressLine3 -> valid == 1 && $email -> valid == 1 && 
-        $departmentId -> valid == 1
+        $departmentId -> valid == 1 && $clinic -> valid == 1
     ) {
         // Validate the uniqueness of Employee No
         $employee = Employee::getByEmployeeNo($employeeNo -> value);
@@ -87,7 +88,7 @@ if (
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
         $addressLine3 -> valid == 1 && $email -> valid == 1 && 
-        $departmentId -> valid == 1
+        $departmentId -> valid == 1 && $clinic -> valid == 1
     ) {
         $isSuccess = true;
         $modalLbl = array(
@@ -108,7 +109,8 @@ if (
             "addressLine1" => $addressLine1 -> value,
             "addressLine2" => $addressLine2 -> value,
             "addressLine3" => $addressLine3 -> value,
-            "email" => $email -> value
+            "email" => $email -> value,
+            "clinic" => $clinic -> value
         );
         if ($employeeId -> value == 'new-rec') {
             $modalLbl = array(
@@ -182,16 +184,17 @@ if (
             $addressLine2Err = new error_handler($addressLine2 -> err_msg);
             $addressLine3Err = new error_handler($addressLine3 -> err_msg);
             $emailErr = new error_handler($email -> err_msg);
+            $clinicErr = new error_handler($clinic -> err_msg);
             
             $departmentElem = "";
             $departments = MscDepartment::index();
             $departmentElem .= "<select name='departmentId' class='form-control {$departmentIdErr -> error_class}'>";
-            $departmentElem .= "<option value='' style='display:none;'>Choose a Department</option>";
+            $departmentElem .= "<option value='' style='display:none;'>Choose a Department / Specialization</option>";
             if (!is_null($departments)) {
                 if (count($departments) > 0) {
                     foreach ($departments as $department) {
                         $selected = ($department['PK_mscdepartment'] == $departmentId -> value) ? "selected" : "";
-                        $departmentElem .= "<option value='{$department['PK_mscdepartment']}' $selected>{$department['description']}</option>";
+                        $departmentElem .= "<option value='{$department['PK_mscdepartment']}' $selected>{$department['description']} / {$department['specialization']}</option>";
                     }
                 }
             }
@@ -235,11 +238,21 @@ if (
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
-                                        <label for="" class="text-left control-label col-sm-12">Department : </label>
+                                        <label for="" class="text-left control-label col-sm-12">Department / Specialization  : </label>
                                         <div class="form-group col-sm-12">
                                             ' . $departmentElem . '
                                             ' . $departmentIdErr -> error_icon . '
                                             ' . $departmentIdErr -> error_text . '
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <label for="" class="text-left control-label col-sm-12">Clinic Room No. : </label>
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control ' . $clinicErr -> error_class . '" name="clinic" placeholder="Clinic Room No." value="' . $clinic -> value . '">
+                                            ' . $clinicErr -> error_icon . '
+                                            ' . $clinicErr -> error_text . '
                                         </div>
                                     </div>
                                 </div>

@@ -28,6 +28,7 @@ if (
             "description" => $departmentName -> value
         );
         $department = MscDepartment::filter($filter);
+        
         if (is_array($department)) {
             $response['content']['total'] = count($department);
             if (count($department) > 0) {
@@ -75,6 +76,7 @@ if (
                     $response['content']['record'] .= "
                         <td>{$department[$i]['PK_mscDepartment']}</td>
                         <td>{$department[$i]['department']}</td>
+                        <td>{$department[$i]['specialization']}</td>
                         <td class='text-center'>{$dataManagementBtn}</td>
                     ";
                     $response['content']['record'] .= "<tr>";

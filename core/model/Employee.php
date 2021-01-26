@@ -14,17 +14,20 @@ class Employee {
     }
 
     public static function insert($data) {
+        $birthDate = (!empty($data['birthDate'])) ? "{$data['birthDate']}" : "NULL";
         $query = "
             INSERT INTO employees (
                 firstName, middleName, lastName, 
                 birthDate, gender, mobileNo, 
                 AddressLine1, AddressLine2, AddressLine3, 
-                employeeNo, email, FK_mscDepartment
+                employeeNo, email, FK_mscDepartment,
+                clinic
             ) VALUES (
                 '{$data['firstName']}', '{$data['middleName']}', '{$data['lastName']}', 
-                '{$data['birthDate']}', '{$data['gender']}', '{$data['mobileNo']}', 
+                {$birthDate}, '{$data['gender']}', '{$data['mobileNo']}', 
                 '{$data['addressLine1']}', '{$data['addressLine2']}', '{$data['addressLine3']}', 
-                '{$data['employeeNo']}', '{$data['email']}', '{$data['FK_mscDepartment']}'
+                '{$data['employeeNo']}', '{$data['email']}', '{$data['FK_mscDepartment']}', 
+                '{$data['clinic']}'
             )
         ";
         if ($GLOBALS['connection'] -> query($query)) {
@@ -49,12 +52,13 @@ class Employee {
         return null;
     }
     public static function update($data) {
+        $birthDate = (!empty($data['birthDate'])) ? "{$data['birthDate']}" : "NULL";
         $query = "
             UPDATE employees
             SET firstName = '{$data['firstName']}',
                 middleName = '{$data['middleName']}',
                 lastName = '{$data['lastName']}',                
-                birthDate = '{$data['birthDate']}',
+                birthDate = {$birthDate},
                 gender = '{$data['gender']}',
                 mobileNo = '{$data['mobileNo']}',                
                 AddressLine1 = '{$data['addressLine1']}',
@@ -62,7 +66,8 @@ class Employee {
                 AddressLine3 = '{$data['addressLine3']}',                
                 employeeNo = '{$data['employeeNo']}',
                 email = '{$data['email']}',             
-                FK_mscDepartment = '{$data['FK_mscDepartment']}'
+                FK_mscDepartment = '{$data['FK_mscDepartment']}',             
+                clinic = '{$data['clinic']}'
             WHERE PK_employee = '{$data['PK_employee']}'
         ";
         // die($query);

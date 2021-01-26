@@ -12,7 +12,7 @@ class MscDepartment {
     }
 
     public static function create($details) {
-        $query = "INSERT INTO mscdepartment(description) VALUES ('{$details['description']}')";
+        $query = "INSERT INTO mscdepartment(description, specialization) VALUES ('{$details['description']}', '{$details['specialization']}')";
         if ($GLOBALS['connection'] -> query($query)) return true;
         return false;
     }
@@ -46,7 +46,8 @@ class MscDepartment {
     public static function update($details) {
         $query = "
             UPDATE mscdepartment
-            SET description = '{$details['description']}'
+            SET description = '{$details['description']}',
+                specialization = '{$details['specialization']}'
             WHERE PK_mscDepartment = '{$details['departmentId']}'
         ";
         if ($GLOBALS['connection'] -> query($query)) {
@@ -67,6 +68,7 @@ class MscDepartment {
             SELECT 
                 a.PK_mscDepartment
                 , a.description AS department
+                , a.specialization
             FROM mscdepartment AS a
             {$where} 
             ORDER BY a.description

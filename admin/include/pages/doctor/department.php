@@ -22,6 +22,7 @@
         <tr>
             <th>System ID</th>
             <th>Department Name</th>
+            <th>Specialization</th>
             <th class='text-center'>Manage</th>
         </tr>
         </thead>
