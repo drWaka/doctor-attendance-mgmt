@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<title>E-Survey System &minus; Our Lady Of Lourdes Hospital</title>
+<title><?= $_ENV['APP_SHORT_NAME'] ?>&minus; Our Lady Of Lourdes Hospital</title>
 <link rel="icon" href="../core/img/ollh-icon.ico">
 
 <!-- CSS Dependencies -->

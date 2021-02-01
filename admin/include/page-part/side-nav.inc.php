@@ -16,8 +16,7 @@
             <i class="fa fa-file"></i> Reports
         </a>
         <ul id="reports" class="collapse" data-parent="#sidebar-nav">
-            <li><a href="reports.php?pageName=question-responses" class="sidebar-nav-link">User Responses</a></li>
-            <li><a href="reports.php?pageName=question-responses-range" class="sidebar-nav-link">User Responses By Range</a></li>
+            <li><a href="reports.php?pageName=doctor-logs" class="sidebar-nav-link">Doctor Logs</a></li>
         </ul>
     </li>
 

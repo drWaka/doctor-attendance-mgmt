@@ -29,7 +29,7 @@ if (
     $lastName = new form_validation($_POST['lastName'], 'str', 'Last Name', true);
     $birthDate = new form_validation($_POST['birthDate'], 'date', 'Birthdate', false);
     $gender = new form_validation($_POST['gender'], 'str', 'Gender', false);
-    $mobileNo = new form_validation($_POST['mobileNo'], 'str-int', 'Mobile No.', false);
+    $mobileNo = new form_validation($_POST['mobileNo'], 'int', 'Mobile No.', false);
     $addressLine1 = new form_validation($_POST['addressLine1'], 'str-int', 'Address Line 1', false);
     $addressLine2 = new form_validation($_POST['addressLine2'], 'str-int', 'City', false);
     $addressLine3 = new form_validation($_POST['addressLine3'], 'str-int', 'Province', false);

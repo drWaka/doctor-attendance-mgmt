@@ -14,6 +14,7 @@ class Employee {
     }
 
     public static function insert($data) {
+        $data = self::escape_string($data);
         $birthDate = (!empty($data['birthDate'])) ? "{$data['birthDate']}" : "NULL";
         $query = "
             INSERT INTO employees (
@@ -30,6 +31,7 @@ class Employee {
                 '{$data['clinic']}'
             )
         ";
+        die($query);
         if ($GLOBALS['connection'] -> query($query)) {
             return true;
         }
@@ -52,6 +54,7 @@ class Employee {
         return null;
     }
     public static function update($data) {
+        $data = self::escape_string($data);
         $birthDate = (!empty($data['birthDate'])) ? "{$data['birthDate']}" : "NULL";
         $query = "
             UPDATE employees
@@ -170,6 +173,17 @@ class Employee {
         }
 
         return [];
+    }
+
+    public static function escape_string(mixed $data): mixed {
+        if (is_array($data)) {
+            foreach($data as $key => $value) {
+                $data[$key] = $GLOBALS['connection'] -> real_escape_string($value);
+            }
+            return $data;
+        }
+
+        return $GLOBALS['connection'] -> real_escape_string($data);
     }
 
 }
