@@ -87,12 +87,8 @@
     <div class="col-3">
         <form action="../core/requests/report-question-response.php" method="post" target="_blank">
             <input type="text" name="csvEmployeeName" hidden>
-            <input type="text" name="csvQuestionMstrId" hidden>
-            <input type="date" name="csvSessionDate" hidden>
-            <input type="date" name="csvcutOffTime" hidden>
-            <input type="text" name="csvSessionRating" hidden>
-            <input type="text" name="csvDivisionId" hidden>
-            <input type="text" name="csvDepartmentId" hidden>
+            <input type="text" name="csvLogDate" hidden>
+            <input type="date" name="csvDepartmentId" hidden>
             <button class="btn btn-success w-100">Generate CSV File</button>
         </form>
     </div>
@@ -133,33 +129,17 @@
     }
 
     function loadReportForm() {
-        // let employeeName = document.querySelector('[name="employeeName"]');
-        // let csvEmployeeName = document.querySelector('[name="csvEmployeeName"]');
-        // csvEmployeeName.value = employeeName.value;
+        let employeeName = document.querySelector('[name="employeeName"]');
+        let csvEmployeeName = document.querySelector('[name="csvEmployeeName"]');
+        csvEmployeeName.value = employeeName.value;
 
-        // let sessionDate = document.querySelector('[name="sessionDate"]');
-        // let csvSessionDate = document.querySelector('[name="csvSessionDate"]');
-        // csvSessionDate.value = sessionDate.value;
+        let logDate = document.querySelector('[name="logDate"]');
+        let csvLogDate = document.querySelector('[name="csvLogDate"]');
+        csvLogDate.value = logDate.value;
 
-        // let cutOffTime = document.querySelector('[name="cutOffTime"]');
-        // let csvcutOffTime = document.querySelector('[name="csvcutOffTime"]');
-        // csvcutOffTime.value = cutOffTime.value;
-
-        // let questionMstrId = document.querySelector('[name="questionMstrId"]');
-        // let csvQuestionMstrId = document.querySelector('[name="csvQuestionMstrId"]');
-        // csvQuestionMstrId.value = questionMstrId.value;
-
-        // let divisionId = document.querySelector('[name="divisionId"]');
-        // let csvDivisionId = document.querySelector('[name="csvDivisionId"]');
-        // csvDivisionId.value = divisionId.value;
-
-        // let departmentId = document.querySelector('[name="departmentId"]');
-        // let csvDepartmentId = document.querySelector('[name="csvDepartmentId"]');
-        // csvDepartmentId.value = departmentId.value;
-
-        // let sessionRating = document.querySelector('[name="sessionRating"]');
-        // let csvSessionRating = document.querySelector('[name="csvSessionRating"]');
-        // csvSessionRating.value = sessionRating.value;
+        let departmentId = document.querySelector('[name="departmentId"]');
+        let csvDepartmentId = document.querySelector('[name="csvDepartmentId"]');
+        csvDepartmentId.value = departmentId.value;
     }
 
     // $(document).ready(function() {

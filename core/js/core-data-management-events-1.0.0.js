@@ -18,9 +18,9 @@ $(document).ready(function() {
     loadRecord();
   });
 
-  $(document).on('change', '.advance-filter .form-control', function(){
-    if (typeof loadRecord == 'function') {
-      loadRecord();
-    }
-  })
+  // $(document).on('change', '.advance-filter .form-control', function(){
+  //   if (typeof loadRecord == 'function') {
+  //     loadRecord();
+  //   }
+  // })
 });

@@ -49,14 +49,14 @@ if (
      ) {
         $employeeQuery = "
             SELECT 
-                a.PK_employee
+                b.PK_employee_attendance
                 , a.employeeNo
                 , a.lastName
                 , a.firstName
                 , a.middleName
                 , b.attendance_date
-                , IFNULL(b.time_in, '-') AS `time_in`
-                , IFNULL(b.time_out, '-') AS `time_out`
+                , b.time_in
+                , b.time_out
                 , b.sched_start
                 , b.sched_end
             FROM employees AS a
@@ -100,9 +100,10 @@ if (
                     : '';
                 $employeeName = utf8_encode(strtoupper(("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}.")));
 
+                // die(var_dump($employeeRecord['time_out']) . 'WAKA');
                 $attendanceDate = date('F d, Y', strtotime($employeeRecord['attendance_date']));
                 $timeIn = date('h:i:s A', strtotime($employeeRecord['time_in']));
-                $timeOut = date('h:i:s A', strtotime($employeeRecord['time_out']));
+                $timeOut = (!empty($employeeRecord['time_out'])) ? date('h:i:s A', strtotime($employeeRecord['time_out'])) : '-';
                 $schedIn = date('h:i:s A', strtotime($employeeRecord['sched_start']));
                 $schedOut = date('h:i:s A', strtotime($employeeRecord['sched_end']));
 
@@ -111,9 +112,9 @@ if (
                     <button class='btn btn-success transaction-btn' title='Edit Respondent'
                         trans-name='async-form'
                         data-target='.modal-container'
-                        data-link='../core/ajax/doctor-select.php'
+                        data-link='../core/ajax/doctor-attendance-select.php'
                         data-content='{
-                            &quot;employeeId&quot; : &quot;{$employeeRecord['PK_employee']}&quot;
+                            &quot;attendanceId&quot; : &quot;{$employeeRecord['PK_employee_attendance']}&quot;
                         }'
                     ><i class='fas fa-pencil-alt'></i></button>
                 ";
@@ -122,7 +123,7 @@ if (
                 $response['content']['record'] .= "
                     <td>{$employeeRecord['employeeNo']}</td>
                     <td>{$employeeName}</td>
-                    <td>{$employeeRecord['attendance_date']}</td>
+                    <td>{$attendanceDate}</td>
                     <td>{$timeIn}</td>
                     <td>{$timeOut}</td>
                     <td>{$schedIn} &minus; {$schedOut}</td>

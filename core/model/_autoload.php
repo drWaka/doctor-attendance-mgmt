@@ -3,6 +3,7 @@
     require_once 'Employee.php';
     require_once 'MscDepartment.php';
     require_once 'EmployeeClinicSchedule.php';
+    require_once 'EmployeeAttendance.php';
 
     require_once 'UserAccount.php';
     require_once 'UserMstr.php';

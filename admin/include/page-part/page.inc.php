@@ -84,7 +84,6 @@
 
       $(document).ready(function() {
         loadRecord();
-        console.log('waka');
         // Load Report Form
         console.log(typeof loadReportForm);
         if (typeof loadReportForm == "function") {

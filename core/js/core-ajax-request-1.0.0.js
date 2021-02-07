@@ -30,7 +30,6 @@ function send_request_asycn (url, method, data, container, transName, content_ty
         }
 
         // Determine if the container contains form
-        console.log(container);
         let containerNode = document.querySelector(container);
         let formNode = containerNode.querySelector('form');
 
@@ -67,14 +66,14 @@ function send_request_asycn (url, method, data, container, transName, content_ty
 
 // Error Handling Function
 function initializeModal(element) {
-  var modalContainer = document.querySelector('.modal-container');
-  
+  let modalContainer = document.querySelector('.modal-container');
   if (modalContainer == null) {
     let body = document.querySelector('body');
     let elementContainer = document.createElement('div');
     elementContainer.classList.add('modal-container');
     body.appendChild(elementContainer);
   }
+  modalContainer = document.querySelector('.modal-container');
 
   let modalBackdrop = document.querySelectorAll('.modal-backdrop');
   if (modalBackdrop != null) {
@@ -83,8 +82,7 @@ function initializeModal(element) {
     }
   }
 
-  console.log(element);
-  $('.modal-container').html(element);
+  modalContainer.innerHTML = element;
   $('#transaction-modal').attr("data-backdrop", "static");
   $('#transaction-modal').attr("data-keyboard", "false");
   $('#transaction-modal').modal('show');
