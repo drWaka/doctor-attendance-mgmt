@@ -32,7 +32,8 @@ if (isset($_POST['employeeId'])) {
                 "employeeNo" => '',
                 "email" => '',
                 "clinic" => '',
-                "FK_mscDepartment" => 0
+                "FK_mscDepartment" => 0,
+                "fingerScanId" => ''
             );
         } else {
             $employee = Employee::show($employeeId -> value);
@@ -105,6 +106,14 @@ if (isset($_POST['employeeId'])) {
                                     <label for="" class="text-left control-label col-sm-12">Clinic Room No. : </label>
                                     <div class="form-group col-sm-12">
                                         <input type="text" class="form-control" name="clinic" placeholder="Clinic Room No." value="' . $employee['clinic'] . '">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label for="" class="text-left control-label col-sm-12">Finger Scan ID : </label>
+                                    <div class="form-group col-sm-12">
+                                        <input type="text" class="form-control" name="fingerScanId" placeholder="000000000" value="' . $employee['fingerScanId'] . '">
                                     </div>
                                 </div>
                             </div>

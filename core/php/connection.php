@@ -23,7 +23,7 @@ $port = [
 ];
 
 // System Configuration Connection 
-$connection = new mysqli($host['dam'], $username['dam'], $password['dam'], $database['dam']);
+$connection = new mysqli($host['dam'], $username['dam'], $password['dam'], $database['dam'], $port['dam']);
 if ($connection->connect_error) {
   die("Error connecting to MySQL Server: " . $connection->connect_error);
 }

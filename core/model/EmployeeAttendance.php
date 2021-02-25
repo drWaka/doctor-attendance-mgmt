@@ -46,14 +46,33 @@ class EmployeeAttendance {
         return null;
     }
     public static function update($data) {
+        $timeOutVal = 'NULL';
+        if (!empty($data['time_out'])) {
+            $timeOutVal = "'{$data['time_out']}'";
+        }
         $query = "
             UPDATE employee_attendance
             SET time_in = '{$data['time_in']}',
-                time_out = '{$data['time_out']}',
+                time_out = {$timeOutVal},
                 FK_employee_update = '{$data['FK_employee_update']}'
             WHERE PK_employee_attendance = '{$data['PK_employee_attendance']}'
         ";
-        // die($query);
+        if ($GLOBALS['connection'] -> query($query)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function setInactive ($data) {
+        $currentDate = date('Y-m-d H:i:s');
+        $query = "
+            UPDATE employee_attendance
+            SET isDelete = 1,
+                FK_employee_delete = '{$data['FK_employee_delete']}',
+                deleteDate = '{$currentDate}'
+            WHERE PK_employee_attendance = '{$data['PK_employee_attendance']}'
+        ";
         if ($GLOBALS['connection'] -> query($query)) {
             return true;
         }

@@ -19,7 +19,8 @@ if (
     isset($_POST['gender']) && isset($_POST['mobileNo']) && 
     isset($_POST['addressLine1']) && isset($_POST['addressLine2']) && 
     isset($_POST['addressLine3']) && isset($_POST['email']) && 
-    isset($_POST['departmentId']) && isset($_POST['clinic'])
+    isset($_POST['departmentId']) && isset($_POST['clinic']) && 
+    isset($_POST['fingerScanId'])
 ) {
     $employeeId = new form_validation($_POST['employeeId'], 'str-int', 'Employee ID', true);
     $employeeNo = new form_validation($_POST['employeeNo'], 'str-int', 'Employee No', true);
@@ -35,6 +36,7 @@ if (
     $addressLine3 = new form_validation($_POST['addressLine3'], 'str-int', 'Province', false);
     $email = new form_validation($_POST['email'], 'email', 'Email', false);
     $clinic = new form_validation($_POST['clinic'], 'int', 'Clinic Room No', true);
+    $fingerScanId = new form_validation($_POST['fingerScanId'], 'str-int', 'Finger Scan ID', false);
 
     $flags = array(
         'hasError' => 0,
@@ -48,7 +50,8 @@ if (
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
         $addressLine3 -> valid == 1 && $email -> valid == 1 && 
-        $departmentId -> valid == 1 && $clinic -> valid == 1
+        $departmentId -> valid == 1 && $clinic -> valid == 1 && 
+        $fingerScanId -> valid == 1
     ) {
         // Verify if the Employee ID is valid
         $employee = Employee::show($employeeId -> value);
@@ -67,7 +70,8 @@ if (
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
         $addressLine3 -> valid == 1 && $email -> valid == 1 && 
-        $departmentId -> valid == 1 && $clinic -> valid == 1
+        $departmentId -> valid == 1 && $clinic -> valid == 1 && 
+        $fingerScanId -> valid == 1
     ) {
         // Validate the uniqueness of Employee No
         $employee = Employee::getByEmployeeNo($employeeNo -> value);
@@ -88,7 +92,8 @@ if (
         $gender -> valid == 1 && $mobileNo -> valid == 1 && 
         $addressLine1 -> valid == 1 && $addressLine2 -> valid == 1 && 
         $addressLine3 -> valid == 1 && $email -> valid == 1 && 
-        $departmentId -> valid == 1 && $clinic -> valid == 1
+        $departmentId -> valid == 1 && $clinic -> valid == 1 && 
+        $fingerScanId -> valid == 1
     ) {
         $isSuccess = true;
         $modalLbl = array(
@@ -110,7 +115,8 @@ if (
             "addressLine2" => $addressLine2 -> value,
             "addressLine3" => $addressLine3 -> value,
             "email" => $email -> value,
-            "clinic" => $clinic -> value
+            "clinic" => $clinic -> value,
+            "fingerScanId" => $fingerScanId -> value
         );
         if ($employeeId -> value == 'new-rec') {
             $modalLbl = array(
@@ -174,6 +180,7 @@ if (
         } else {
             $employeeNoErr = new error_handler($employeeNo -> err_msg);
             $departmentIdErr = new error_handler($departmentId -> err_msg);
+            $fingerScanIdErr = new error_handler($fingerScanId -> err_msg);
             $firstNameErr = new error_handler($firstName -> err_msg);
             $middleNameErr = new error_handler($middleName -> err_msg);
             $lastNameErr = new error_handler($lastName -> err_msg);
@@ -253,6 +260,16 @@ if (
                                             <input type="text" class="form-control ' . $clinicErr -> error_class . '" name="clinic" placeholder="Clinic Room No." value="' . $clinic -> value . '">
                                             ' . $clinicErr -> error_icon . '
                                             ' . $clinicErr -> error_text . '
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <label for="" class="text-left control-label col-sm-12">Finger Scan ID : </label>
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control ' . $fingerScanIdErr -> error_class . '" name="fingerScanId" placeholder="000000000" value="' . $fingerScanId -> value . '">
+                                            ' . $fingerScanIdErr -> error_icon . '
+                                            ' . $fingerScanIdErr -> error_text . '
                                         </div>
                                     </div>
                                 </div>

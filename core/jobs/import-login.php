@@ -5,12 +5,14 @@ require '../model/_autoload.php';
 $currentDate = date('Y-m-d');
 // Select all Active Doctors that are not yet logged
 $activeDoctorsQry = "
-    SELECT a.PK_employee, a.employeeNo
+    SELECT a.PK_employee, a.employeeNo, a.fingerScanId
     FROM employees AS a 
     WHERE a.isDeleted = 0
+        AND a.fingerScanId IS NOT NULL
         AND a.PK_employee NOT IN (
             SELECT x.FK_employee FROM employee_attendance AS x 
             WHERE x.attendance_date = '{$currentDate}'
+                AND x.isDelete != 1
         )
 ";
 $activeDoctorsRes = $connection -> query($activeDoctorsQry);
@@ -24,7 +26,7 @@ if (count($activeDoctorsRows) > 0) {
             INNER JOIN NGAC_USERINFO AS b ON a.UserIDIndex = b.IndexKey
             WHERE a.FunctionKey IN (1, 0)
                 AND a.AuthResult = 0
-                AND b.ID = '{$activeDoctorsRow['employeeNo']}'
+                AND b.ID = '{$activeDoctorsRow['fingerScanId']}'
                 AND CONVERT(DATE, a.TransactionTime) = '{$currentDate}'
             ORDER BY a.TransactionTime
         ";

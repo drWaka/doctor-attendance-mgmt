@@ -22,16 +22,16 @@ class Employee {
                 birthDate, gender, mobileNo, 
                 AddressLine1, AddressLine2, AddressLine3, 
                 employeeNo, email, FK_mscDepartment,
-                clinic
+                clinic, fingerScanId
             ) VALUES (
                 '{$data['firstName']}', '{$data['middleName']}', '{$data['lastName']}', 
                 {$birthDate}, '{$data['gender']}', '{$data['mobileNo']}', 
                 '{$data['addressLine1']}', '{$data['addressLine2']}', '{$data['addressLine3']}', 
                 '{$data['employeeNo']}', '{$data['email']}', '{$data['FK_mscDepartment']}', 
-                '{$data['clinic']}'
+                '{$data['clinic']}', '{$data['fingerScanId']}'
             )
         ";
-        die($query);
+        // die($query);
         if ($GLOBALS['connection'] -> query($query)) {
             return true;
         }
@@ -55,7 +55,7 @@ class Employee {
     }
     public static function update($data) {
         $data = self::escape_string($data);
-        $birthDate = (!empty($data['birthDate'])) ? "{$data['birthDate']}" : "NULL";
+        $birthDate = (!empty($data['birthDate'])) ? "'{$data['birthDate']}'" : "NULL";
         $query = "
             UPDATE employees
             SET firstName = '{$data['firstName']}',
@@ -70,7 +70,8 @@ class Employee {
                 employeeNo = '{$data['employeeNo']}',
                 email = '{$data['email']}',             
                 FK_mscDepartment = '{$data['FK_mscDepartment']}',             
-                clinic = '{$data['clinic']}'
+                clinic = '{$data['clinic']}',
+                fingerScanId = '{$data['fingerScanId']}'
             WHERE PK_employee = '{$data['PK_employee']}'
         ";
         // die($query);
@@ -175,7 +176,7 @@ class Employee {
         return [];
     }
 
-    public static function escape_string(mixed $data): mixed {
+    public static function escape_string($data) {
         if (is_array($data)) {
             foreach($data as $key => $value) {
                 $data[$key] = $GLOBALS['connection'] -> real_escape_string($value);

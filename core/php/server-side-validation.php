@@ -20,6 +20,8 @@ class form_validation {
         $this -> test_email($data, $label);
       } else if ($type == 'date') {
         $this -> test_date($data, $label);
+      } else if ($type == 'time') {
+        $this -> test_time($data, $label);
       } else if ($type == 'password') {
         $this -> test_password($data, $label);
       } else if ($type == 'mobile_number') {
@@ -219,6 +221,25 @@ class form_validation {
       } else {
         $this -> valid = 0;
         $this -> err_msg = 'Date dont exist';
+      }
+    } else {
+      $this -> valid = 0;
+      $this -> err_msg = 'Please enter a ' . $label . ' in a valid format';
+    }
+  }
+
+  function test_time($data, $label) {
+    $timeExploded = explode(':', $data);
+    if (count($timeExploded) === 3 || count($timeExploded) === 2) {
+      foreach ($timeExploded AS $timeSegment) {
+        $this -> test_int($timeSegment, $label);
+        if ($this -> valid == 0) {
+          break;
+        }
+      }
+      if ($this -> valid != 0) {
+        $this -> valid = 1;
+        $this -> value = $data;
       }
     } else {
       $this -> valid = 0;

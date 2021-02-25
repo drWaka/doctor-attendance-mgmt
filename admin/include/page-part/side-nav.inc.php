@@ -12,11 +12,12 @@
 
   <ul id="sidebar-nav" class="sidebar-nav">
     <li class="sidebar-nav-group <?= $_SESSION['userType'] . ' ' . isHidden($_SESSION['userType'], ['administrator', 'hrod'])?>">
-        <a href="#reports" class="sidebar-nav-link" data-toggle="collapse">
-            <i class="fa fa-file"></i> Reports
+        <a href="#attendance-mgmt" class="sidebar-nav-link" data-toggle="collapse">
+          <i class="fas fa-clock"></i> Attendance Mgmt.
         </a>
-        <ul id="reports" class="collapse" data-parent="#sidebar-nav">
-            <li><a href="reports.php?pageName=doctor-logs" class="sidebar-nav-link">Doctor Logs</a></li>
+        <ul id="attendance-mgmt" class="collapse" data-parent="#sidebar-nav">
+            <li><a href="attendance-mgmt.php?pageName=doctor-logs" class="sidebar-nav-link">Doctor Attendance</a></li>
+            <li><a href="attendance-mgmt.php?pageName=logs-validation" class="sidebar-nav-link">Attendance Validation</a></li>
         </ul>
     </li>
 
@@ -32,7 +33,7 @@
     
     <li class="sidebar-nav <?=isHidden($_SESSION['userType'], ['administrator']) ?>">
         <a href="user-mgmt.php?pageName=users" class="sidebar-nav-link">
-            <i class="fa fa-user"></i> User Management
+          <i class="fas fa-user-plus"></i> User Management
         </a>
     </li>
   </ul>

@@ -71,7 +71,9 @@ if (
                 OR CONCAT(lastName, ', ', firstName) LIKE '%{$employeeName -> value}%'
                 OR CONCAT(lastName, ', ', firstName, ' ', SUBSTR(middleName, 1, 1)) LIKE '%{$employeeName -> value}%'
                 OR employeeNo LIKE '%{$employeeName -> value}%')
+
                 AND b.attendance_date = '{$logDate -> value}'
+                AND b.isDelete != 1
                 
         ";
 
@@ -117,6 +119,19 @@ if (
                             &quot;attendanceId&quot; : &quot;{$employeeRecord['PK_employee_attendance']}&quot;
                         }'
                     ><i class='fas fa-pencil-alt'></i></button>
+                    <button class='btn btn-danger transaction-btn' title='Delete Department'
+                        trans-name='async-form'
+                        data-target='.modal-container'
+                        data-link='../core/ajax/generic-warning-modal.php'
+                        data-content='{
+                            &quot;transType&quot;   : &quot;delete&quot;,
+                            &quot;link&quot;        : &quot;../core/ajax/doctor-attendance-delete.php&quot;,
+                            &quot;dataContent&quot; : {
+                                &quot;attendanceId&quot;  : &quot;{$employeeRecord['PK_employee_attendance']}&quot;
+                            },
+                            &quot;headerTitle&quot; : &quot;Doctor Log&quot;
+                        }'
+                    ><i class='fa fa-trash'></i></button>
                 ";
 
                 $response['content']['record'] .= "<tr>";

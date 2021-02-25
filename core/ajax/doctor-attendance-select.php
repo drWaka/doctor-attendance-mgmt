@@ -15,42 +15,41 @@ $response = array(
 if (isset($_POST['attendanceId'])) {
     $attendanceId = new form_validation($_POST['attendanceId'], 'int', 'Attendance ID', true);
 
-    $department = '';
+    $attendance = '';
     if ($attendanceId -> valid == 1) {
-        // Verify if the Employee ID is valid
-        if ($departmentId -> value == 'new-rec') {
-            $department = array(
-                "description" => '',
-                "specialization" => ''
-            );
-        } else {
-            $department = MscDepartment::show($departmentId -> value);
-            // die(var_dump($employee));
-            if (is_null($department)) {
-                $departmentId -> valid = 0;
-                $departmentId -> err_msg = "Department Record not found";
-            }
+        // Verify if the Attendance ID is valid
+        $attendance = EmployeeAttendance::show($attendanceId -> value);
+        // die(var_dump($attendance));
+        if (is_null($attendance)) {
+            $attendanceId -> valid = 0;
+            $attendanceId -> err_msg = "Attendance Record not found";
         }
     }
 
-    if ($departmentId -> valid == 1) {
+    if ($attendanceId -> valid == 1) {
+        $timeIn = (!empty($attendance['time_in'])) ? 
+            date('H:i:s', strtotime($attendance['time_in'])) 
+            : '';
+        $timeOut = (!empty($attendance['time_out'])) ? 
+            date('H:i:s', strtotime($attendance['time_out'])) 
+            : '';
         $response['content']['modal'] = modalize(
             '<div class="row">
                 <div class="col-sm-12">
-                <h2 class="header capitalize text-center">Department Management</h2>
+                <h2 class="header capitalize text-center">Attendance Management</h2>
                 <p class="para-text text-center">Please fill the field with a valid information to continue.</p>
                 </div>
                 
                 <div class="col-sm-12 item-guide-mgmt">
-                    <form form-name="division-form" action="../core/ajax/department-manage.php" tran-type="async-form">
-                        <input type="text" name="departmentId" hidden="hidden" value="' . $departmentId -> value . '">
+                    <form form-name="division-form" action="../core/ajax/doctor-attendance-manage.php" tran-type="async-form">
+                        <input type="text" name="attendanceId" hidden="hidden" value="' . $attendanceId -> value . '">
 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <label for="" class="text-left control-label col-sm-12">Department Name: </label>
+                                    <label for="" class="text-left control-label col-sm-12">Login Time: </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="description" placeholder="Department Name" value="' . $department['description'] . '">
+                                        <input type="time" class="form-control" name="timeIn" value="' . $timeIn . '">
                                     </div>
                                 </div>
                             </div>
@@ -59,9 +58,9 @@ if (isset($_POST['attendanceId'])) {
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <label for="" class="text-left control-label col-sm-12">Specialization: </label>
+                                    <label for="" class="text-left control-label col-sm-12">Logout Time: </label>
                                     <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control" name="specialization" placeholder="Department Specialization" value="' . $department['specialization'] . '">
+                                        <input type="time" class="form-control" name="timeOut" value="' . $timeOut . '">
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +80,7 @@ if (isset($_POST['attendanceId'])) {
         $response['content']['modal'] = modalize(
             "<div class='row text-center'>
                 <h2 class='header capitalize col-12'>System Error Encountered</h2>
-                <p class='para-text col-12'>Error Details: {$departmentId -> err_msg}</p>
+                <p class='para-text col-12'>Error Details: {$attendanceId -> err_msg}</p>
             </div>", 
             array(
                 "trasnType" => 'error',

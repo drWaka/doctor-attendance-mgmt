@@ -1,6 +1,4 @@
 <?php
-phpinfo();
-die();
 require '../php/_autoload.php';
 require '../model/_autoload.php';
 
@@ -8,12 +6,13 @@ $currentDate = date('Y-m-d');
 // $currentDate = '2021-02-06';
 // Select all Active Doctors that are not yet logged
 $activeDoctorsQry = "
-    SELECT a.PK_employee, a.employeeNo, b.PK_employee_attendance, b.time_in, b.time_out
+    SELECT a.PK_employee, a.fingerScanId, b.PK_employee_attendance, b.time_in, b.time_out
     FROM employees AS a
     INNER JOIN employee_attendance AS b ON a.PK_employee = b.FK_employee
     WHERE a.isDeleted = 0
         AND b.attendance_date = '{$currentDate}' 
         AND b.time_out IS NULL
+        AND b.isDelete != 1
 ";
 $activeDoctorsRes = $connection -> query($activeDoctorsQry);
 $activeDoctorsRows = $activeDoctorsRes -> fetch_all(MYSQLI_ASSOC);
@@ -26,7 +25,7 @@ if (count($activeDoctorsRows) > 0) {
             INNER JOIN NGAC_USERINFO AS b ON a.UserIDIndex = b.IndexKey
             WHERE a.FunctionKey IN (2)
                 AND a.AuthResult = 0
-                AND b.ID = '{$activeDoctorsRow['employeeNo']}'
+                AND b.ID = '{$activeDoctorsRow['fingerScanId']}'
                 AND CONVERT(DATE, a.TransactionTime) = '{$currentDate}'
             ORDER BY a.TransactionTime
         ";
