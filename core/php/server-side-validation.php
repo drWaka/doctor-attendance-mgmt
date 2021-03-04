@@ -18,6 +18,8 @@ class form_validation {
         $this -> test_raw_str_int($data, $label);
       } else if ($type == 'email') {
         $this -> test_email($data, $label);
+      } else if ($type == 'bool' || $type == 'boolean') {
+        $this -> test_bool($data, $label);
       } else if ($type == 'date') {
         $this -> test_date($data, $label);
       } else if ($type == 'time') {
@@ -187,6 +189,17 @@ class form_validation {
         $this -> valid = 0;
         $this -> err_msg = "{$label} must consist atleast 1 capital letter";
       }
+    }
+  }
+
+  function test_bool($data, $label) {
+    $finalValue = filter_var($data, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+    if ($finalValue != null) {
+      $this -> valid = 1;
+      $this -> value = $finalValue;
+    } else {
+      $this -> valid = 0;
+      $this -> err_msg = 'Please enter a valid ' . $label;
     }
   }
 
