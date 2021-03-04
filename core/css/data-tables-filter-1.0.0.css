@@ -1,0 +1,16 @@
+/* Data Table Filters Custom Style */
+
+/* Checkbox Filters*/
+.cbox-container {
+    margin-top: -6px;
+}
+label.cbox-item {
+    display: flex;
+    align-items: center
+}
+
+label.cbox-item input[type="checkbox"] {
+    width: 20px;
+    display: inline;
+    margin-right: 20px;
+}

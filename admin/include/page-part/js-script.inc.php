@@ -9,3 +9,8 @@
 <script src="../core/js/core-ajax-request-1.0.0.js"></script>
 <script src="../core/js/core-nav-management-1.0.0.js"></script>
 <script src="../core/js/core-data-management-events-1.0.0.js"></script>
+
+
+<!-- New Scripts -->
+<script src="../core/js/http-xhr-management.js"></script>
+<script src="../core/js/data-table-nav-management"></script>
