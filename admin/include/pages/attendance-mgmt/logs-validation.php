@@ -79,7 +79,7 @@
 
 <div class="row margin-bottom">
     <div class="col-12">
-    <table class="table table-hover table-dashed">
+    <table class="table">
         <thead>
         <tr>
             <th>Document No.</th>
@@ -220,5 +220,41 @@
             }
             sendXHR(url, method, data, callback);
         });
+
+        $(document).on('click', 'input[name="timeLog[]"]', function(e) {
+            e = e || window.event;
+            let parentFormNode = e.target.parentNode;
+            while (parentFormNode.tagName != 'FORM') {
+                parentFormNode = parentFormNode.parentNode;
+            }
+            let textInputs = parentFormNode.querySelectorAll('input[type="text"]');
+            let checkboxes = parentFormNode.querySelectorAll('input[type="checkbox"]');
+
+            let bioLogsContent = '';
+            checkboxes.forEach(function(elem) {
+                if (elem.checked == true) {
+                    bioLogsContent += (bioLogsContent.length > 0)
+                        ? ',' + elem.value
+                        : elem.value;
+                }
+            });
+            textInputs[1].value = bioLogsContent;
+
+        });
+
+        // $(document).on('click', '.modal button.btn-trigger', function() {
+        //     let form = document.querySelector('.modal form');
+        //     let textInputs = form.querySelectorAll('input[type="text"]');
+
+        //     let container = '.modal-container';
+        //     let link = '../core/ajax/logs-validation-bio-manage.php';
+        //     let transName = 'modal';
+        //     let content = {
+        //         recordId : textInputs[0].value,
+        //         bioLogs: textInputs[1].value
+        //     };
+            
+        //     // send_request_asycn (link, 'POST', content, container, transName);
+        // });
     };
 </script>

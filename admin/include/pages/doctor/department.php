@@ -17,7 +17,7 @@
 
 <div class="row margin-bottom">
     <div class="col-12">
-    <table class="table table-hover table-dashed">
+    <table class="table">
         <thead>
         <tr>
             <th>System ID</th>

@@ -86,6 +86,7 @@ class EmployeeAttendanceVoidContent {
             {$where}
             {$pagination}
         ";
+        // die($query);
         $result = $GLOBALS['connection'] -> query($query);
 
         if ($result -> num_rows > 0) {

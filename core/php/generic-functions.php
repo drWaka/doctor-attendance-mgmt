@@ -39,7 +39,7 @@
         </div>
       ';
     } else if ($footerButton['trasnType'] == 'btn-trigger') {
-      if (!isset($footerButton['btnLbl2']) && !empty($footerButton['btnLbl2'])) {
+      if (isset($footerButton['btnLbl2']) && !empty($footerButton['btnLbl2'])) {
         $footerContent = '
           <div class="col-sm-12 col-md-6 text-right btn-container">
             <button type="button" class="btn btn-default modal-close btn-trigger">' . $footerButton['btnLbl1'] . '</button>

@@ -45,7 +45,28 @@ class Bio_EmployeeLogs {
                 $where .= (strlen($where) > 0) ? "AND" : "WHERE";
                 $where .= " CONVERT(DATE, TransactionTime) BETWEEN '{$filter['dtrDate']['startDate']}' AND '{$filter['dtrDate']['endDate']}' ";
             }
-            
+        }
+
+        if (isset($filter['excludedLogs'])) {
+            if (is_array($filter['excludedLogs'])) {
+                $excludedLogs = implode("', '", $filter['excludedLogs']);
+                $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+                $where .= " IndexKey NOT IN ('{$excludedLogs}') ";
+            } else {
+                $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+                $where .= " IndexKey <> '{$filter['excludedLogs']}' ";
+            }
+        }
+
+        if (isset($filter['includedLogs'])) {
+            if (is_array($filter['includedLogs'])) {
+                $includedLogs = implode("', '", $filter['includedLogs']);
+                $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+                $where .= " IndexKey IN ('{$includedLogs}') ";
+            } else {
+                $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+                $where .= " IndexKey = '{$filter['includedLogs']}' ";
+            }
         }
 
         $query = "SELECT * FROM NGAC_AUTHLOG {$where} ORDER BY TransactionTime DESC";

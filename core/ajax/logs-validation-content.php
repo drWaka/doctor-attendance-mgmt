@@ -206,10 +206,10 @@ if (
 
                 // Logs Management Field
                 $logsMgmtBtn = "
-                    <button class='btn btn-success transaction-btn' title='Document Content' {$disabled['void']}
+                    <button class='btn btn-success transaction-btn' title='Document Content'
                         trans-name='async-form'
                         data-target='.modal-container'
-                        data-link='../core/ajax/log-validation-bio-select.php'
+                        data-link='../core/ajax/logs-validation-bio-select.php'
                         data-content='{
                             &quot;recordId&quot; : &quot;{$voidedAttendanceRecord['PK_employee_attendance_void']}&quot;
                         }'

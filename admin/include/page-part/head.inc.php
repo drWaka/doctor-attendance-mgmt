@@ -15,4 +15,8 @@
 <link rel="stylesheet" href="../core/css/generic-style-1.0.0.css" />
 <link rel="stylesheet" href="../core/css/login-style-1.0.0.css">
 <link rel="stylesheet" href="../core/css/data-tables-filter-1.0.0.css">
+
+<!-- Customized Components -->
 <link rel="stylesheet" href="../core/css/form-components.css">
+<link rel="stylesheet" href="../core/css/modal-components.css">
+<link rel="stylesheet" href="../core/css/table-components.css">

@@ -4,7 +4,6 @@ function sendXHR(url, method, data, successFunction) {
         method: method,
         data: data,
         success: function (result) {
-          console.log(result);
           result = JSON.parse(result);
           if (result['success'] != 'success') initializeModal(result['content'].modal);
           

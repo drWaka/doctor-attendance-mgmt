@@ -8,6 +8,8 @@
     require_once 'EmployeeAttendanceVoid.php';
     require_once 'EmployeeAttendanceVoidContent.php';
 
+    require_once 'Bio_EmployeeLogs.php';
+
     require_once 'UserAccount.php';
     require_once 'UserMstr.php';
     require_once 'UserType.php';
