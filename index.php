@@ -1,16 +1,5 @@
 <?php
     require_once 'includes/_autoload.php';
-
-    $surveyId = '1';
-    if (isset($_GET['surveyId']) && !empty($_GET['surveyId'])) {
-        $surveyId = $_GET['surveyId'];
-    }
-    // Survey Details
-    $survey = QuestionMstr::show($surveyId);
-
-    if (is_null($survey)) {
-        header("Location: error.php");
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +10,66 @@
     body {
         background-color: #F0F0F0;
     }
+    .dashboard-header,
+    .dashboard-body {
+        background-color: #FFFFFFEF;
+    }
+
+
+    .dashboard-header {
+        text-align: center;
+        padding: 25px;
+        position: relative
+    }
+    h1 {
+        font-size: 36px;
+        line-height: 1;
+    }
+    h3 {
+        text-transform: uppercase;
+        font-size: 22px;
+    }
+
+    .dashboard-header .datetime-container {
+        position: absolute;
+        bottom: 25px;
+        right: 15px;
+        text-align: right;
+        font-size: 18px;
+    }
+
+    .dashboard-header img.header-logo {
+        width: 80px;
+        position: absolute;
+        left: 18%;
+        top: 15px;
+    }
+
+    .dashboard-body {
+        width: 90%;
+        margin: auto;
+        margin-top: 40px;
+        padding: 10px 30px 0 30px;
+        border-radius: 5px;
+    }
+
+    .dashboard-body .table th, 
+    .dashboard-body .table td {
+        font-size:20px;
+        vertical-align: middle;
+    }
+
+    .table tr td:nth-child(3),
+    .table tr td:nth-child(4),
+    .table tr th:nth-child(3),
+    .table tr th:nth-child(4) {
+        text-align: center;
+    }
+
+    .table thead th {
+        border: none;
+        border-bottom: 1px solid #A0A0A0;
+    }
 
     .main-content {
         background-color: #FFF;
@@ -28,18 +77,36 @@
         min-height: 100vh
     }
 
-    h1 {
-        font-size: 30px;
-        line-height: 1;
-    }
-    h1 small {
-        font-size: 50%;
-    }
-    h1 .header-logo {
-        width: 60px;
+    .bg-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -10;
+        width: 100%;
+        height: 100vh;
     }
 
-    .loading-cover {
+    .bg-cover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100vh;
+        background-color: #FFF;
+        opacity: 0.2;
+    }
+    .bg-container img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -11;
+        width: 100%;
+    }
+
+    
+
+    /* .loading-cover {
         background-color: #0009;
         position: fixed;
         width: 100%;
@@ -78,95 +145,126 @@
             100% {
                 -webkit-transform: rotate(359deg);
             }
-    }
+    } */
 </style>
 </head>
 <body>
-    <div class="loading-cover">
-    <i class="fas fa-circle-notch loading-icon"></i> 
-    <br>
-    <div class="loading-text">Processing ...</div>
+    <div class="bg-container">
+        <div class="bg-cover"></div>
+        <img src="./core/img/background/doctor-dashboard-background-2.jpg" class="bg-image" alt="">
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 main-content">
-                <h1 class="text-center">
-                    <img src="core/img/ollh-logo.gif" class='header-logo' alt="OLLH Logo"> <br>
-                    <small>Our Lady of Lourdes Hospital</small> <br>
-                    <?= $survey['title'] ?>
-                </h1>
-                <div class="dynamic-content">
-                    <div class="text-justify margin-top-sm">
-                    <?= $survey['description'] ?>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 offset-3 text-center margin-top-xs">
-                        <button class="btn btn-info w-100 transaction-button"
-                            tran-type="async-form"
-                            tran-link="core/ajax/session-signin-select.php"
-                            tran-data="{
-                                &quot;questionMstrId&quot; : &quot;<?= $survey['PK_questionMstr'] ?>&quot;
 
-                            }"
-                            tran-container="dynamic-content"
-                        >Start Survey</button>
-                        </div>
-                    </div>
-                </div>
-                
-                
+    <div class="container-fluid ">
+      <div class="row">
+          <div class="col-12 dashboard-header">
+            <img src="./core/img/ollh-logo.gif" class='header-logo' alt="">
+            <h1>Available Doctors for Clinic Consulation</h1>
+            <h3>Our Lady of Lourdes Hospital</h3>
+            <h4 class="datetime-container">08:00:00 AM <br> Monday, January 1, 2021</h4>
+          </div>
+      </div>
+    </div>
+
+    <div class="container-fluid dashboard-body">
+        <div class="row">
+            <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Clinic No.</th>
+                        <th>Doctor Name</th>
+                        <th>Specialization</th>
+                        <th>Schedule</th>
+                    </tr>
+                </thead>
+                <tbody class='attendance-data'>
+                    <tr>
+                        <td>101</td>
+                        <td>Dr. Juan Dela Cruz</td>
+                        <td>Internal Medicine</td>
+                        <td>12:00 NN - 3:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Dr. Juan Dela Cruz</td>
+                        <td>Internal Medicine</td>
+                        <td>12:00 NN - 3:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Dr. Juan Dela Cruz</td>
+                        <td>Internal Medicine</td>
+                        <td>12:00 NN - 3:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Dr. Juan Dela Cruz</td>
+                        <td>Internal Medicine</td>
+                        <td>12:00 NN - 3:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Dr. Juan Dela Cruz</td>
+                        <td>Internal Medicine</td>
+                        <td>12:00 NN - 3:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Dr. Juan Dela Cruz</td>
+                        <td>Internal Medicine</td>
+                        <td>12:00 NN - 3:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Dr. Juan Dela Cruz</td>
+                        <td>Internal Medicine</td>
+                        <td>12:00 NN - 3:00 PM</td>
+                    </tr>
+                </tbody>
+            </table>
             </div>
         </div>
     </div>
-    <?php require_once 'includes/date-picker-modal.php'; ?>
-
-    <!-- Generation of Hospital Pass Form -->
-    <form method="post" action="hospital-pass.php" id="hospital-pass-form" style="display:none" target="_blank">
-        <input type="text" name="employeeId" hidden>
-        <input type="text" name="sessionId" hidden>
-    </form>
 </body>
 <?php require_once 'includes/js-init.php'; ?>
-<script src="core/js/date-picker-modal-1.0.0.js"></script>
-
+<script src="./core/js/dashboard-clock.component.js"></script>
 <script>
-    $(document).ready(function() {
-        let surveyBtn = document.querySelector('.transaction-button');
-        let transactionData = JSON.parse(surveyBtn.getAttribute('tran-data'));
+    let paginationProperties = {
+        currentPage : 1,
+        totalPages: 1,
+        itemLimit: 10,
+        pageDuration: 10000
+    };
 
-        if (navigator.vendor.toLowerCase().indexOf('google') > -1) {
-            transactionData['browser'] = 'chrome';
-        } else if (navigator.vendor.toLowerCase().indexOf('apple') > -1) {
-            transactionData['browser'] = 'safari';
-        } else if (navigator.userAgent.toLowerCase().indexOf('mozilla') > -1) {
-            transactionData['browser'] = 'firefox';
+    let link = './core/ajax/attendance-dashboard-content.php';
+    let callbackFunction = ((result) => {
+        // Attendance Content Properties
+        let attendanceElem = document.querySelector('tbody.attendance-data');
+        result.content.data.forEach((data)=>{
+            let tr = document.createElement('tr');
+            
+            let td = document.createElement('td');
+        });
+
+        // Pagination Properties
+        paginationProperties.totalPages = result.content.totalPages;
+        if (++paginationProperties['currentPage'] > paginationProperties['totalPages']) {
+            paginationProperties['currentPage'] = 1;
         }
+        setTimeout(
+            (()=> { sendXHR(link, 'POST', {
+                currentPage: currentPage,
+                itemLimit: itemLimit
+            }, callbackFunction) }), 
+            paginationProperties['pageDuration']
+        );
+    });
 
-        surveyBtn.setAttribute('tran-data', JSON.stringify(transactionData));
-
-        $(document).on('click', '.transaction-button', function() {
-            let type = $(this).attr("tran-type");
-            let link = $(this).attr("tran-link");
-            let data = JSON.parse($(this).attr("tran-data"));
-            let container = "." + $(this).attr("tran-container");
-
-            console.log(data);
-
-            send_request_asycn(link, 'POST', data, container, type);
-        });
-
-         // Hospital Pass Generation Event
-        $(document).on('click', '.gen-hosp-pass-btn', function(){
-            setTimeout(() => {
-                let hospitalPassForm = document.querySelector('#hospital-pass-form');
-                let hospitalPassFormInputs = hospitalPassForm.querySelectorAll('input');
-                let inputValues = JSON.parse($(this).attr('tran-data'));
-                hospitalPassFormInputs[0].value = inputValues['employeeId'];
-                hospitalPassFormInputs[1].value = inputValues['sessionId'];
-
-                hospitalPassForm.submit();
-            }, 3000);
-        });
+    $(document).ready(function() {
+        sendXHR(link, 'POST', {
+            currentPage: currentPage,
+            itemLimit: itemLimit
+        }, callbackFunction);
     });
 </script>
 </html>

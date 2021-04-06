@@ -19,6 +19,30 @@ $activeDoctorsRes = $connection -> query($activeDoctorsQry);
 $activeDoctorsRows = $activeDoctorsRes -> fetch_all(MYSQLI_ASSOC);
 if (count($activeDoctorsRows) > 0) {
     foreach ($activeDoctorsRows as $activeDoctorsRow) {
+        // Select all of the Employee's excluded Logs
+        $excludedLogsQry = "
+            SELECT b.FK_biometric_log_id 
+            FROM employee_attendance_void AS a
+            INNER JOIN employee_attendance_void_content AS b 
+                ON a.PK_employee_attendance_void = b.FK_employee_attendance_void
+            WHERE date_format(a.createDate, \"%Y-%m-%d\") = '{$currentDate}'
+                AND a.FK_employee = '{$activeDoctorsRow['PK_employee']}'
+                AND a.isPosted = 1
+                AND (a.isCancelled != 1 OR a.isCancelled IS NULL)
+                AND (a.isVoided != 1 OR a.isVoided IS NULL)
+        ";
+        $excludedLogsRes = $connection -> query($excludedLogsQry);
+
+        $excludedBioLogId = '';
+        if ($excludedLogsRes -> num_rows > 0) {
+            while ($excludedLogsRow = $excludedLogsRes -> fetch_assoc()) {
+                $excludedBioLogId .= (strlen($excludedBioLogId) > 0) ? "','" : '';
+                $excludedBioLogId .= $excludedLogsRow['FK_biometric_log_id'];
+
+            }
+            $excludedBioLogId = "AND a.IndexKey NOT IN ('{$excludedBioLogId}')";
+        }
+
         // Capture Data from Biomectrics Database
         $attendanceQry = "
             SELECT TOP 1 a.TransactionTime
@@ -28,6 +52,7 @@ if (count($activeDoctorsRows) > 0) {
                 AND a.AuthResult = 0
                 AND b.ID = '{$activeDoctorsRow['fingerScanId']}'
                 AND CONVERT(DATE, a.TransactionTime) = '{$currentDate}'
+                {$excludedBioLogId}
             ORDER BY a.TransactionTime
         ";
         $attendanceRes = $bioConnection -> prepare($attendanceQry);
