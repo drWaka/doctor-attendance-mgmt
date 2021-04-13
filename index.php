@@ -51,6 +51,7 @@
         margin-top: 40px;
         padding: 10px 30px 0 30px;
         border-radius: 5px;
+        min-height: 620px;
     }
 
     .dashboard-body .table th, 
@@ -70,7 +71,35 @@
         border: none;
         border-bottom: 1px solid #A0A0A0;
     }
+    
+    .table tbody, .table thead { position: relative; }
+    .table tr { 
+        position: absolute; 
+        width: calc(100% - 30px);
+        display: block;
+    }
+    .table tr td, .table tr th {
+        display: inline-block;
+    }
 
+    .table tr td:nth-child(1), .table tr th:nth-child(1) { width: 14.60% }
+    .table tr td:nth-child(2), .table tr th:nth-child(2) { width: 39.60% }
+    .table tr td:nth-child(3), .table tr th:nth-child(3) { width: 19.60% }
+    .table tr td:nth-child(4), .table tr th:nth-child(4) { width: 24.60% }
+    
+    .table tbody tr:nth-child(1) { margin-top: calc(1 * 55px); }
+    .table tbody tr:nth-child(2) { margin-top: calc(2 * 55px); }
+    .table tbody tr:nth-child(3) { margin-top: calc(3 * 55px); }
+    .table tbody tr:nth-child(4) { margin-top: calc(4 * 55px); }
+    .table tbody tr:nth-child(5) { margin-top: calc(5 * 55px); }
+    .table tbody tr:nth-child(6) { margin-top: calc(6 * 55px); }
+    .table tbody tr:nth-child(7) { margin-top: calc(7 * 55px); }
+    .table tbody tr:nth-child(8) { margin-top: calc(8 * 55px); }
+    .table tbody tr:nth-child(9) { margin-top: calc(9* 55px); }
+    .table tbody tr:nth-child(10) { margin-top: calc(10 * 55px); }
+
+    .table tbody tr:nth-child(1) td { border-top: none !important; }
+    
     .main-content {
         background-color: #FFF;
         padding: 10px 20px;
@@ -259,13 +288,13 @@
         if (++pageProps['currentPage'] > pageProps['totalPages']) {
             pageProps['currentPage'] = 1;
         }
-        setTimeout(
-            (()=> { sendXHR(link, 'POST', {
-                currentPage: pageProps['currentPage'],
-                itemLimit: pageProps['itemLimit']
-            }, callbackFunction) }), 
-            pageProps['pageDuration']
-        );
+        // setTimeout(
+        //     (()=> { sendXHR(link, 'POST', {
+        //         currentPage: pageProps['currentPage'],
+        //         itemLimit: pageProps['itemLimit']
+        //     }, callbackFunction) }), 
+        //     pageProps['pageDuration']
+        // );
     });
 
     $(document).ready(function() {
