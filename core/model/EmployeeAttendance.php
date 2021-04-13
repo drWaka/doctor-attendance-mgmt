@@ -91,18 +91,43 @@ class EmployeeAttendance {
     }
 
     public static function filter($filter) {
-        $where = "";
+        $where = $order = "";
         if (isset($filter['employeeId'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " FK_employee = '{$filter['employeeId']}' ";
+            $where .= " a.FK_employee = '{$filter['employeeId']}' ";
         }
 
-        if (isset($filter['day'])) {
+        if (isset($filter['date'])) {
             $where .= (strlen($where) > 0) ? "AND" : "WHERE";
-            $where .= " sched_day = '{$filter['day']}' ";
+            $where .= " a.attendance_date = '{$filter['date']}' ";
+            
+            $order .= (strlen($order) > 0) ? ", " : "ORDER BY";
+            $order .= " 
+                b.clinic ASC
+                , CONCAT(b.lastName, ', ', b.firstName, ' ', b.middleName) ASC
+                , a.time_in ASC
+            ";
         }
 
-        $query = "SELECT * FROM employee_attendance {$where}";
+        if (isset($filter['isOnBoard'])) {
+            if ($filter['isOnBoard'] == 1) {
+                $where .= (strlen($where) > 0) ? "AND" : "WHERE";
+                $where .= " a.time_out IS NULL";
+            }
+        }
+
+        $query = "
+            SELECT
+                b.PK_employee 
+                , CONCAT(b.lastName, ', ', b.firstName, ' ', b.middleName) AS name
+                , b.clinic
+                , c.description as department
+                , a.* 
+            FROM employee_attendance AS a
+            INNER JOIN employees AS b ON a.FK_employee = b.PK_employee
+            INNER JOIN mscdepartment AS c ON b.FK_mscDepartment = c.PK_mscDepartment
+            {$where} {$order}
+        ";
         $result = $GLOBALS['connection'] -> query($query);
 
         if ($result -> num_rows > 0) {

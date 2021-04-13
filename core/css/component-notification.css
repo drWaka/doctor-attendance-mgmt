@@ -1,0 +1,70 @@
+.notif-container {
+    position: fixed;
+    z-index: 10;
+    top: 5px;
+    right: 5px;
+    width: 100%;
+    max-width: 350px;
+    min-width: 250px;
+}
+
+.notif {
+    position: relative;
+    box-shadow: -2px 5px 20px 5px #ccc;
+    background: #FFF;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.notif.fade {
+    -webkit-animation: fadeOut 1.5s;
+    -moz-animation: fadeOut 1.5s;
+    -o-animation: fadeOut 1.5s;
+    animation: fadeOut 1.5s;
+}
+
+
+.notif .notif-header {
+    padding: 10px;
+    height: 40px;
+    background-color: #EFEFEF;
+}
+.notif.notif-warning .notif-header {
+    background-color: #FFC107 !important;
+}
+.notif.notif-danger .notif-header {
+    background-color: #C82333 !important;
+}
+.notif.notif-info .notif-header {
+    background-color: #138496 !important;
+}
+.notif.notif-success .notif-header {
+    background-color: #28A745 !important;
+}
+
+.notif .notif-header .notif-title {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.notif .notif-header .notif-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background: transparent;
+    border-radius: 50%;
+}
+
+.notif.notif-danger .notif-header .notif-title, .notif.notif-danger .notif-header .notif-close,
+.notif.notif-success .notif-header .notif-title, .notif.notif-success .notif-header .notif-close,
+.notif.notif-info .notif-header .notif-title, .notif.notif-info .notif-header .notif-close {
+    color: #FFF !important;
+}
+
+.notif .notif-body {
+    padding: 10px;
+    font-size: 14px;
+}

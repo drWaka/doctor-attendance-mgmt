@@ -229,41 +229,49 @@
 <?php require_once 'includes/js-init.php'; ?>
 <script src="./core/js/dashboard-clock.component.js"></script>
 <script>
-    let paginationProperties = {
+    // ToDo: Move to a separate JS File named dashboard-content.component.js
+    let pageProps = {
         currentPage : 1,
         totalPages: 1,
         itemLimit: 10,
-        pageDuration: 10000
+        pageDuration: 2000 //10000
     };
 
     let link = './core/ajax/attendance-dashboard-content.php';
     let callbackFunction = ((result) => {
+        console.log(pageProps);
         // Attendance Content Properties
         let attendanceElem = document.querySelector('tbody.attendance-data');
-        result.content.data.forEach((data)=>{
+        attendanceElem.innerHTML = '';
+        result.content.record.forEach((data)=>{
             let tr = document.createElement('tr');
             
-            let td = document.createElement('td');
+            data.forEach((col) => {
+                let td = document.createElement('td');
+                td.textContent = col;
+                tr.appendChild(td);
+            });
+            attendanceElem.appendChild(tr);
         });
 
         // Pagination Properties
-        paginationProperties.totalPages = result.content.totalPages;
-        if (++paginationProperties['currentPage'] > paginationProperties['totalPages']) {
-            paginationProperties['currentPage'] = 1;
+        pageProps.totalPages = result.content.totalPages;
+        if (++pageProps['currentPage'] > pageProps['totalPages']) {
+            pageProps['currentPage'] = 1;
         }
         setTimeout(
             (()=> { sendXHR(link, 'POST', {
-                currentPage: currentPage,
-                itemLimit: itemLimit
+                currentPage: pageProps['currentPage'],
+                itemLimit: pageProps['itemLimit']
             }, callbackFunction) }), 
-            paginationProperties['pageDuration']
+            pageProps['pageDuration']
         );
     });
 
     $(document).ready(function() {
         sendXHR(link, 'POST', {
-            currentPage: currentPage,
-            itemLimit: itemLimit
+            currentPage: pageProps['currentPage'],
+            itemLimit: pageProps['itemLimit']
         }, callbackFunction);
     });
 </script>

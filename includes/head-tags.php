@@ -17,4 +17,7 @@
 <link href="core/css/helper-classes-1.0.0.css" rel="stylesheet"/> 
 <link href="core/css/bootstrap-form-custom-1.0.0.css" rel="stylesheet"/> 
 
-<title>OLLH Survey System</title>
+<!-- Notification Components -->
+<link href="core/css/component-notification.css" rel="stylesheet"/> 
+
+<title>Biometrics for MAB Doctors</title>

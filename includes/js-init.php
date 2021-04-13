@@ -8,3 +8,6 @@
 <script src="core/js/core-ajax-request-1.0.0.js"></script>
 <!-- Form Management Script -->
 <script src="core/js/core-form-management-1.0.0.js"></script>
+
+<script src="./core/js/notification.component.js"></script>
+<script src="./core/js/http-xhr-management.js"></script>
