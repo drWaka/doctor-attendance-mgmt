@@ -234,7 +234,7 @@
         currentPage : 1,
         totalPages: 1,
         itemLimit: 10,
-        pageDuration: 2000 //10000
+        pageDuration: 10000
     };
 
     let link = './core/ajax/attendance-dashboard-content.php';
