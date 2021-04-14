@@ -109,6 +109,11 @@ if (
                 $schedIn = date('h:i:s A', strtotime($employeeRecord['sched_start']));
                 $schedOut = date('h:i:s A', strtotime($employeeRecord['sched_end']));
 
+                $schedule = '&minus;';
+                if (strtoupper($schedIn) != '12:00:00 AM' && strtoupper($schedOut) != '12:00:00 AM') {
+                    $schedule = "{$schedIn} &minus; {$schedOut}";
+                }
+
                 // Data Management Field
                 $dataManagementBtn = "
                     <button class='btn btn-success transaction-btn' title='Edit Respondent'
@@ -141,7 +146,7 @@ if (
                     <td>{$attendanceDate}</td>
                     <td>{$timeIn}</td>
                     <td>{$timeOut}</td>
-                    <td>{$schedIn} &minus; {$schedOut}</td>
+                    <td>{$schedule}</td>
                     <td class='text-center'>{$dataManagementBtn}</td>
                 ";
                 $response['content']['record'] .= "<tr>";
