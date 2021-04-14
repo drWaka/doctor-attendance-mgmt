@@ -255,7 +255,7 @@
                                 }
 
                                 echo "
-                                    <tr class='show'>
+                                    <tr class='show' data-employee-no='{$attendance[$i]['PK_employee']}'>
                                         <td>" . $attendance[$i]['clinic'] . "</td>
                                         <td>" . strtoupper($attendance[$i]['name']) . "</td>
                                         <td>" . strtoupper($attendance[$i]['department']) . "</td>
@@ -286,53 +286,85 @@
     let callbackFunction = ((result) => {
         // Attendance Content Properties
         let attendanceElem = document.querySelector('tbody.attendance-data');
-        let existingTr = attendanceElem.querySelector('tr');
-        existingTr.classList.remove('show');
-        existingTr.classList.add('pushOut');
-        setTimeout(() => {
-            attendanceElem.removeChild(existingTr);
+        let existingTr = attendanceElem.querySelectorAll('tr');
 
-            result.content.record.forEach((data)=>{
-                let tr = document.createElement('tr');
-                
-                data.forEach((col) => {
-                    let td = document.createElement('td');
-                    td.textContent = col;
-                    tr.appendChild(td);
-                });
-                attendanceElem.appendChild(tr);
-                tr.classList.add('pushIn');
-                setTimeout(() => {
-                    tr.classList.add('show');
-                }, 2000);
-            });
-
-            // Pagination Properties
-            pageProps.totaRecords = result.content.totaRecords;
-            if (++pageProps['currentPage'] > pageProps['totaRecords']) {
-                pageProps['currentPage'] = 1;
+        result.content.record.forEach((data)=>{
+            // Determine if the data is not yet included at the Table
+            let isIncluded = false;
+            for (let i = 0 ; i < existingTr.length ; i++) {
+                isIncluded = isIncluded || existingTr[i].getAttribute('data-employee-no') == data[4];
             }
-            setTimeout(
-                (()=> { 
-                    sendXHR(link, 'POST', {
-                        currentPage: pageProps['currentPage'],
-                        itemLimit: pageProps['itemLimit']
-                    }, callbackFunction) 
-                }), 
-                pageProps['pageDuration']
-            );
-        }, 1500);
+            console.log(isIncluded);
+            if (isIncluded !== true) {
+                // Remove Old Attendance Row
+                if (existingTr.length == 10) {
+                    existingTr[0].classList.remove('show');
+                    existingTr[0].classList.add('pushOut');
+                }
+                setTimeout(() => {
+                    if (existingTr.length == 10) attendanceElem.removeChild(existingTr[0]);
+                    
+                    let tr = document.createElement('tr');
+                    tr.setAttribute('data-employee-no', data[4]);
+                    for (let i = 0 ; i <= 3 ; i++) {
+                        let td = document.createElement('td');
+                        td.textContent = data[i];
+                        tr.appendChild(td);
+                    }
+                    attendanceElem.appendChild(tr);
+                    tr.classList.add('pushIn');
+                    setTimeout(() => { tr.classList.add('show'); }, 2000);
+                }, 1500);
+            }
+        });
 
-        
+        // Pagination Properties
+        pageProps.totaRecords = result.content.totaRecords;
+        if (++pageProps['currentPage'] > pageProps['totaRecords']) {
+            pageProps['currentPage'] = 1;
+        }
+        setTimeout(
+            (()=> { 
+                sendXHR(link, 'POST', {
+                    currentPage: pageProps['currentPage'],
+                    itemLimit: pageProps['itemLimit']
+                }, callbackFunction) 
+            }), 
+            pageProps['pageDuration']
+        );
+
+        // Clean the dashboard if the attendance records is less than 10
+        if (pageProps.totaRecords < 10) {
+            sendXHR(link, 'POST', {
+                currentPage: 1,
+                itemLimit: 10
+            }, (result) => {
+                // Attendance Content Properties
+                let attendanceElem = document.querySelector('tbody.attendance-data');
+                let existingTr = attendanceElem.querySelectorAll('tr');
+
+                for (let i = 0 ; i < existingTr.length ; i++) {
+                    let log = result.content.record.filter((node) => {
+                        return node[4] == existingTr[i].getAttribute('data-employee-no');
+                    });
+                    console.log(log.length);
+                    if (log.length == 0) {
+                        existingTr[i].classList.remove('show');
+                        existingTr[i].classList.add('pushOut');
+                        setTimeout(() => { attendanceElem.removeChild(existingTr[i]); }, 1500);
+                    }
+                }
+            });
+        }
     });
 
     $(document).ready(function() {
         setTimeout(() => {
             sendXHR(link, 'POST', {
-                currentPage: 11,
-                itemLimit: 1
+                currentPage: pageProps['currentPage'],
+                itemLimit: pageProps['itemLimit']
             }, callbackFunction);
-        }, 1000);
+        }, pageProps['pageDuration']);
     });
 </script>
 </html>

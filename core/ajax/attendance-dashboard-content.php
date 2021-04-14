@@ -43,6 +43,7 @@ if (isset($_POST['currentPage']) && isset($_POST['itemLimit'])) {
                 } else {
                     $attendancePaginated[$currentIndex][3] = "-";
                 }
+                $attendancePaginated[$currentIndex][4] = strtoupper($attendance[$i]['PK_employee']);
             }
         }
 
