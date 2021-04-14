@@ -12,9 +12,11 @@ window.onload = (() => {
             timeHr = dateTime.getHours() - 12;
             timeMeridian = 'PM';
         } else {
-            timeHr = dateTime.getHours();
+            timeHr = (dateTime.getHours() < 10) ? '0' + dateTime.getHours() : dateTime.getHours();
             timeMeridian = 'AM';
         }
+        let timeMinutes = (dateTime.getMinutes() < 10) ? '0' + dateTime.getMinutes() : dateTime.getMinutes();
+        let timeSeconds = (dateTime.getSeconds() < 10) ? '0' + dateTime.getSeconds() : dateTime.getSeconds();
 
         let day = '', month = '', date = '';
         switch (dateTime.getDay()) {
@@ -79,7 +81,7 @@ window.onload = (() => {
                 break;
         }
         dateTimeElem.innerHTML = `
-            ${timeHr}:${dateTime.getMinutes()}:${dateTime.getSeconds()} ${timeMeridian} <br>
+            ${timeHr}:${timeMinutes}:${timeSeconds} ${timeMeridian} <br>
             ${day} ${month} ${dateTime.getDate()}, ${dateTime.getFullYear()}
         `;
     }, 1000);

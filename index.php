@@ -321,7 +321,7 @@
                 }), 
                 pageProps['pageDuration']
             );
-        }, 2000);
+        }, 1500);
 
         
     });
