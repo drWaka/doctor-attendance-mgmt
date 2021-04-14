@@ -52,6 +52,7 @@
         padding: 10px 30px 0 30px;
         border-radius: 5px;
         min-height: 620px;
+        overflow: hidden;
     }
 
     .dashboard-body .table th, 
@@ -60,9 +61,7 @@
         vertical-align: middle;
     }
 
-    .table tr td:nth-child(3),
     .table tr td:nth-child(4),
-    .table tr th:nth-child(3),
     .table tr th:nth-child(4) {
         text-align: center;
     }
@@ -87,6 +86,10 @@
     .table tr td:nth-child(3), .table tr th:nth-child(3) { width: 19.60% }
     .table tr td:nth-child(4), .table tr th:nth-child(4) { width: 24.60% }
     
+    .table tbody tr { 
+        left: 1700px; 
+        transition-duration: 1s;
+    }
     .table tbody tr:nth-child(1) { margin-top: calc(1 * 55px); }
     .table tbody tr:nth-child(2) { margin-top: calc(2 * 55px); }
     .table tbody tr:nth-child(3) { margin-top: calc(3 * 55px); }
@@ -131,6 +134,28 @@
         left: 0;
         z-index: -11;
         width: 100%;
+    }
+
+    tr.show { left: 15px !important; }
+    tr.pushIn {
+        animation-name: PushIn;
+        animation-duration: 2s;
+    }
+    tr.pushOut {
+        left: -1400px;
+        animation-name: PushOut;
+        animation-duration: 2s;
+    }
+    
+
+    /* Push Out / Push In animation */
+    @-webkit-keyframes PushOut {
+        from { left: 0px; }
+        to { left: -1700px; }
+    }
+    @-webkit-keyframes PushIn {
+        from { left: 1700px; }
+        to { left: 15px; }
     }
 
     
@@ -187,7 +212,7 @@
       <div class="row">
           <div class="col-12 dashboard-header">
             <img src="./core/img/ollh-logo.gif" class='header-logo' alt="">
-            <h1>Available Doctors for Clinic Consulation</h1>
+            <h1>Available Doctors for Clinic Consultation</h1>
             <h3>Our Lady of Lourdes Hospital</h3>
             <h4 class="datetime-container">08:00:00 AM <br> Monday, January 1, 2021</h4>
           </div>
@@ -203,52 +228,43 @@
                         <th>Clinic No.</th>
                         <th>Doctor Name</th>
                         <th>Specialization</th>
-                        <th>Schedule</th>
+                        <th>Clinic Hours</th>
                     </tr>
                 </thead>
                 <tbody class='attendance-data'>
-                    <tr>
-                        <td>101</td>
-                        <td>Dr. Juan Dela Cruz</td>
-                        <td>Internal Medicine</td>
-                        <td>12:00 NN - 3:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>Dr. Juan Dela Cruz</td>
-                        <td>Internal Medicine</td>
-                        <td>12:00 NN - 3:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>Dr. Juan Dela Cruz</td>
-                        <td>Internal Medicine</td>
-                        <td>12:00 NN - 3:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>Dr. Juan Dela Cruz</td>
-                        <td>Internal Medicine</td>
-                        <td>12:00 NN - 3:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>Dr. Juan Dela Cruz</td>
-                        <td>Internal Medicine</td>
-                        <td>12:00 NN - 3:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>Dr. Juan Dela Cruz</td>
-                        <td>Internal Medicine</td>
-                        <td>12:00 NN - 3:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>Dr. Juan Dela Cruz</td>
-                        <td>Internal Medicine</td>
-                        <td>12:00 NN - 3:00 PM</td>
-                    </tr>
+                    <?php
+                        $attendance = EmployeeAttendance::filter(array(
+                            "isOnBoard" => 1,
+                            "date" => date('Y-m-d')
+                        ));
+                
+                        $startNode = 0; 
+                        $limitNode = 10;
+                        for ($i = $startNode ; $i < $limitNode ; $i++) {
+                            if (isset($attendance[$i])) {
+                                $schedule = EmployeeClinicSchedule::filter(array(
+                                    "employeeId" => $attendance[$i]['PK_employee'],
+                                    "day" => date('D')
+                                ));
+                                $timeIn = date('h:i A', strtotime($schedule[0]['time_start']));
+                                $timeOut = date('h:i A', strtotime($schedule[0]['time_end']));
+
+                                $clinicHours = '-';
+                                if ($timeIn != '12:00 AM' && $timeOut != '12:00 AM') {
+                                    $clinicHours = "{$timeIn} - {$timeOut}";
+                                }
+
+                                echo "
+                                    <tr class='show'>
+                                        <td>" . $attendance[$i]['clinic'] . "</td>
+                                        <td>" . strtoupper($attendance[$i]['name']) . "</td>
+                                        <td>" . strtoupper($attendance[$i]['department']) . "</td>
+                                        <td>{$clinicHours}</td>
+                                    </tr>
+                                ";
+                            }
+                        }
+                    ?>
                 </tbody>
             </table>
             </div>
@@ -261,47 +277,62 @@
     // ToDo: Move to a separate JS File named dashboard-content.component.js
     let pageProps = {
         currentPage : 1,
-        totalPages: 1,
-        itemLimit: 10,
-        pageDuration: 10000
+        totaRecords: 1,
+        itemLimit: 1,
+        pageDuration: 5000
     };
 
     let link = './core/ajax/attendance-dashboard-content.php';
     let callbackFunction = ((result) => {
-        console.log(pageProps);
         // Attendance Content Properties
         let attendanceElem = document.querySelector('tbody.attendance-data');
-        attendanceElem.innerHTML = '';
-        result.content.record.forEach((data)=>{
-            let tr = document.createElement('tr');
-            
-            data.forEach((col) => {
-                let td = document.createElement('td');
-                td.textContent = col;
-                tr.appendChild(td);
-            });
-            attendanceElem.appendChild(tr);
-        });
+        let existingTr = attendanceElem.querySelector('tr');
+        existingTr.classList.remove('show');
+        existingTr.classList.add('pushOut');
+        setTimeout(() => {
+            attendanceElem.removeChild(existingTr);
 
-        // Pagination Properties
-        pageProps.totalPages = result.content.totalPages;
-        if (++pageProps['currentPage'] > pageProps['totalPages']) {
-            pageProps['currentPage'] = 1;
-        }
-        // setTimeout(
-        //     (()=> { sendXHR(link, 'POST', {
-        //         currentPage: pageProps['currentPage'],
-        //         itemLimit: pageProps['itemLimit']
-        //     }, callbackFunction) }), 
-        //     pageProps['pageDuration']
-        // );
+            result.content.record.forEach((data)=>{
+                let tr = document.createElement('tr');
+                
+                data.forEach((col) => {
+                    let td = document.createElement('td');
+                    td.textContent = col;
+                    tr.appendChild(td);
+                });
+                attendanceElem.appendChild(tr);
+                tr.classList.add('pushIn');
+                setTimeout(() => {
+                    tr.classList.add('show');
+                }, 2000);
+            });
+
+            // Pagination Properties
+            pageProps.totaRecords = result.content.totaRecords;
+            if (++pageProps['currentPage'] > pageProps['totaRecords']) {
+                pageProps['currentPage'] = 1;
+            }
+            setTimeout(
+                (()=> { 
+                    sendXHR(link, 'POST', {
+                        currentPage: pageProps['currentPage'],
+                        itemLimit: pageProps['itemLimit']
+                    }, callbackFunction) 
+                }), 
+                pageProps['pageDuration']
+            );
+        }, 2000);
+
+        
     });
 
     $(document).ready(function() {
-        sendXHR(link, 'POST', {
-            currentPage: pageProps['currentPage'],
-            itemLimit: pageProps['itemLimit']
-        }, callbackFunction);
+        setTimeout(() => {
+            sendXHR(link, 'POST', {
+                currentPage: 11,
+                itemLimit: 1
+            }, callbackFunction);
+        }, 1000);
     });
 </script>
 </html>

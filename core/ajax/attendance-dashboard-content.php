@@ -47,7 +47,7 @@ if (isset($_POST['currentPage']) && isset($_POST['itemLimit'])) {
         }
 
         $response['content'] = array(
-            "totalPages" => ceil(count($attendance) / $itemLimit -> value),
+            "totaRecords" => count($attendance),
             "record" => $attendancePaginated
         );
     } else {
