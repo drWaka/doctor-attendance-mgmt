@@ -8,18 +8,14 @@
 <link rel="stylesheet" href="core/css/date-picker-modal-1.0.0.css">
 <style>
     body {
-        background-color: #F0F0F0;
+        background-color: #D0D0D0;
     }
-    .dashboard-header,
-    .dashboard-body {
-        background-color: #FFFFFFEF;
-    }
-
 
     .dashboard-header {
         text-align: center;
         padding: 25px;
-        position: relative
+        position: relative;
+        color: #FFF !important;
     }
     h1 {
         font-size: 36px;
@@ -32,17 +28,46 @@
 
     .dashboard-header .datetime-container {
         text-align: center;
-        font-size: 18px;
+        margin-top: 15px;
     }
 
     .dashboard-header img.header-logo {
-        width: 125px;
+        width: 135px;
         position: absolute;
         left: 18%;
         top: 15px;
     }
 
+    .bg-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -10;
+        width: 100%;
+        height: 157px;
+        overflow: hidden;
+    }
+
+    .bg-cover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        height: 157px;
+        background-color: #000000FE;
+        opacity: 0.2;
+    }
+    .bg-container img {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: -11;
+        width: 100%;
+    }
+
     .dashboard-body {
+        background-color: #FFF;
         width: 90%;
         margin: auto;
         margin-top: 40px;
@@ -104,33 +129,6 @@
         background-color: #FFF;
         padding: 10px 20px;
         min-height: 100vh
-    }
-
-    .bg-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -10;
-        width: 100%;
-        height: 100vh;
-    }
-
-    .bg-cover {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 10;
-        width: 100%;
-        height: 100vh;
-        background-color: #FFF;
-        opacity: 0.2;
-    }
-    .bg-container img {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -11;
-        width: 100%;
     }
 
     tr.show { left: 15px !important; }
@@ -208,7 +206,7 @@
     <div class="container-fluid ">
       <div class="row">
           <div class="col-12 dashboard-header">
-            <img src="./core/img/ollh-logo.gif" class='header-logo' alt="">
+            <img src="./core/img/ollh-logo-white-trimmed.gif" class='header-logo' alt="">
             <h3>Our Lady of Lourdes Hospital</h3>
             <h1>Available Doctors for Clinic Consultation Today</h1>
             <h3 class="datetime-container">08:00:00 AM &minus; Monday, January 1, 2021</h3>
