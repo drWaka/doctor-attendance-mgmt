@@ -81,8 +81,8 @@ window.onload = (() => {
                 break;
         }
         dateTimeElem.innerHTML = `
-            ${timeHr}:${timeMinutes}:${timeSeconds} ${timeMeridian} <br>
-            ${day} ${month} ${dateTime.getDate()}, ${dateTime.getFullYear()}
+            ${day} ${month} ${dateTime.getDate()}, ${dateTime.getFullYear()} &minus;
+            ${timeHr}:${timeMinutes}:${timeSeconds} ${timeMeridian}
         `;
     }, 1000);
 })

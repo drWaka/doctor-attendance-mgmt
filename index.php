@@ -31,15 +31,12 @@
     }
 
     .dashboard-header .datetime-container {
-        position: absolute;
-        bottom: 25px;
-        right: 15px;
-        text-align: right;
+        text-align: center;
         font-size: 18px;
     }
 
     .dashboard-header img.header-logo {
-        width: 80px;
+        width: 125px;
         position: absolute;
         left: 18%;
         top: 15px;
@@ -212,9 +209,9 @@
       <div class="row">
           <div class="col-12 dashboard-header">
             <img src="./core/img/ollh-logo.gif" class='header-logo' alt="">
-            <h1>Available Doctors for Clinic Consultation</h1>
             <h3>Our Lady of Lourdes Hospital</h3>
-            <h4 class="datetime-container">08:00:00 AM <br> Monday, January 1, 2021</h4>
+            <h1>Available Doctors for Clinic Consultation</h1>
+            <h3 class="datetime-container">08:00:00 AM &minus; Monday, January 1, 2021</h3>
           </div>
       </div>
     </div>
