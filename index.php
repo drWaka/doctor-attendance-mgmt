@@ -210,7 +210,7 @@
           <div class="col-12 dashboard-header">
             <img src="./core/img/ollh-logo.gif" class='header-logo' alt="">
             <h3>Our Lady of Lourdes Hospital</h3>
-            <h1>Available Doctors for Clinic Consultation</h1>
+            <h1>Available Doctors for Clinic Consultation Today</h1>
             <h3 class="datetime-container">08:00:00 AM &minus; Monday, January 1, 2021</h3>
           </div>
       </div>
