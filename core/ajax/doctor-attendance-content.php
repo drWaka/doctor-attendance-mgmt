@@ -115,29 +115,35 @@ if (
                 }
 
                 // Data Management Field
-                $dataManagementBtn = "
-                    <button class='btn btn-success transaction-btn' title='Edit Respondent'
-                        trans-name='async-form'
-                        data-target='.modal-container'
-                        data-link='../core/ajax/doctor-attendance-select.php'
-                        data-content='{
-                            &quot;attendanceId&quot; : &quot;{$employeeRecord['PK_employee_attendance']}&quot;
-                        }'
-                    ><i class='fas fa-pencil-alt'></i></button>
-                    <button class='btn btn-danger transaction-btn' title='Delete Department'
-                        trans-name='async-form'
-                        data-target='.modal-container'
-                        data-link='../core/ajax/generic-warning-modal.php'
-                        data-content='{
-                            &quot;transType&quot;   : &quot;delete&quot;,
-                            &quot;link&quot;        : &quot;../core/ajax/doctor-attendance-delete.php&quot;,
-                            &quot;dataContent&quot; : {
-                                &quot;attendanceId&quot;  : &quot;{$employeeRecord['PK_employee_attendance']}&quot;
-                            },
-                            &quot;headerTitle&quot; : &quot;Doctor Log&quot;
-                        }'
-                    ><i class='fa fa-trash'></i></button>
-                ";
+                $dataManagementBtn = '';
+                if ($_SESSION['userType'] == 'administrator') {
+                    $dataManagementBtn = "
+                        <td class='text-center'>
+                            <button class='btn btn-success transaction-btn' title='Edit Respondent'
+                                trans-name='async-form'
+                                data-target='.modal-container'
+                                data-link='../core/ajax/doctor-attendance-select.php'
+                                data-content='{
+                                    &quot;attendanceId&quot; : &quot;{$employeeRecord['PK_employee_attendance']}&quot;
+                                }'
+                            ><i class='fas fa-pencil-alt'></i></button>
+                            <button class='btn btn-danger transaction-btn' title='Delete Department'
+                                trans-name='async-form'
+                                data-target='.modal-container'
+                                data-link='../core/ajax/generic-warning-modal.php'
+                                data-content='{
+                                    &quot;transType&quot;   : &quot;delete&quot;,
+                                    &quot;link&quot;        : &quot;../core/ajax/doctor-attendance-delete.php&quot;,
+                                    &quot;dataContent&quot; : {
+                                        &quot;attendanceId&quot;  : &quot;{$employeeRecord['PK_employee_attendance']}&quot;
+                                    },
+                                    &quot;headerTitle&quot; : &quot;Doctor Log&quot;
+                                }'
+                            ><i class='fa fa-trash'></i></button>
+                        </td>
+                    ";
+                }
+                
 
                 $response['content']['record'] .= "<tr>";
                 $response['content']['record'] .= "
@@ -147,7 +153,7 @@ if (
                     <td>{$timeIn}</td>
                     <td>{$timeOut}</td>
                     <td>{$schedule}</td>
-                    <td class='text-center'>{$dataManagementBtn}</td>
+                    {$dataManagementBtn}
                 ";
                 $response['content']['record'] .= "<tr>";
             }

@@ -17,7 +17,7 @@
         </a>
         <ul id="attendance-mgmt" class="collapse" data-parent="#sidebar-nav">
             <li><a href="attendance-mgmt.php?pageName=doctor-logs" class="sidebar-nav-link">Doctor Attendance</a></li>
-            <li><a href="attendance-mgmt.php?pageName=logs-validation" class="sidebar-nav-link">Attendance Validation</a></li>
+            <li class="<?= $_SESSION['userType'] . ' ' . isHidden($_SESSION['userType'], ['administrator'])?>"><a href="attendance-mgmt.php?pageName=logs-validation" class="sidebar-nav-link">Attendance Validation</a></li>
         </ul>
     </li>
 

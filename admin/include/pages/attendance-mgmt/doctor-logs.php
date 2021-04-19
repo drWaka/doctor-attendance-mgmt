@@ -76,7 +76,7 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Schedule</th>
-            <th>Manage</th>
+            <?php if ($_SESSION['userType'] == 'administrator') echo '<th>Manage</th>'; ?>
         </tr>
         </thead>
         <tbody class="record-container">
