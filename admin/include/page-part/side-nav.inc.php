@@ -11,7 +11,7 @@
   </div>
 
   <ul id="sidebar-nav" class="sidebar-nav">
-    <li class="sidebar-nav-group <?= $_SESSION['userType'] . ' ' . isHidden($_SESSION['userType'], ['administrator', 'hrod'])?>">
+    <li class="sidebar-nav-group <?= $_SESSION['userType'] . ' ' . isHidden($_SESSION['userType'], ['administrator', 'information'])?>">
         <a href="#attendance-mgmt" class="sidebar-nav-link" data-toggle="collapse">
           <i class="fas fa-clock"></i> Attendance Mgmt.
         </a>
@@ -21,7 +21,7 @@
         </ul>
     </li>
 
-    <li class="sidebar-nav-group <?=isHidden($_SESSION['userType'], ['administrator', 'hrod']) ?>">
+    <li class="sidebar-nav-group <?=isHidden($_SESSION['userType'], ['administrator', 'mdo']) ?>">
         <a href="#respondent-mgmt" class="sidebar-nav-link" data-toggle="collapse">
             <i class="fa fa-user"></i> Doctor Mgmt.
         </a>
