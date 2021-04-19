@@ -15,7 +15,7 @@ class Employee {
 
     public static function insert($data) {
         $data = self::escape_string($data);
-        $birthDate = (!empty($data['birthDate'])) ? "{$data['birthDate']}" : "NULL";
+        $birthDate = (!empty($data['birthDate'])) ? "'{$data['birthDate']}'" : "NULL";
         $query = "
             INSERT INTO employees (
                 firstName, middleName, lastName, 
@@ -74,7 +74,6 @@ class Employee {
                 fingerScanId = '{$data['fingerScanId']}'
             WHERE PK_employee = '{$data['PK_employee']}'
         ";
-        // die($query);
         if ($GLOBALS['connection'] -> query($query)) {
             return true;
         }

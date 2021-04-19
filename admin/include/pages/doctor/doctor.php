@@ -30,7 +30,7 @@
             <label> Department :</label>
         </div>
         <div class="col-12">
-            <select name="departmentId" class="form-control" id="">
+            <select name="departmentId" class="form-control filter" id="">
                 <option value="all">All Department</option>
                 <?php
                     $departmentQry = "SELECT * FROM mscdepartment";
@@ -53,7 +53,7 @@
             <label> Include Deleted Records?</label>
         </div>
         <div class="col-12">
-            <select name="isDeleted" class="form-control" id="">
+            <select name="isDeleted" class="form-control filter" id="">
                 <option value="no" selected>No</option>
                 <option value="yes">Yes</option>
             </select>
