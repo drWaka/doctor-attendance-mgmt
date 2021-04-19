@@ -1,4 +1,5 @@
 # Ignore these files
 __archive/
-core/files/
+core/files/csv
+core/files/pdf
 core/php/.env
