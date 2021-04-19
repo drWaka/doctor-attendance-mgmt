@@ -73,8 +73,8 @@
             <th>PRC ID</th>
             <th>Doctor Name</th>
             <th>Log Date</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+            <th>Login</th>
+            <th>Logout</th>
             <th>Schedule</th>
             <?php if ($_SESSION['userType'] == 'administrator') echo '<th>Manage</th>'; ?>
         </tr>
@@ -85,10 +85,10 @@
     </table>
     </div>
     <div class="col-3">
-        <form action="../core/requests/report-question-response.php" method="post" target="_blank">
+        <form action="../core/requests/report-doctor-attendance.php" method="post" target="_blank">
             <input type="text" name="csvEmployeeName" hidden>
-            <input type="text" name="csvLogDate" hidden>
-            <input type="date" name="csvDepartmentId" hidden>
+            <input type="date" name="csvLogDate" hidden>
+            <input type="text" name="csvDepartmentId" hidden>
             <button class="btn btn-success w-100">Generate CSV File</button>
         </form>
     </div>
@@ -140,9 +140,6 @@
         let departmentId = document.querySelector('[name="departmentId"]');
         let csvDepartmentId = document.querySelector('[name="csvDepartmentId"]');
         csvDepartmentId.value = departmentId.value;
+        console.log(csvDepartmentId.value);
     }
-
-    // $(document).ready(function() {
-        
-    // });
 </script>

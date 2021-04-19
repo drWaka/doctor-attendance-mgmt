@@ -98,9 +98,9 @@ if (
             foreach ($employeeRecords as $employeeRecord) {
                 // Employee Name Field
                 $middleInitial = !empty($employeeRecord['middleName'])
-                    ? substr($employeeRecord['middleName'], 0, 1)
+                    ? substr($employeeRecord['middleName'], 0, 1) . '.'
                     : '';
-                $employeeName = utf8_encode(strtoupper(("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}.")));
+                $employeeName = utf8_encode(strtoupper(("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}")));
 
                 // die(var_dump($employeeRecord['time_out']) . 'WAKA');
                 $attendanceDate = date('F d, Y', strtotime($employeeRecord['attendance_date']));
