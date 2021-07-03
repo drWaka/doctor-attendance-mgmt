@@ -5,13 +5,9 @@ require '../model/_autoload.php';
 
 // JSON Response
 $response = array(
-    "success" => 'success',
-    "content" => array(
-        "modal" => '',
-        "record" => [],
-        "total" => 0
-    ),
-    "contentType" => ''
+    "httpStatus" => 'success',
+    "type" => 'element',
+    "content" => ''
 );
 
 if (isset($_POST['employeeName'])) {
@@ -42,39 +38,25 @@ if (isset($_POST['employeeName'])) {
         $employeeRecords = $employeeResult -> fetch_all(MYSQLI_ASSOC);
 
         if (count($employeeRecords) > 0) {
+            $response['content'] = array(
+                "total" => 0,
+                "record" => []
+            );
             $response['content']['total'] = count($employeeRecords);
             foreach ($employeeRecords as $employeeRecord) {
                 $response['content']['record'][count($response['content']['record'])] = $employeeRecord;
             }
         }
     } else {
-        $response['success'] = 'failed';
-        $response['contentType'] = 'modal';
-        $response['content']['modal'] = modalize(
-            "<div class='row text-center'>
-                <h2 class='header capitalize col-12'>System Error Encountered</h2>
-                <p class='para-text col-12'>Error Details: {$employeeName -> err_msg}</p>
-            </div>", 
-            array(
-                "trasnType" => 'error',
-                "btnLbl" => 'Dismiss'
-            )
-        );  
+        $response['httpStatus'] = 'failed';
+        $response['type'] = 'notif';
+        $response['content'] = "Error Details: {$employeeName -> err_msg}";  
     }
 
 } else {
-    $response['success'] = 'failed';
-    $response['contentType'] = 'modal';
-    $response['content']['modal'] = modalize(
-        '<div class="row text-center">
-            <h2 class="header capitalize col-12">System Error Encountered</h2>
-            <p class="para-text col-12">Error Details: Insufficient Data Submitted<br/> Please contact your System Administrator</p>
-        </div>', 
-        array(
-            "trasnType" => 'error',
-            "btnLbl" => 'Dismiss'
-        )
-    );   
+    $response['httpStatus'] = 'failed';
+    $response['type'] = 'notif';
+    $response['content'] = 'Error Details: Insufficient Data Submitted<br/> Please contact your System Administrator';   
 }
 
 

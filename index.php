@@ -34,7 +34,7 @@
     .dashboard-header img.header-logo {
         width: 135px;
         position: absolute;
-        left: 18%;
+        left: 13%;
         top: 15px;
     }
 
