@@ -35,7 +35,7 @@ if (
     $addressLine2 = new form_validation($_POST['addressLine2'], 'str-int', 'City', false);
     $addressLine3 = new form_validation($_POST['addressLine3'], 'str-int', 'Province', false);
     $email = new form_validation($_POST['email'], 'email', 'Email', false);
-    $clinic = new form_validation($_POST['clinic'], 'int', 'Clinic Room No', true);
+    $clinic = new form_validation($_POST['clinic'], 'str-int', 'Clinic Room No', true);
     $fingerScanId = new form_validation($_POST['fingerScanId'], 'str-int', 'Finger Scan ID', false);
 
     $flags = array(
