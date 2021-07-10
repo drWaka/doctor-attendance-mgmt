@@ -164,7 +164,7 @@
         transition-duration: 1s;
     }
     .ads-overlay.minimized {
-        width: 20%;
+        width: 15%;
     }
 
     .ads-overlay video {
@@ -177,7 +177,7 @@
 </head>
 <body>
     <div class="ads-overlay">
-        <video width="320" height="240" autoplay>
+        <video width="320" height="240" controls>
             <source src="" type="video/mp4">
             Video Unsupported in your browser.
         </video>
@@ -261,6 +261,12 @@
         itemLimit: 1,
         pageDuration: 5000
     };
+
+    let videoAds = {
+        currentNode: 1,
+        totalNodes: 1,
+        nodes: []
+    }
 
     let link = './core/ajax/attendance-dashboard-content.php';
     let callbackFunction = ((result) => {
@@ -353,19 +359,38 @@
         let adsVideo = adsVideoOverlay.querySelector('video');
         let adsVideoSrc = adsVideoOverlay.querySelector('video source');
         
-        adsVideoSrc.setAttribute('src', './core/videos/' + fileName);
+        adsVideoSrc.setAttribute('src', './core/videos/_/' + fileName);
         adsVideo.load();
         
         setTimeout(() => {
             adsVideoOverlay.style.display = 'block';
             adsVideo.play()
-            // setTimeout(() => , 500);
-        }, 5000);
+            console.log(adsVideo.duration);
+            
+            videoAds.currentNode = (videoAds.currentNode + 1) > videoAds.totalNodes
+                ? 1
+                : (videoAds.currentNode + 1);
+            console.log(videoAds);
+            setTimeout(() => { loadVideo(videoAds.nodes[(videoAds.currentNode - 1)][0]); }, adsVideo.duration * 1000);
+        }, 2000);
     }
 
     // Ads Overlay JS
     $(document).ready(function() {
-        loadVideo('video-1.mp4');
+        sendXHR(
+            './core/ajax/video-files-content.php', 
+            'GET', 
+            {}, 
+            ((result) => {
+                console.log({result});
+                videoAds.totalNodes = result.content.length;
+                videoAds.currentNode = 1;
+                videoAds.nodes = result.content;
+
+                loadVideo(videoAds.nodes[(videoAds.currentNode - 1)][0]);
+            })
+        );
+        
 
         let body = document.querySelector('body');
         
