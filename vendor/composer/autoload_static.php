@@ -14,6 +14,12 @@ class ComposerStaticInitd6111da828eed2cde7a34d439ad19a23
     );
 
     public static $prefixLengthsPsr4 = array (
+        'w' => 
+        array (
+            'wapmorgan\\Mp3Info\\' => 18,
+            'wapmorgan\\MediaFile\\' => 20,
+            'wapmorgan\\BinaryStream\\' => 23,
+        ),
         's' => 
         array (
             'setasign\\Fpdi\\' => 14,
@@ -46,6 +52,18 @@ class ComposerStaticInitd6111da828eed2cde7a34d439ad19a23
     );
 
     public static $prefixDirsPsr4 = array (
+        'wapmorgan\\Mp3Info\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wapmorgan/mp3info/src',
+        ),
+        'wapmorgan\\MediaFile\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpclasses/mediafile/src',
+        ),
+        'wapmorgan\\BinaryStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wapmorgan/binary-stream/src',
+        ),
         'setasign\\Fpdi\\' => 
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
@@ -92,11 +110,22 @@ class ComposerStaticInitd6111da828eed2cde7a34d439ad19a23
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'B' => 
+        array (
+            'BoyHagemann\\Wave\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/boyhagemann/wave',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'bluemoehre\\Flac' => __DIR__ . '/..' . '/bluemoehre/flac-php/src/Flac.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -104,6 +133,7 @@ class ComposerStaticInitd6111da828eed2cde7a34d439ad19a23
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd6111da828eed2cde7a34d439ad19a23::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd6111da828eed2cde7a34d439ad19a23::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd6111da828eed2cde7a34d439ad19a23::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd6111da828eed2cde7a34d439ad19a23::$classMap;
 
         }, null, ClassLoader::class);

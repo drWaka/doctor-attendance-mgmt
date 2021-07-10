@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'wapmorgan\\Mp3Info\\' => array($vendorDir . '/wapmorgan/mp3info/src'),
+    'wapmorgan\\MediaFile\\' => array($vendorDir . '/phpclasses/mediafile/src'),
+    'wapmorgan\\BinaryStream\\' => array($vendorDir . '/wapmorgan/binary-stream/src'),
     'setasign\\Fpdi\\' => array($vendorDir . '/setasign/fpdi/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),

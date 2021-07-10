@@ -1,5 +1,80 @@
 [
     {
+        "name": "bluemoehre/flac-php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bluemoehre/flac-php.git",
+            "reference": "e40c8b48c9c43ea64ada3e43e48fa4256e3042b3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bluemoehre/flac-php/zipball/e40c8b48c9c43ea64ada3e43e48fa4256e3042b3",
+            "reference": "e40c8b48c9c43ea64ada3e43e48fa4256e3042b3",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "5.7.*"
+        },
+        "time": "2019-02-24T21:25:41+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "src/Flac.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0-only"
+        ],
+        "description": "PHP class for native reading FLAC's metadata and Vorbis comment"
+    },
+    {
+        "name": "boyhagemann/wave",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "BoyHagemann/Wave",
+        "source": {
+            "type": "git",
+            "url": "git@github.com:boyhagemann/Wave.git",
+            "reference": "953143a8827a0af9c0ffe69c0962ef92440874b4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/boyhagemann/Wave/zipball/953143a8827a0af9c0ffe69c0962ef92440874b4",
+            "reference": "953143a8827a0af9c0ffe69c0962ef92440874b4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2013-10-29T21:50:19+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "BoyHagemann\\Wave\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "A php package to read WAV data",
+        "keywords": [
+            "audio",
+            "chunk",
+            "php",
+            "riff",
+            "wave",
+            "waveform"
+        ]
+    },
+    {
         "name": "graham-campbell/result-type",
         "version": "v1.0.1",
         "version_normalized": "1.0.1.0",
@@ -242,6 +317,28 @@
             "pseudorandom",
             "random"
         ]
+    },
+    {
+        "name": "phpclasses/mediafile",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://www.phpclasses.org/install/package/mediafile.zip"
+        },
+        "require": {
+            "bluemoehre/flac-php": "dev-master",
+            "boyhagemann/wave": "dev-master",
+            "wapmorgan/binary-stream": "^0.1.5",
+            "wapmorgan/mp3info": "~0.0"
+        },
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "wapmorgan\\MediaFile\\": "src/"
+            }
+        }
     },
     {
         "name": "phpmailer/phpmailer",
@@ -815,6 +912,94 @@
                 "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
                 "type": "tidelift"
             }
+        ]
+    },
+    {
+        "name": "wapmorgan/binary-stream",
+        "version": "0.1.6",
+        "version_normalized": "0.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/wapmorgan/BinaryStream.git",
+            "reference": "b3bd904deaa08e3569aa4f18e88cc706d554ac40"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/wapmorgan/BinaryStream/zipball/b3bd904deaa08e3569aa4f18e88cc706d554ac40",
+            "reference": "b3bd904deaa08e3569aa4f18e88cc706d554ac40",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8"
+        },
+        "time": "2017-02-07T11:49:40+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "wapmorgan\\BinaryStream\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "A handy tool for working with binary data",
+        "keywords": [
+            "binary",
+            "binary-data",
+            "reader",
+            "writer"
+        ]
+    },
+    {
+        "name": "wapmorgan/mp3info",
+        "version": "0.0.5",
+        "version_normalized": "0.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/wapmorgan/Mp3Info.git",
+            "reference": "0dc3d62d155d6b7c25bc0568fd8a93924449020c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/wapmorgan/Mp3Info/zipball/0dc3d62d155d6b7c25bc0568fd8a93924449020c",
+            "reference": "0dc3d62d155d6b7c25bc0568fd8a93924449020c",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "wapmorgan/terminal-info": "dev-master"
+        },
+        "time": "2019-12-03T00:57:48+00:00",
+        "bin": [
+            "bin/mp3scan"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "wapmorgan\\Mp3Info\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "description": "The fastest php library to extract mp3 tags & meta information.",
+        "keywords": [
+            "audio",
+            "id3",
+            "id3v1",
+            "id3v2",
+            "mp3",
+            "mpeg"
         ]
     }
 ]

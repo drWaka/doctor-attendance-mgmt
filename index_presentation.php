@@ -177,7 +177,7 @@
 </head>
 <body>
     <div class="ads-overlay">
-        <video width="320" height="240">
+        <video width="320" height="240" autoplay>
             <source src="" type="video/mp4">
             Video Unsupported in your browser.
         </video>
@@ -358,13 +358,15 @@
         
         setTimeout(() => {
             adsVideoOverlay.style.display = 'block';
-            setTimeout(() => adsVideo.play(), 500);
+            adsVideo.play()
+            // setTimeout(() => , 500);
         }, 5000);
     }
 
     // Ads Overlay JS
     $(document).ready(function() {
         loadVideo('video-1.mp4');
+
         let body = document.querySelector('body');
         
         let adsVideoOverlay = document.querySelector('.ads-overlay');

@@ -2,6 +2,15 @@
     "require": {
         "mpdf/mpdf": "^8.0",
         "phpmailer/phpmailer": "^6.1",
-        "vlucas/phpdotenv": "^5.3"
-    }
+        "vlucas/phpdotenv": "^5.3",
+        "phpclasses/mediafile": "^0.1.0",
+        "boyhagemann/wave": "dev-master",
+        "bluemoehre/flac-php": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https:\/\/www.phpclasses.org\/"
+        }
+    ]
 }
