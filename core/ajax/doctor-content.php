@@ -77,7 +77,7 @@ if (
                 $middleInitial = !empty($employeeRecord['middleName'])
                     ? substr($employeeRecord['middleName'], 0, 1)
                     : '';
-                $employeeName = utf8_encode(strtoupper(("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}.")));
+                $employeeName = strtoupper(("{$employeeRecord['lastName']}, {$employeeRecord['firstName']} {$middleInitial}."));
 
                 $isDisabled = (boolVal($employeeRecord['isDeleted'])) ? 'disabled' : '';
 

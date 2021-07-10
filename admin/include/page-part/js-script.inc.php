@@ -13,4 +13,5 @@
 
 <!-- New Scripts -->
 <script src="../core/js/http-xhr-management.js"></script>
+<script src="../core/js/notification.component.js"></script>
 <script src="../core/js/data-table-nav-management"></script>

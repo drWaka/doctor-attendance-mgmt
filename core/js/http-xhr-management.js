@@ -16,6 +16,7 @@ function sendXHR(url, method, data, successFunction, originNode = "", failCallba
       // }
       console.log(result);
       result = JSON.parse(result);
+      console.log(result);
       if (result["httpStatus"] == "success") {
         successFunction(result, originNode);
       } else {
